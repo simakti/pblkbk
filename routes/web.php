@@ -23,6 +23,10 @@ Route::get('/', function () {
 Route::get('/pengurus', function () {
     return view('pengurus');
 });
+Route::get('/penguruskbk', function () {
+    return view('penguruskbk');
+});
+
 
 Route::get('/matakuliah', function () {
     return view('matakuliah');
