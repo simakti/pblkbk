@@ -83,6 +83,13 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link " href="/thnakd/">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Tahun Akademik</span>
+                </a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
