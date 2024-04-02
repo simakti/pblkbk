@@ -6,14 +6,14 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class jurusanSeeder extends Seeder
+class PimpinanJurusanSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $path = public_path('insert_jurusan.sql');
+        $path = public_path('insert_pimpinan_jurusan.sql');
         $sqlfile = DB::unprepared(file_get_contents($path));
         $db_bin = "C:\xampp\mysql\bin";
         // PDO Credentials

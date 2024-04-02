@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jurusan', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_jurusan');
-            $table->string('kode_jurusan');
-            $table->string('jurusan');
-
-            $table->primary('id_jurusan');
+        Schema::create('verif_rps', function (Blueprint $table) {
+            $table->id('id_verif_rps');
+            $table->string('file');
+            $table->string('status');
+            $table->string('catatan');
+            $table->timestamp('tanggal_verif', $precision = 0);
 
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jurusan');
+        Schema::dropIfExists('verif_rps');
     }
 };
