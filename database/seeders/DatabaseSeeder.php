@@ -21,8 +21,14 @@ class DatabaseSeeder extends Seeder
         $this->call([jurusanSeeder::class,]);
         $this->call([prodiSeeder::class,]);
         $this->call([dosenSeeder::class,]);
-
-
         $this->call([thnAkdSeeder::class,]);
+        $this->call([KelasSeeder::class,]);
+        $this->call([JabatanPimpinanSeeder::class,]);
+        $this->call([KurikulumSeeder::class,]);
+        $this->call([MatakuliahSeeder::class,]);
+        $this->call([DosenMatakuliahSeeder::class,]);
+        $this->call([PimpinanProdiSeeder::class,]);
+        $this->call([PimpinanJurusanSeeder::class,]);
+
     }
 }
