@@ -5,19 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ProdiController extends Controller
+class ThnakdController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $data_prodi = DB::table('prodi')
-            ->join('jurusan', 'prodi.jurusan_id', '=', 'jurusan.id_jurusan')
-            ->select('prodi.*', 'jurusan.jurusan')
-            ->orderByDesc('id_prodi')
+        $data_thnakd = DB::table('thnakd')
+            ->orderBy('id_thnakd')
             ->get();
-        return view('prodi', compact('data_prodi'));
+        return view('thnakd', compact('data_thnakd'));
     }
 
     /**
@@ -33,7 +28,13 @@ class ProdiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'thn_akd'=>$request->thn_akd,
+            'status'=>$request->status
+
+        ];
+
+        DB::table('thnakd')->insert($data);
     }
 
     /**
@@ -68,3 +69,4 @@ class ProdiController extends Controller
         //
     }
 }
+

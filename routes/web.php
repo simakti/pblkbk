@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\ProdiController;
+use App\Http\Controllers\ThnakdController;
+use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\ProfileController;
 
 
@@ -32,9 +35,26 @@ Route::get('/matakuliah', function () {
     return view('matakuliah');
 });
 
+
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dosen', [DosenController::class, 'index'])->name('dosen');
     Route::post('/dosen', [DosenController::class, 'store']);
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/prodi', [ProdiController::class, 'index'])->name('prodi');
+    Route::post('/prodi', [ProdiController::class, 'store']);
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/jurusan', [JurusanController::class, 'index'])->name('jurusan');
+    Route::post('/jurusan', [JurusanController::class, 'store']);
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/thnakd', [ThnakdController::class, 'index'])->name('thnakd');
+    Route::post('/thnakd', [ThnakdController::class, 'store']);
 });
 
 Route::get('/dashboard', function () {

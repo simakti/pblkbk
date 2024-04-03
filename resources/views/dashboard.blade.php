@@ -66,6 +66,13 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link " href="/prodi">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Prodi</span>
+                </a>
+            </li>
+
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <li class="nav-item">

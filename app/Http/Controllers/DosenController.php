@@ -17,7 +17,7 @@ class DosenController extends Controller
             ->join('jurusan', 'dosen.id_jurusan', '=', 'jurusan.id_jurusan')
             ->join('prodi', 'dosen.id_prodi', '=', 'prodi.id_prodi')
             ->select('dosen.*', 'jurusan.jurusan', 'prodi.prodi')
-            ->orderByDesc('id_dosen')
+            ->orderBy('id_dosen')
             ->get();
         return view('dosen', compact('data_dosen'));
     }
@@ -47,7 +47,7 @@ class DosenController extends Controller
 
         ];
 
-        DB:table('dosen')->insert($data);
+        DB::table('dosen')->insert($data);
     }
 
     /**

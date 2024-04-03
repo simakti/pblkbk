@@ -13,7 +13,7 @@ class JurusanController extends Controller
     public function index()
     {
         $data_jurusan = DB::table('jurusan')
-            ->orderByDesc('id_jurusan')
+            ->orderBy('id_jurusan')
             ->get();
         return view('jurusan', compact('data_jurusan'));
     }
