@@ -6,14 +6,14 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class jurusanSeeder extends Seeder
+class KelasSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $path = public_path('insert_jurusan.sql');
+        $path = public_path('insert_kelas.sql');
         $sqlfile = DB::unprepared(file_get_contents($path));
         $db_bin = "C:\xampp\mysql\bin";
         // PDO Credentials
@@ -27,3 +27,4 @@ class jurusanSeeder extends Seeder
         exec("$db_bin}\mysql --user={$db['username']} --password={$db['password']} --host={$db['host']} --database {$db['database']} < $sqlfile");
     }
 }
+

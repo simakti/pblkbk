@@ -6,7 +6,7 @@ use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\ThnakdController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\ProfileController;
-
+use App\Http\Controllers\TahunAkdController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +25,6 @@ Route::get('/', function () {
 
 Route::get('/pengurus', function () {
     return view('pengurus');
-});
-Route::get('/penguruskbk', function () {
-    return view('penguruskbk');
 });
 
 
@@ -66,6 +63,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
 
 require __DIR__.'/auth.php';
 
