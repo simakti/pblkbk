@@ -66,14 +66,33 @@
                 </a>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
+                <a class="nav-link " href="/jurusan">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Jurusan</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link " href="/prodi">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Prodi</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link " href="/thnakd">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Tahun Akademik</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link " href="#">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Mata Kuliah</span>
+                    <span>Matakuliah</span>
                 </a>
-            </li>
             </li>
 
             <li class="nav-item">
@@ -83,12 +102,7 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link " href="/thnakd/">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Tahun Akademik</span>
-                </a>
-            </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -368,6 +382,9 @@
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
                                         <h6 class="m-0">Aksi</h6>
+                                        <div class="mt-3">
+                                            <a href="{{ route('dosen.create') }}" class="btn btn-primary">Tambah Dosen</a>
+                                        </div>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
@@ -375,13 +392,13 @@
                                                 cellspacing="0">
                                                 <thead>
                                                     <tr class="table-dark">
-                                                        <th>id</th>
+                                                        <th>ID</th>
                                                         <th>Name</th>
-                                                        <th>Nidn</th>
-                                                        <th>Nip</th>
-                                                        <th>gender</th>
+                                                        <th>NIDN</th>
+                                                        <th>NIP</th>
+                                                        <th>Gender</th>
                                                         <th>Jurusan</th>
-                                                        <th>prodi</th>
+                                                        <th>Prodi</th>
                                                         <th>Email</th>
                                                         <th>Foto</th>
                                                         <th>Status</th>
@@ -400,6 +417,13 @@
                                                             <th>{{ $data->email }}</th>
                                                             <th>{{ $data->image }}</th>
                                                             <th>{{ $data->status }}</th>
+                                                            <th>
+                                                                <form action="{{ route('dosen.destroy', $data->id_dosen) }}" method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                                </form>
+                                                            </th>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
@@ -407,8 +431,8 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-

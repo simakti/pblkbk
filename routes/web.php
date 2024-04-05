@@ -35,8 +35,10 @@ Route::get('/matakuliah', function () {
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dosen', [DosenController::class, 'index'])->name('dosen');
+    Route::get('/dosen', [DosenController::class, 'index'])->name('dosen.index');
     Route::post('/dosen', [DosenController::class, 'store']);
+    Route::get('/dosen/create', [DosenController::class, 'create'])->name('dosen.create');
+    Route::delete('/dosen/{id}', [DosenController::class, 'destroy'])->name('dosen.destroy');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

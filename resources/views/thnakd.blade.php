@@ -67,16 +67,16 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link " href="/prodi">
+                <a class="nav-link " href="/jurusan">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Prodi</span>
+                    <span>Jurusan</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link " href="/jurusan">
+                <a class="nav-link " href="/prodi">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Jurusan</span>
+                    <span>Prodi</span>
                 </a>
             </li>
 
@@ -89,12 +89,10 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-            <li class="nav-item">
                 <a class="nav-link " href="#">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Mata Kuliah</span>
+                    <span>Matakuliah</span>
                 </a>
-            </li>
             </li>
 
             <li class="nav-item">
@@ -389,7 +387,7 @@
                                                 cellspacing="0">
                                                 <thead>
                                                     <tr class="table-dark">
-                                                        <th>id</th>
+                                                        <th>ID</th>
                                                         <th>Tahun Akademik</th>
                                                         <th>Status</th>
                                                     </tr>

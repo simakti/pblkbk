@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('verif_uas', function (Blueprint $table) {
             $table->id('id_verif_uas');
-            $table->string('file');
+            $table->unsignedBigInteger('id_dosen');
+            $table->string('file')->nullable();
             $table->string('status');
-            $table->string('catatan');
-            $table->timestamp('tanggal_verif', $precision = 0);
+            $table->string('catatan')->nullable();
+            $table->timestamp('tanggal_verif', $precision=0);
+
+            $table->foreign('id_dosen')->references('id_dosen')->on('dosen')
+            ->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

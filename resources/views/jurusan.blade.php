@@ -67,13 +67,6 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link " href="/prodi">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Prodi</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
                 <a class="nav-link " href="/jurusan">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Jurusan</span>
@@ -81,9 +74,31 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link " href="/prodi">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Prodi</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link " href="/thnakd">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Tahun Akademik</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link " href="#">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Matakuliah</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link " href="#">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Kurikulum</span>
                 </a>
             </li>
 
@@ -389,7 +404,7 @@
                                                 cellspacing="0">
                                                 <thead>
                                                     <tr class="table-dark">
-                                                        <th>id</th>
+                                                        <th>ID</th>
                                                         <th>Kode Jurusan</th>
                                                         <th>Jurusan</th>
                                                     </tr>

@@ -29,6 +29,10 @@ class DatabaseSeeder extends Seeder
         $this->call([DosenMatakuliahSeeder::class,]);
         $this->call([PimpinanProdiSeeder::class,]);
         $this->call([PimpinanJurusanSeeder::class,]);
+        $this->call([VerifRPSSeeder::class,]);
+        $this->call([VerifUASSeeder::class,]);
+        $this->call([RepoRPSSeeder::class,]);
+        $this->call([RepoUASSeeder::class,]);
 
     }
 }
