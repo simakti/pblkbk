@@ -104,8 +104,6 @@
                     </a>
                 </li>
 
-
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -378,7 +376,7 @@
                     <div class="card">
                         <div class="card-body">
                             <!-- Page Heading -->
-                            <h5 class="card-title  mb-4">Data Dosen</h5>
+                            <h5 class="card-title  mb-4">Data Kelas</h5>
                             <div class="container-fluid">
                                 <!-- DataDosen -->
                                 <div class="card shadow mb-4">
@@ -392,30 +390,20 @@
                                                 <thead>
                                                     <tr class="table-dark">
                                                         <th>ID</th>
-                                                        <th>Name</th>
-                                                        <th>NIDN</th>
-                                                        <th>NIP</th>
-                                                        <th>Gender</th>
-                                                        <th>Jurusan</th>
-                                                        <th>Prodi</th>
-                                                        <th>Email</th>
-                                                        <th>Foto</th>
-                                                        <th>Status</th>
+                                                        <th>Kode Kelas</th>
+                                                        <th>Nama Kelas</th>
+                                                        <th>ID Prodi</th>
+                                                        <th>ID Tahun Akademik</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($data_dosen as $data)
+                                                    @foreach ($data_kelas as $data)
                                                         <tr class="table-Light">
-                                                            <th>{{ $data->id_dosen }}</th>
-                                                            <th>{{ $data->nama_dosen }}</th>
-                                                            <th>{{ $data->nidn }}</th>
-                                                            <th>{{ $data->nip }}</th>
-                                                            <th>{{ $data->jenis_kelamin }}</th>
-                                                            <th>{{ $data->jurusan }}</th>
-                                                            <th>{{ $data->prodi }}</th>
-                                                            <th>{{ $data->email }}</th>
-                                                            <th>{{ $data->image }}</th>
-                                                            <th>{{ $data->status }}</th>
+                                                            <th>{{ $data->id_kelas }}</th>
+                                                            <th>{{ $data->kode_kelas }}</th>
+                                                            <th>{{ $data->nama_kelas }}</th>
+                                                            <th>{{ $data->id_prodi }}</th>
+                                                            <th>{{ $data->id_thnakd }}</th>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>

@@ -8,7 +8,7 @@
                 <li class="nav-item back-to-top"><a class="nav-link" href="#">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="#pengurus">Pengurus</a></li>
-                <li class="nav-item"><a class="nav-link" href="dosen">Dosen</a></li>
+                <li class="nav-item"><a class="nav-link" href="#dosen">Dosen</a></li>
                 <li class="nav-item"><a class="nav-link" href="#prodi">Prodi</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Masuk</a>

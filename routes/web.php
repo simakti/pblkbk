@@ -2,11 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\KelasController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\ThnakdController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TahunAkdController;
+use App\Http\Controllers\KurikulumController;
+use App\Http\Controllers\MatakuliahController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +56,22 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/thnakd', [ThnakdController::class, 'index'])->name('thnakd');
     Route::post('/thnakd', [ThnakdController::class, 'store']);
 });
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/matakuliah', [MatakuliahController::class, 'index'])->name('matakuliah');
+    Route::post('/matakuliah', [MatakuliahController::class, 'store']);
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/kurikulum', [KurikulumController::class, 'index'])->name('kurikulum');
+    Route::post('/kurikulum', [KurikulumController::class, 'store']);
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/kelas', [KelasController::class, 'index'])->name('kelas');
+    Route::post('/kelas', [KelasController::class, 'store']);
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -89,20 +89,20 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-            <li class="nav-item">
-                <a class="nav-link " href="#">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Mata Kuliah</span>
-                </a>
-            </li>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/matakuliah">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Matakuliah</span>
+                    </a>
+                </li>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link " href="#">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Kurikulum</span>
-                </a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/kurikulum">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Kurikulum</span>
+                    </a>
+                </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -389,7 +389,7 @@
                                                 cellspacing="0">
                                                 <thead>
                                                     <tr class="table-dark">
-                                                        <th>id</th>
+                                                        <th>ID</th>
                                                         <th>Tahun Akademik</th>
                                                         <th>Status</th>
                                                     </tr>

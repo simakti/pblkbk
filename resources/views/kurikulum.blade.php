@@ -89,22 +89,20 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <li class="nav-item">
-                    <a class="nav-link " href="/matakuliah">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Matakuliah</span>
-                    </a>
-                </li>
-                </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/matakuliah">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Matakuliah</span>
+                </a>
+            </li>
+            </li>
 
-                <li class="nav-item">
-                    <a class="nav-link " href="/kurikulum">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Kurikulum</span>
-                    </a>
-                </li>
-
-
+            <li class="nav-item">
+                <a class="nav-link " href="/kurikulum">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Kurikulum</span>
+                </a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -378,7 +376,7 @@
                     <div class="card">
                         <div class="card-body">
                             <!-- Page Heading -->
-                            <h5 class="card-title  mb-4">Data Dosen</h5>
+                            <h5 class="card-title  mb-4">Data Kurikulum</h5>
                             <div class="container-fluid">
                                 <!-- DataDosen -->
                                 <div class="card shadow mb-4">
@@ -392,29 +390,21 @@
                                                 <thead>
                                                     <tr class="table-dark">
                                                         <th>ID</th>
-                                                        <th>Name</th>
-                                                        <th>NIDN</th>
-                                                        <th>NIP</th>
-                                                        <th>Gender</th>
-                                                        <th>Jurusan</th>
-                                                        <th>Prodi</th>
-                                                        <th>Email</th>
-                                                        <th>Foto</th>
+                                                        <th>Kode Kurikulum</th>
+                                                        <th>Nama Kurikulum</th>
+                                                        <th>Tahun</th>
+                                                        <th>ID Prodi</th>
                                                         <th>Status</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($data_dosen as $data)
+                                                    @foreach ($data_kurikulum as $data)
                                                         <tr class="table-Light">
-                                                            <th>{{ $data->id_dosen }}</th>
-                                                            <th>{{ $data->nama_dosen }}</th>
-                                                            <th>{{ $data->nidn }}</th>
-                                                            <th>{{ $data->nip }}</th>
-                                                            <th>{{ $data->jenis_kelamin }}</th>
-                                                            <th>{{ $data->jurusan }}</th>
-                                                            <th>{{ $data->prodi }}</th>
-                                                            <th>{{ $data->email }}</th>
-                                                            <th>{{ $data->image }}</th>
+                                                            <th>{{ $data->id_kurikulum }}</th>
+                                                            <th>{{ $data->kode_kurikulum }}</th>
+                                                            <th>{{ $data->nama_kurikulum }}</th>
+                                                            <th>{{ $data->tahun }}</th>
+                                                            <th>{{ $data->id_prodi }}</th>
                                                             <th>{{ $data->status }}</th>
                                                         </tr>
                                                     @endforeach
