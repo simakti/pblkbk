@@ -19,7 +19,7 @@
                                             <th>ID</th>
                                             <th>Kode Kelas</th>
                                             <th>Nama Kelas</th>
-                                            <th>ID Prodi</th>
+                                            <th>Program Studi</th>
                                             <th>ID Tahun Akademik</th>
                                         </tr>
                                     </thead>
@@ -29,8 +29,8 @@
                                                 <th>{{ $data->id_kelas }}</th>
                                                 <th>{{ $data->kode_kelas }}</th>
                                                 <th>{{ $data->nama_kelas }}</th>
-                                                <th>{{ $data->id_prodi }}</th>
-                                                <th>{{ $data->id_thnakd }}</th>
+                                                <th>{{ $data->prodi }}</th>
+                                                <th>{{ $data->thn_akd }}</th>
                                             </tr>
                                         @endforeach
                                     </tbody>

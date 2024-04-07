@@ -29,7 +29,7 @@
                                                 <th>{{ $data->id_prodi }}</th>
                                                 <th>{{ $data->kode_prodi }}</th>
                                                 <th>{{ $data->prodi }}</th>
-                                                <th>{{ $data->id_jurusan }}</th>
+                                                <th>{{ $data->jurusan }}</th>
                                                 <th>{{ $data->jenjang }}</th>
                                             </tr>
                                         @endforeach

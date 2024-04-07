@@ -31,7 +31,7 @@
                                                 <th>{{ $data->kode_kurikulum }}</th>
                                                 <th>{{ $data->nama_kurikulum }}</th>
                                                 <th>{{ $data->tahun }}</th>
-                                                <th>{{ $data->id_prodi }}</th>
+                                                <th>{{ $data->prodi }}</th>
                                                 <th>{{ $data->status }}</th>
                                             </tr>
                                         @endforeach
