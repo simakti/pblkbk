@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Pimpinanjurusan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\KelasController;
@@ -10,6 +11,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TahunAkdController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\MatakuliahController;
+use App\Http\Controllers\PimpinanprodiController;
+use App\Http\Controllers\PimpinanjurusanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,6 +77,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/kelas', [KelasController::class, 'store']);
 });
 
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/pimpinanjurusan', [PimpinanjurusanController::class, 'index'])->name('pimpinanjurusan');
+    Route::post('/pimpinanjurusan', [PimpinanjurusanController::class, 'store']);
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/pimpinanprodi', [PimpinanprodiController::class, 'index'])->name('pimpinanprodi');
+    Route::post('/pimpinanprodi', [PimpinanprodiController::class, 'store']);
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

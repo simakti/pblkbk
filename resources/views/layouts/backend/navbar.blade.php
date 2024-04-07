@@ -81,6 +81,20 @@
             </a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link " href="/pimpinanjurusan">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Pimpinan Jurusan</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link " href="/pimpinanprodi">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Pimpinan Prodi</span>
+            </a>
+        </li>
+
         <!-- Divider -->
         <hr class="sidebar-divider">
 

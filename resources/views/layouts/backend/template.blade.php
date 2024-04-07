@@ -35,6 +35,8 @@
         @yield('jurusan')
         @yield('thnakd')
         @yield('kelas')
+        @yield('pimpinanjurusan')
+        @yield('pimpinanprodi')
         @include('layouts.backend.footer')
     </div>
 
