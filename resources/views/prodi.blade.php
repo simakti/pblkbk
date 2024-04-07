@@ -89,18 +89,27 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link " href="#">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Matakuliah</span>
-                </a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/matakuliah">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Matakuliah</span>
+                    </a>
+                </li>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link " href="#">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Kurikulum</span>
-                </a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/kurikulum">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Kurikulum</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="/kelas">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Kelas</span>
+                    </a>
+                </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">

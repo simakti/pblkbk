@@ -67,13 +67,6 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link " href="/jurusan">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Jurusan</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
                 <a class="nav-link " href="/prodi">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Prodi</span>
@@ -81,24 +74,16 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link " href="/jurusan">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Jurusan</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link " href="/thnakd">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Tahun Akademik</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link " href="#">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Matakuliah</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link " href="#">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Kurikulum</span>
                 </a>
             </li>
 
@@ -118,6 +103,8 @@
                         <span>Kurikulum</span>
                     </a>
                 </li>
+
+
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -391,9 +378,9 @@
                     <div class="card">
                         <div class="card-body">
                             <!-- Page Heading -->
-                            <h5 class="card-title  mb-4">Data Prodi</h5>
+                            <h5 class="card-title  mb-4">Data Matakuliah</h5>
                             <div class="container-fluid">
-                                <!-- DataJurusan -->
+                                <!-- DataDosen -->
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
                                         <h6 class="m-0">Aksi</h6>
@@ -405,16 +392,35 @@
                                                 <thead>
                                                     <tr class="table-dark">
                                                         <th>ID</th>
-                                                        <th>Kode Jurusan</th>
-                                                        <th>Jurusan</th>
+                                                        <th>Kode Matakuliah</th>
+                                                        <th>Nama Matakuliah</th>
+                                                        <th>TP</th>
+                                                        <th>SKS</th>
+                                                        <th>Jam</th>
+                                                        <th>SKS_Teori</th>
+                                                        <th>SKS_Praktek</th>
+                                                        <th>Jam_Teori</th>
+                                                        <th>Jam_Praktek</th>
+                                                        <th>Semester</th>
+                                                        <th>ID Kurikulum</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($data_jurusan as $data)
+                                                    @foreach ($data_matakuliah as $data)
                                                         <tr class="table-Light">
-                                                            <th>{{ $data->id_jurusan }}</th>
-                                                            <th>{{ $data->kode_jurusan }}</th>
-                                                            <th>{{ $data->jurusan }}</th>
+                                                            <th>{{ $data->id_matakuliah }}</th>
+                                                            <th>{{ $data->kode_matakuliah }}</th>
+                                                            <th>{{ $data->nama_matakuliah }}</th>
+                                                            <th>{{ $data->TP }}</th>
+                                                            <th>{{ $data->sks }}</th>
+                                                            <th>{{ $data->jam }}</th>
+                                                            <th>{{ $data->sks_teori }}</th>
+                                                            <th>{{ $data->sks_praktek }}</th>
+                                                            <th>{{ $data->jam_teori }}</th>
+                                                            <th>{{ $data->jam_praktek }}</th>
+                                                            <th>{{ $data->semester }}</th>
+                                                            <th>{{ $data->id_kurikulum }}</th>
+
                                                         </tr>
                                                     @endforeach
                                                 </tbody>

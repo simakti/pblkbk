@@ -89,20 +89,26 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link " href="#">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Matakuliah</span>
+                    <span>Mata Kuliah</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link " href="#">
+                <a class="nav-link " href="/jurusan">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Kurikulum</span>
+                    <span>Jurusan</span>
                 </a>
             </li>
 
-
+            <li class="nav-item">
+                <a class="nav-link " href="/thnakd/">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Tahun Akademik</span>
+                </a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">

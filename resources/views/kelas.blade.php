@@ -67,13 +67,6 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link " href="/jurusan">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Jurusan</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
                 <a class="nav-link " href="/prodi">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Prodi</span>
@@ -81,24 +74,16 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link " href="/jurusan">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Jurusan</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link " href="/thnakd">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Tahun Akademik</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link " href="#">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Matakuliah</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link " href="#">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Kurikulum</span>
                 </a>
             </li>
 
@@ -391,9 +376,9 @@
                     <div class="card">
                         <div class="card-body">
                             <!-- Page Heading -->
-                            <h5 class="card-title  mb-4">Data Prodi</h5>
+                            <h5 class="card-title  mb-4">Data Kelas</h5>
                             <div class="container-fluid">
-                                <!-- DataJurusan -->
+                                <!-- DataDosen -->
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
                                         <h6 class="m-0">Aksi</h6>
@@ -405,16 +390,20 @@
                                                 <thead>
                                                     <tr class="table-dark">
                                                         <th>ID</th>
-                                                        <th>Kode Jurusan</th>
-                                                        <th>Jurusan</th>
+                                                        <th>Kode Kelas</th>
+                                                        <th>Nama Kelas</th>
+                                                        <th>ID Prodi</th>
+                                                        <th>ID Tahun Akademik</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($data_jurusan as $data)
+                                                    @foreach ($data_kelas as $data)
                                                         <tr class="table-Light">
-                                                            <th>{{ $data->id_jurusan }}</th>
-                                                            <th>{{ $data->kode_jurusan }}</th>
-                                                            <th>{{ $data->jurusan }}</th>
+                                                            <th>{{ $data->id_kelas }}</th>
+                                                            <th>{{ $data->kode_kelas }}</th>
+                                                            <th>{{ $data->nama_kelas }}</th>
+                                                            <th>{{ $data->id_prodi }}</th>
+                                                            <th>{{ $data->id_thnakd }}</th>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>

@@ -95,12 +95,12 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link " href="#">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Kurikulum</span>
-                </a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/kurikulum">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Kurikulum</span>
+                    </a>
+                </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">

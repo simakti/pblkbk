@@ -9,24 +9,26 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\AuthController;
+// use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
-    Route::get('register', [RegisteredUserController::class, 'create'])
-                ->name('register');
+    // Route::get('register', [RegisteredUserController::class, 'create'])
+    //             ->name('register');
 
-    Route::post('register', [RegisteredUserController::class, 'store']);
+    Route::post('register', [AuthController::class, 'signUp'])->name('auth.signup');
 
-    Route::get('login', [AuthenticatedSessionController::class, 'create'])
+    Route::get('login', [AuthController::class, 'index'])
                 ->name('login');
 
-    Route::post('login', [AuthenticatedSessionController::class, 'store']);
+    Route::post('/auth-login', [AuthController::class, 'login'])->name('auth.login');
 
-    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
-                ->name('password.request');
+    Route::get('forgot-password', [AuthController::class, 'viewForgotPassword'])
+                ->name('auth.view_forgot_password');
 
-    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
-                ->name('password.email');
+    Route::post('auth-forgot-password', [AuthController::class, 'forgotPassword'])
+                ->name('auth.forgot_password');
 
     Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
                 ->name('password.reset');
