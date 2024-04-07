@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.frontend.template')
 
 @section('main-content')
     <header class="">

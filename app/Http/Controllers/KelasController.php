@@ -15,7 +15,7 @@ class KelasController extends Controller
         $data_kelas = DB::table('kelas')
             ->join('prodi', 'kelas.id_prodi', '=', 'prodi.id_prodi')
             ->join('thnakd', 'kelas.id_thnakd', '=', 'thnakd.id_thnakd')
-            ->select('kelas.*', 'thnakd.thnakd', 'prodi.prodi')
+            ->select('kelas.*', 'thnakd.thn_akd', 'prodi.prodi')
             ->orderBy('id_kelas')
             ->get();
         return view('kelas', compact('data_kelas'));

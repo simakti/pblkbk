@@ -21,7 +21,7 @@
 
 <body class="d-flex flex-column">
     <main class="flex-shrink-0">
-        @include('layouts.navbar')
+        @include('layouts.frontend.navbar')
 
         <div class="container my-3 py-5">
             @yield('main-content')
@@ -29,7 +29,7 @@
             @yield('prestasi')
             @yield('pengurus')
         </div>
-        @include('layouts.footer')
+        @include('layouts.frontend.footer')
     </main>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

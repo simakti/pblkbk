@@ -11,7 +11,7 @@ class MatakuliahController extends Controller
     {
         $data_matakuliah = DB::table('matakuliah')
             ->join('kurikulum', 'matakuliah.id_kurikulum', '=', 'kurikulum.id_kurikulum')
-            ->select('matakuliah.*', 'kurikulum.kurikulum')
+            ->select('matakuliah.*', 'kurikulum.nama_kurikulum')
             ->orderBy('id_matakuliah')
             ->get();
         return view('matakuliah', compact('data_matakuliah'));
