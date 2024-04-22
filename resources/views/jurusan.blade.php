@@ -4,7 +4,7 @@
         <div class="card">
             <div class="card-body">
                 <!-- Page Heading -->
-                <h5 class="card-title  mb-4">Data Prodi</h5>
+                <h5 class="card-title mb-4">Data Jurusan</h5>
                 <div class="container-fluid">
                     <!-- DataJurusan -->
                     <div class="card shadow mb-4">
@@ -19,14 +19,26 @@
                                             <th>ID</th>
                                             <th>Kode Jurusan</th>
                                             <th>Jurusan</th>
+                                            <th>Aksi</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($data_jurusan as $data)
-                                            <tr class="table-Light">
-                                                <th>{{ $data->id_jurusan }}</th>
-                                                <th>{{ $data->kode_jurusan }}</th>
-                                                <th>{{ $data->jurusan }}</th>
+                                            <tr>
+                                                <td>{{ $data->id_jurusan }}</td>
+                                                <td>{{ $data->kode_jurusan }}</td>
+                                                <td>{{ $data->jurusan }}</td>
+                                                <td>
+                                                    <form action="{{ route('jurusan.destroy', $data->id_jurusan) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('UPDATE')
+                                                        <button type="submit" class="btn btn-warning btn-sm">Update</button>
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

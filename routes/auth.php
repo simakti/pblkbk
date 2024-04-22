@@ -19,7 +19,12 @@ Route::middleware('guest')->group(function () {
 
     Route::post('register', [AuthController::class, 'signUp'])->name('auth.signup');
 
-    Route::get('login', [AuthController::class, 'index'])
+    Route::post('home', [AuthController::class, 'Home'])->name('auth.home');
+    Route::get('/home', function () {
+        return view('home');
+    })->name('home');
+
+    Route::get('/login', [AuthController::class, 'index'])
                 ->name('login');
 
     Route::post('/auth-login', [AuthController::class, 'login'])->name('auth.login');

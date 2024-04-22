@@ -33,18 +33,18 @@
                                     <tbody>
                                         @foreach ($data_matakuliah as $data)
                                             <tr class="table-Light">
-                                                <th>{{ $data->id_matakuliah }}</th>
-                                                <th>{{ $data->kode_matakuliah }}</th>
-                                                <th>{{ $data->nama_matakuliah }}</th>
-                                                <th>{{ $data->TP }}</th>
-                                                <th>{{ $data->sks }}</th>
-                                                <th>{{ $data->jam }}</th>
-                                                <th>{{ $data->sks_teori }}</th>
-                                                <th>{{ $data->sks_praktek }}</th>
-                                                <th>{{ $data->jam_teori }}</th>
-                                                <th>{{ $data->jam_praktek }}</th>
-                                                <th>{{ $data->semester }}</th>
-                                                <th>{{ $data->id_kurikulum }}</th>
+                                                <td>{{ $data->id_matakuliah }}</td>
+                                                <td>{{ $data->kode_matakuliah }}</td>
+                                                <td>{{ $data->nama_matakuliah }}</td>
+                                                <td>{{ $data->TP }}</td>
+                                                <td>{{ $data->sks }}</td>
+                                                <td>{{ $data->jam }}</td>
+                                                <td>{{ $data->sks_teori }}</td>
+                                                <td>{{ $data->sks_praktek }}</td>
+                                                <td>{{ $data->jam_teori }}</td>
+                                                <td>{{ $data->jam_praktek }}</td>
+                                                <td>{{ $data->semester }}</td>
+                                                <td>{{ $data->id_kurikulum }}</td>
 
                                             </tr>
                                         @endforeach

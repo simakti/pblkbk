@@ -25,12 +25,12 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($data_kelas as $data)
-                                            <tr class="table-Light">
-                                                <th>{{ $data->id_kelas }}</th>
-                                                <th>{{ $data->kode_kelas }}</th>
-                                                <th>{{ $data->nama_kelas }}</th>
-                                                <th>{{ $data->id_prodi }}</th>
-                                                <th>{{ $data->id_thnakd }}</th>
+                                            <tr>
+                                                <td>{{ $data->id_kelas }}</td>
+                                                <td>{{ $data->kode_kelas }}</td>
+                                                <td>{{ $data->nama_kelas }}</td>
+                                                <td>{{ $data->id_prodi }}</td>
+                                                <td>{{ $data->id_thnakd }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

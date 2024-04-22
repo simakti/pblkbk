@@ -5,9 +5,8 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
-            </div>
+            <img src="images/logo.png" alt="Image" style="width: 30%; max-width: 300px; margin: 10px auto; display: block;">
+
             <div class="sidebar-brand-text mx-3">SIMAK TI</div>
         </a>
 
@@ -114,7 +113,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Login Screens:</h6>
                     <a class="collapse-item" href="/login">Login</a>
-                    <a class="collapse-item" href="register.html">Register</a>
+                    <a class="collapse-item" href="/register.html">Register</a>
                     <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
                     <div class="collapse-divider"></div>
                     <h6 class="collapse-header">Other Pages:</h6>
@@ -328,9 +327,8 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                            <img class="img-profile rounded-circle"
-                                src="img/undraw_profile.svg">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Sistem Informasi KBK</span>
+                            <img src="images/garis3.png" alt="Image" style="width: 20%; max-width: 50px; margin: 10px auto; display: block;">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -349,6 +347,8 @@
                             </a>
                             <div class="dropdown-divider"></div>
                             <form method="POST" action="{{ route('logout') }}">
+                                <img src="images/logout.png" alt="Image" style="width: 15%; max-width: 50px; margin-left: 5px; filter: grayscale(100%);">
+
                                 @csrf
 
                                 <x-responsive-nav-link :href="route('logout')"

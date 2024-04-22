@@ -27,12 +27,12 @@
                                     <tbody>
                                         @foreach ($data_pimpinanprodi as $data)
                                             <tr class="table-Light">
-                                                <th>{{ $data->id_pimpinan_prodi }}</th>
-                                                <th>{{ $data->jabatan_pimpinan }}</th>
-                                                <th>{{ $data->prodi }}</th>
-                                                <th>{{ $data->nama_dosen }}</th>
-                                                <th>{{ $data->periode }}</th>
-                                                <th>{{ $data->status }}</th>
+                                                <td>{{ $data->id_pimpinan_prodi }}</td>
+                                                <td>{{ $data->jabatan_pimpinan }}</td>
+                                                <td>{{ $data->prodi }}</td>
+                                                <td>{{ $data->nama_dosen }}</td>
+                                                <td>{{ $data->periode }}</td>
+                                                <td>{{ $data->status }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

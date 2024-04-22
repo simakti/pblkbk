@@ -30,29 +30,38 @@
                                         <th>Email</th>
                                         <th>Foto</th>
                                         <th>Status</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($data_dosen as $data)
-                                        <tr class="table-Light">
-                                            <th>{{ $data->id_dosen }}</th>
-                                            <th>{{ $data->nama_dosen }}</th>
-                                            <th>{{ $data->nidn }}</th>
-                                            <th>{{ $data->nip }}</th>
-                                            <th>{{ $data->jenis_kelamin }}</th>
-                                            <th>{{ $data->jurusan }}</th>
-                                            <th>{{ $data->prodi }}</th>
-                                            <th>{{ $data->email }}</th>
-                                            <th>{{ $data->image }}</th>
-                                            <th>{{ $data->status }}</th>
-                                            <th>
+                                        <tr>
+                                            <td>{{ $data->id_dosen }}</td>
+                                            <td>{{ $data->nama_dosen }}</td>
+                                            <td>{{ $data->nidn }}</td>
+                                            <td>{{ $data->nip }}</td>
+                                            <td>{{ $data->jenis_kelamin }}</td>
+                                            <td>{{ $data->jurusan }}</td>
+                                            <td>{{ $data->prodi }}</td>
+                                            <td>{{ $data->email }}</td>
+                                            <td>{{ $data->image }}</td>
+                                            <td>
+                                                @if ($data->status == 0)
+                                                    Tidak Aktif
+                                                @else
+                                                    Aktif
+                                                @endif
+                                            </td>
+                                            <td>
                                                 <form action="{{ route('dosen.destroy', $data->id_dosen) }}"
                                                     method="POST">
                                                     @csrf
+                                                    @method('UPDATE')
+                                                    <button type="submit" class="btn btn-warning btn-sm">Update</button>
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                                 </form>
-                                            </th>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
