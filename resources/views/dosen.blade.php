@@ -1,5 +1,5 @@
 @extends('layouts.backend.template')
-@section('dosen')
+@section('content')
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">
@@ -8,13 +8,7 @@
             <div class="container-fluid">
                 <!-- DataDosen -->
                 <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0">Aksi</h6>
-                        <div class="mt-3">
-                            <a href="{{ route('dosen.create') }}" class="btn btn-primary">Tambah
-                                Dosen</a>
-                        </div>
-                    </div>
+
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
