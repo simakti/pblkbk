@@ -37,7 +37,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect('/register'.'Register Succes');
+        return redirect('/login'.'Register Succes');
     }
 
     public function viewForgotPassword()
@@ -71,6 +71,6 @@ class AuthController extends Controller
     }
     public function redirectToHome()
     {
-        return redirect()->route('home'); 
+        return redirect()->route('home');
     }
 }
