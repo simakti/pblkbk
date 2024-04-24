@@ -1,5 +1,5 @@
 @extends('layouts.backend.template')
-@section('matakuliah')
+@section('content')
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
@@ -10,10 +10,14 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0">Aksi</h6>
+                            <div class="mt-3">
+                                <a href="{{ route('matakuliah.create') }}" class="btn btn-primary">Tambah
+                                    Matakuliah</a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr class="table-dark">
                                             <th>ID</th>
@@ -32,7 +36,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($data_matakuliah as $data)
-                                            <tr class="table-Light">
+                                            <tr>
                                                 <td>{{ $data->id_matakuliah }}</td>
                                                 <td>{{ $data->kode_matakuliah }}</td>
                                                 <td>{{ $data->nama_matakuliah }}</td>

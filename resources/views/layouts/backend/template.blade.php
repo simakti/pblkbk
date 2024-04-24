@@ -27,18 +27,7 @@
 <body id="page-top">
     <div id="wrapper">
         @include('layouts.backend.navbar')
-        @yield('main-content')
-        @yield('dosen')
-        @yield('prodi')
-        @yield('matakuliah')
-        @yield('kurikulum')
-        @yield('jurusan')
-        @yield('thnakd')
-        @yield('kelas')
-        @yield('pimpinanjurusan')
-        @yield('pimpinanprodi')
-        @yield('form_dosen')
-        @yield('form_thnakd')
+        @yield('content')
         @include('layouts.backend.footer')
     </div>
 
