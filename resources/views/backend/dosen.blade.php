@@ -8,8 +8,13 @@
             <div class="container-fluid">
                 <!-- DataDosen -->
                 <div class="card shadow mb-4">
-
                     <div class="card-body">
+                        <div class="card-header py-3">
+                            <div class="d-grid gap-2 d-md-block">
+                            <a href="{{ route('dosen.create') }}" class="btn btn-primary me-md-3"><i
+                                        class="bi bi-file-earmark-plus"></i> New</a>
+                        </div>
+                        </div>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                                 <thead>

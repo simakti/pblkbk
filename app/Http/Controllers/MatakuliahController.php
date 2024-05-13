@@ -14,7 +14,7 @@ class MatakuliahController extends Controller
             ->select('matakuliah.*', 'kurikulum.nama_kurikulum')
             ->orderBy('id_matakuliah')
             ->get();
-        return view('matakuliah', compact('data_matakuliah'));
+        return view('backend.matakuliah', compact('data_matakuliah'));
     }
 
     /**

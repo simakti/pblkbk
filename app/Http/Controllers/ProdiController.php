@@ -14,7 +14,7 @@ class ProdiController extends Controller
             ->select('prodi.*', 'jurusan.jurusan')
             ->orderBy('id_prodi')
             ->get();
-        return view('prodi', compact('data_prodi'));
+        return view('backend.prodi', compact('data_prodi'));
     }
 
     /**

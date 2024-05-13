@@ -68,6 +68,7 @@
                     </div>
                 </div>
             </div>
+
             <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -148,6 +149,8 @@
                     <span class="visually-hidden">Next</span>
                 </button>
                 </div>
+
+            
 
             <div class="py-3 bg-light">
                 <div class="container px-5 my-5">
