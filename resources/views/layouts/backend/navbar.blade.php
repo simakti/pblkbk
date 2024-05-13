@@ -25,7 +25,7 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Interface
+            View
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
@@ -99,7 +99,7 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Addons
+            Entry Data
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
@@ -125,9 +125,9 @@
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="/penguruskbk">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Charts</span></a>
+                <span>Pengurus KBK</span></a>
         </li>
 
         <!-- Nav Item - Tables -->
