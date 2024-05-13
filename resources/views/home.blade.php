@@ -70,10 +70,10 @@
             <div class="row gx-5">
                 <div class="col-lg-3 mb-5">
                     <div class="card h-100 shadow border-0">
-                        <img class="card-img-top" src="frontend/images/default.png" alt="..." />
+                        <img class="card-img-top" src="frontend/images/yulherniwati.jpg" alt="..." />
                         <div class="card-body p-4">
                             <div class="badge bg-primary bg-gradient rounded-pill mb-2">SOFTAM</div>
-                            <a class="text-decoration-none link-dark stretched-link" href="#!">
+                            <a class="text-decoration-none link-dark stretched-link" href="#">
                                 <h5 class="card-title mb-3">YULHERNIWATI, S.Kom, M.T</h5>
                             </a>
                             <p class="card-text mb-0">Some quick example text to build on the card title and make up the
@@ -83,7 +83,7 @@
                 </div>
                 <div class="col-lg-3 mb-5">
                     <div class="card h-100 shadow border-0">
-                        <img class="card-img-top" src="frontend/images/default.png" alt="..." />
+                        <img class="card-img-top" src="frontend/images/humaira.jpg" alt="..." />
                         <div class="card-body p-4">
                             <div class="badge bg-primary bg-gradient rounded-pill mb-2">CAIT</div>
                             <a class="text-decoration-none link-dark stretched-link" href="#!">
@@ -96,7 +96,7 @@
                 </div>
                 <div class="col-lg-3 mb-5">
                     <div class="card h-100 shadow border-0">
-                        <img class="card-img-top" src="frontend/images/default.png" alt="..." />
+                        <img class="card-img-top" src="frontend/images/deni.jpeg" alt="..." />
                         <div class="card-body p-4">
                             <div class="badge bg-primary bg-gradient rounded-pill mb-2">PROGRAMMING</div>
                             <a class="text-decoration-none link-dark stretched-link" href="#!">
@@ -109,7 +109,7 @@
                 </div>
                 <div class="col-lg-3 mb-5">
                     <div class="card h-100 shadow border-0">
-                        <img class="card-img-top" src="frontend/images/default.png" alt="..." />
+                        <img class="card-img-top" src="frontend/images/alde.jpg" alt="..." />
                         <div class="card-body p-4">
                             <div class="badge bg-primary bg-gradient rounded-pill mb-2">NETWORKING</div>
                             <a class="text-decoration-none link-dark stretched-link" href="#!">
@@ -122,7 +122,7 @@
                 </div>
                 <div class="col-lg-3 mb-5">
                     <div class="card h-100 shadow border-0">
-                        <img class="card-img-top" src="frontend/images/default.png" alt="..." />
+                        <img class="card-img-top" src="frontend/images/taufik.jpg" alt="..." />
                         <div class="card-body p-4">
                             <div class="badge bg-primary bg-gradient rounded-pill mb-2">IT SUPPORT</div>
                             <a class="text-decoration-none link-dark stretched-link" href="#!">

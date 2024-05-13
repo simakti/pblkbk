@@ -16,7 +16,7 @@ class PimpinanprodiController extends Controller
             ->select('pimpinan_prodi.*', 'dosen.nama_dosen', 'prodi.prodi', 'jabatan_pimpinan.jabatan_pimpinan')
             ->orderBy('id_pimpinan_prodi')
             ->get();
-        return view('pimpinanprodi', compact('data_pimpinanprodi'));
+        return view('backend.pimpinanprodi', compact('data_pimpinanprodi'));
     }
 
     /**

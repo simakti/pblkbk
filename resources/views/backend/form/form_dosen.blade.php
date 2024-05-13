@@ -1,12 +1,14 @@
 @extends('layouts.backend.template')
-@section('form_dosen')
-    <div class="container-fluid">
-        <div class="card">
-            <div class="card-body">
-                <h2>Form Dosen</h2>
+@section('form')
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <!-- Page Heading -->
+            <h5 class="card-title  mb-4">Form Dosen</h5>
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
-                        <form action="proses_dosen.php?aksi=insert" method="post">
+                        <form action="{{ route('dosen') }}" method="post">
                             <div class="mb-3">
                                 <label class="form-label">ID</label>
                                 <input type="id" class="form-control" name="id" readonly>
