@@ -1,7 +1,7 @@
 INSERT INTO `matakuliah` (`id_matakuliah`, `kode_matakuliah`, `nama_matakuliah`, `TP`, `sks`, `jam`, `sks_teori`, `sks_praktek`, `jam_teori`, `jam_praktek`, `semester`, `id_kurikulum`) VALUES
 (1, 'RPL1101','Pengantar Teknologi Komputer dan Informasi','T/P',4, 8, 2, 2, 2, 6, 1, 5 ),
 (2, 'RPL2101', 'Basis Data', 'T/P', 4, 8, 2, 2, 2, 6, 1, 5),
-(3, 'RPL2102', 'Aljabar Linear', 'T' 3, 3, 3, 0, 3, 0, 1, 5),
+(3, 'RPL2102', 'Aljabar Linear', 'T', 3, 3, 3, 0, 3, 0, 1, 5),
 (4, 'RPL3101', 'Algoritma Dan Pemograman', 'T/P', 5, 9, 3, 2, 3, 6, 1, 5),
 (5, 'RPL3102', 'Agama', 'T', 2, 2, 2, 0, 2, 0, 1, 5 ),
 (6, 'RPL3103', 'Sistem Informasi', 'T', 2, 2, 2, 0, 2, 0, 1, 5 ),
@@ -45,4 +45,4 @@ INSERT INTO `matakuliah` (`id_matakuliah`, `kode_matakuliah`, `nama_matakuliah`,
 (44, 'RPL2701', 'Bahasa Inggris Scientific', 'P', 2, 6, 0, 2, 0, 6, 7, 5),
 (45, 'RPL3801', 'Seminar Proposal', 'P', 3, 9, 0, 3, 0, 9, 8, 5),
 (46, 'RPL3802', 'Penulisan Karya Ilmiah', 'P', 1, 3, 0, 1, 0, 3, 8, 5),
-(47, ' RPL3803', 'Tugas akhir', 'P', 6, 18, 0, 6, 0, 18, 8, 5);
+(47, 'RPL3803', 'Tugas akhir', 'P', 6, 18, 0, 6, 0, 18, 8, 5);

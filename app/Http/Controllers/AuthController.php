@@ -41,8 +41,6 @@ class AuthController extends Controller
 
         return redirect('/login'.'Register Succes');
 
-
-
     }
 
     public function viewForgotPassword()
