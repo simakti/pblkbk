@@ -21,13 +21,40 @@
                                     <thead>
                                         <tr class="table-dark">
                                             <th>ID</th>
-                                            <th>ID Jenis KBK</th>
-                                            <th>ID Dosen</th>
-                                            <th>ID Jabatan</th>
+                                            <th>Jenis KBK</th>
+                                            <th>Nama Dosen</th>
+                                            <th>Jabatan</th>
                                             <th>Status</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
-
+                                    <tbody>
+                                        @foreach ($data_penguruskbk as $data)
+                                            <tr>
+                                                <td>{{ $data->id_penguruskbk }}</td>
+                                                <td>{{ $data->jenis_kbk }}</td>
+                                                <td>{{ $data->nama_dosen }}</td>
+                                                <td>{{ $data->jabatan }}</td>
+                                                <td>
+                                                    @if ($data->status == 0)
+                                                        Tidak Aktif
+                                                    @else
+                                                        Aktif
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                        <form action="{{ route('penguruskbk.edit', $data->id_penguruskbk) }}" method="GET" style="display:inline;">
+                                                            <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                                                        </form>
+                                                        <form action="{{ route('penguruskbk.destroy', $data->id_penguruskbk) }}" method="POST" style="display:inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                        </form>
+                                                    </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
                                 </table>
                             </div>
                         </div>

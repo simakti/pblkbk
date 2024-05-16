@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TahunAkdController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\MatakuliahController;
+use App\Http\Controllers\PenguruskbkController;
 use App\Http\Controllers\PimpinanprodiController;
 use App\Http\Controllers\PimpinanjurusanController;
 
@@ -101,6 +102,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/pimpinanprodi', [PimpinanprodiController::class, 'store']);
     Route::get('/pimpinanprodi/create', [PimpinanprodiController::class, 'create'])->name('pimpinanprodi.create');
     Route::delete('/pimpinanprodi/{id}', [PimpinanprodiController::class, 'destroy'])->name('pimpinanprodi.destroy');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/penguruskbk', [PengurusKBKController::class, 'index'])->name('penguruskbk.index');
+    Route::get('/penguruskbk/create', [PengurusKBKController::class, 'create'])->name('penguruskbk.create');
+    Route::post('/penguruskbk', [PengurusKBKController::class, 'store'])->name('penguruskbk.store');
+    Route::delete('/penguruskbk/{id}', [PenguruskbkController::class, 'destroy'])->name('penguruskbk.destroy');
+    Route::get('/penguruskbk/edit/{id}', [PengurusKBKController::class, 'edit'])->name('penguruskbk.edit');
+    Route::put('/penguruskbk/update/{id}', [PengurusKBKController::class, 'update'])->name('penguruskbk.update');
 });
 
 Route::get('/dashboard', function () {

@@ -5,7 +5,7 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <img src="images/logo.png" alt="Image" style="width: 30%; max-width: 300px; margin: 10px auto; display: block;">
+            <img src="{{asset('images/logo.png')}}" alt="Image" style="width: 30%; max-width: 300px; margin: 10px auto; display: block;">
 
             <div class="sidebar-brand-text mx-3">SIMAK TI</div>
         </a>
@@ -99,7 +99,7 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Entry Data
+            KBK
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
@@ -171,7 +171,7 @@
                             aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-dark" type="button">
-                                <i class="fas fa-search fa-sm"></i>
+                                <i class="{{ asset('fas fa-search fa-sm')}}"></i>
                             </button>
                         </div>
                     </div>
@@ -208,7 +208,7 @@
                     <li class="nav-item dropdown no-arrow mx-1">
                         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-bell fa-fw"></i>
+                            <i class="{{ asset('fas fa-bell fa-fw')}}"></i>
                             <!-- Counter - Alerts -->
                             <span class="badge badge-danger badge-counter">3+</span>
                         </a>
@@ -259,7 +259,7 @@
                     <li class="nav-item dropdown no-arrow mx-1">
                         <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-envelope fa-fw"></i>
+                            <i class="{{ asset('fas fa-envelope fa-fw')}}"></i>
                             <!-- Counter - Messages -->
                             <span class="badge badge-danger badge-counter">7</span>
                         </a>
@@ -328,7 +328,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Sistem Informasi KBK</span>
-                            <img src="images/garis3.png" alt="Image" style="width: 20%; max-width: 50px; margin: 10px auto; display: block;">
+                            <img src="{{asset('images/garis3.png')}}" alt="Image" style="width: 20%; max-width: 50px; margin: 10px auto; display: block;">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
