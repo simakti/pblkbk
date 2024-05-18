@@ -38,6 +38,7 @@ class AuthController extends Controller
         ]);
 
 
+
         return redirect('/login'.'Register Succes');
 
     }

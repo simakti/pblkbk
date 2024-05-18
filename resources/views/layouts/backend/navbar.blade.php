@@ -25,7 +25,7 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Interface
+            View
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
@@ -99,7 +99,7 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Addons
+            KBK
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
@@ -125,9 +125,15 @@
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="/penguruskbk">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Charts</span></a>
+                <span>Pengurus KBK</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/datakbk">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Data KBK</span></a>
         </li>
 
         <!-- Nav Item - Tables -->
@@ -328,7 +334,9 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Sistem Informasi KBK</span>
+
                             <img src="{{ asset('images/garis3.png')}}" alt="Image" style="width: 20%; max-width: 50px; margin: 10px auto; display: block;">
+
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

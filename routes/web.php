@@ -1,17 +1,23 @@
 <?php
 
+use App\Models\DataKbk;
 use App\Models\Pimpinanjurusan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\ThnakdController;
+use App\Http\Controllers\DataKbkController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TahunAkdController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\MatakuliahController;
+<<<<<<< HEAD
 use App\Http\Controllers\MatkulKbkController;
+=======
+use App\Http\Controllers\PenguruskbkController;
+>>>>>>> 5b38b272a773f9a03771c7ff846cd499d0bc6ae5
 use App\Http\Controllers\PimpinanprodiController;
 use App\Http\Controllers\PimpinanjurusanController;
 
@@ -106,6 +112,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
+<<<<<<< HEAD
     Route::get('/matkul_kbk', [MatkulKbkController::class, 'index'])->name('matkul_kbk.index');
     Route::get('/matkul_kbk/create', [MatkulKbkController::class,'create'])->name('matkul_kbk.create');
     Route::post('/matkul_kbk', [MatkulKbkController::class, 'store'])->name('matkul_kbk.store');
@@ -114,6 +121,24 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/matkul_kbk/update/{id}', [MatkulKbkController::class, 'update'])->name('matkul_kbk.update');
 });
 
+=======
+    Route::get('/penguruskbk', [PengurusKBKController::class, 'index'])->name('penguruskbk.index');
+    Route::get('/penguruskbk/create', [PengurusKBKController::class, 'create'])->name('penguruskbk.create');
+    Route::post('/penguruskbk', [PengurusKBKController::class, 'store'])->name('penguruskbk.store');
+    Route::delete('/penguruskbk/{id}', [PenguruskbkController::class, 'destroy'])->name('penguruskbk.destroy');
+    Route::get('/penguruskbk/edit/{id}', [PengurusKBKController::class, 'edit'])->name('penguruskbk.edit');
+    Route::put('/penguruskbk/update/{id}', [PengurusKBKController::class, 'update'])->name('penguruskbk.update');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/datakbk', [DataKbkController::class, 'index'])->name('datakbk.index');
+    Route::get('/datakbk/create', [DataKbkController::class, 'create'])->name('datakbk.create');
+    Route::post('/datakbk', [DataKbkController::class, 'store'])->name('datakbk.store');
+    Route::delete('/datakbk/{id}', [DataKbkController::class, 'destroy'])->name('datakbk.destroy');
+    Route::get('/datakbk/edit/{id}', [DataKbkController::class, 'edit'])->name('datakbk.edit');
+    Route::put('/datakbk/update/{id}', [DataKbkController::class, 'update'])->name('datakbk.update');
+});
+>>>>>>> 5b38b272a773f9a03771c7ff846cd499d0bc6ae5
 
 Route::get('/dashboard', function () {
     return view('backend.dashboard');
