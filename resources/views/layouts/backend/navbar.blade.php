@@ -5,7 +5,7 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <img src="images/logo.png" alt="Image" style="width: 30%; max-width: 300px; margin: 10px auto; display: block;">
+            <img src="{{asset('images/logo.png')}}" alt="Image" style="width: 30%; max-width: 300px; margin: 10px auto; display: block;">
 
             <div class="sidebar-brand-text mx-3">SIMAK TI</div>
         </a>
@@ -132,9 +132,9 @@
 
         <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="tables.html">
+            <a class="nav-link" href="/matkul_kbk">
                 <i class="fas fa-fw fa-table"></i>
-                <span>Tables</span></a>
+                <span>Matkul KBK</span></a>
         </li>
 
         <!-- Divider -->
@@ -328,7 +328,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">Sistem Informasi KBK</span>
-                            <img src="images/garis3.png" alt="Image" style="width: 20%; max-width: 50px; margin: 10px auto; display: block;">
+                            <img src="{{ asset('images/garis3.png')}}" alt="Image" style="width: 20%; max-width: 50px; margin: 10px auto; display: block;">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
