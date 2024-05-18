@@ -20,7 +20,7 @@
                                 <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr class="table-dark">
-                                            <th>ID</th>
+                                            <th>NO</th>
                                             <th>Kode Prodi</th>
                                             <th>Prodi</th>
                                             <th>ID Jurusan</th>
@@ -28,9 +28,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data_prodi as $data)
-                                            <tr>
-                                                <td>{{ $data->id_prodi }}</td>
+                                        @foreach ($data_prodi as $index => $data)
+                                        <tr>
+                                                <td>{{ $index + 1 }}</td>
                                                 <td>{{ $data->kode_prodi }}</td>
                                                 <td>{{ $data->prodi }}</td>
                                                 <td>{{ $data->jurusan }}</td>
