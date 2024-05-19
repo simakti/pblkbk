@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 
 class DosenController extends Controller
@@ -17,9 +18,9 @@ class DosenController extends Controller
             ->join('jurusan', 'dosen.id_jurusan', '=', 'jurusan.id_jurusan')
             ->join('prodi', 'dosen.id_prodi', '=', 'prodi.id_prodi')
             ->select('dosen.*', 'jurusan.jurusan', 'prodi.prodi')
-            ->orderByDesc('id_dosen')
+            ->orderBy('id_dosen')
             ->get();
-        return view('dosen', compact('data_dosen'));
+        return view('backend.dosen', compact('data_dosen'));
     }
 
     /**
@@ -27,8 +28,11 @@ class DosenController extends Controller
      */
     public function create()
     {
-        //
+        $data_dosen = DB::table('dosen')->get();
+
+        return view('backend.form.form_dosen', compact('data_dosen'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -47,7 +51,7 @@ class DosenController extends Controller
 
         ];
 
-        DB:table('dosen')->insert($data);
+        DB::table('dosen')->insert($data);
     }
 
     /**

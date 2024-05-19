@@ -12,17 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('prodi', function (Blueprint $table) {
-            $table->id('id_prodi');
+            $table->unsignedBigInteger('id_prodi');
             $table->string('kode_prodi');
             $table->string('prodi');
             $table->unsignedBigInteger('id_jurusan');
             $table->string('jenjang');
+
+            $table->primary('id_prodi');
+            $table->foreign('id_jurusan')->references('id_jurusan')->on('jurusan')
+            ->onDelete('cascade')->onUpdate('cascade');
         });
 
-        Schema::table('prodi', function (Blueprint $table) {
-            $table->foreign('id_jurusan')->references('id_jurusan')->on('jurusan')
-                    ->onUpdate('cascade')->onDelete('cascade');
-        });
+
+
+
     }
 
     /**

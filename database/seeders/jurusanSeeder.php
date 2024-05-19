@@ -13,22 +13,17 @@ class jurusanSeeder extends Seeder
      */
     public function run(): void
     {
-        $jurusanData = [
-            ['AN', 'Administrasi Niaga'],
-            ['AK', 'Akuntansi'],
-            ['BI', 'Bahasa Inggris'],
-            ['EE', 'Teknik Elektro'],
-            ['ME', 'Teknik Mesin'],
-            ['SP', 'Teknik Sipil'],
-            ['TI', 'Teknologi Informasi']
+        $path = public_path('insert_jurusan.sql');
+        $sqlfile = DB::unprepared(file_get_contents($path));
+        $db_bin = "C:\xampp\mysql\bin";
+        // PDO Credentials
+        $db = [
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
+            'host' => env('DB_HOST'),
+            'database' => env('DB_DATABASE')
         ];
 
-        foreach ($jurusanData as $data) {
-            DB::table('jurusan')->insert([
-                'kode_jurusan' => $data[0],
-                'jurusan' => $data[1]
-
-            ]);
-        }
+        exec("$db_bin}\mysql --user={$db['username']} --password={$db['password']} --host={$db['host']} --database {$db['database']} < $sqlfile");
     }
 }
