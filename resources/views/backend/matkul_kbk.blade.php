@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <!-- Page Heading -->
-            <h5 class="card-title  mb-4">Data Matkul KBK</h5>
+            <h5 class="card-title  mb-4">Data Mata Kuliah KBK</h5>
             <div class="container-fluid">
                 <!-- DataDosen -->
                 <div class="card shadow mb-4">

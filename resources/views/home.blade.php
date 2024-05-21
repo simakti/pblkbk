@@ -82,16 +82,17 @@
                                             <h5 class="card-title mb-3">YULHERNIWATI, S.Kom, M.T</h5>
                                         </a>
                                         <p class="card-text mb-0">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 mb-5">
                                 <div class="card h-100 shadow border-0">
-                                    <img class="card-img-top" src="frontend/images/humaira.jpg" alt="..." />
+                                    <img class="card-img-top" src="frontend/images/meriazmi.jpg" alt="..." />
                                     <div class="card-body p-4">
-                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">CAIT</div>
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">AI</div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                            <h5 class="card-title mb-3">HUMAIRA, S.T, M.T</h5>
+                                            <h5 class="card-title mb-3">Meri Azmi, S.T., M.Cs</h5>
                                         </a>
                                         <p class="card-text mb-0">Some more quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -99,7 +100,7 @@
                             </div>
                             <div class="col-lg-4 mb-5">
                                 <div class="card h-100 shadow border-0">
-                                    <img class="card-img-top" src="frontend/images/deni.jpeg" alt="..." />
+                                    <img class="card-img-top" src="frontend/images/default.png" alt="..." />
                                     <div class="card-body p-4">
                                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">PROGRAMMING</div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
@@ -117,7 +118,7 @@
                                 <div class="card h-100 shadow border-0">
                                     <img class="card-img-top" src="frontend/images/alde.jpg" alt="..." />
                                     <div class="card-body p-4">
-                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">NETWORKING</div>
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">NETWORK AND CYBERSEC </div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
                                             <h5 class="card-title mb-3">ALDE ALANDA, S.Kom, M.T</h5>
                                         </a>
@@ -127,11 +128,11 @@
                             </div>
                             <div class="col-lg-4 mb-5">
                                 <div class="card h-100 shadow border-0">
-                                    <img class="card-img-top" src="frontend/images/taufik.jpg" alt="..." />
+                                    <img class="card-img-top" src="frontend/images/hendra.jpg" alt="..." />
                                     <div class="card-body p-4">
-                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">IT SUPPORT</div>
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">MULTIMEDIA</div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                            <h5 class="card-title mb-3">TAUFIK GUSMAN, S.S.T, M.Ds</h5>
+                                            <h5 class="card-title mb-3">Hendra Rotama, S.Pd., M.Sn</h5>
                                         </a>
                                         <p class="card-text mb-0">Some more quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     </div>
@@ -150,7 +151,7 @@
                 </button>
                 </div>
 
-            
+
 
             <div class="py-3 bg-light">
                 <div class="container px-5 my-5">
