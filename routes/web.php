@@ -13,6 +13,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TahunAkdController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\MatakuliahController;
+use App\Http\Controllers\MatkulkbkController;
 use App\Http\Controllers\PenguruskbkController;
 use App\Http\Controllers\PimpinanprodiController;
 use App\Http\Controllers\PimpinanjurusanController;
@@ -127,6 +128,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/datakbk/import', [DataKbkController::class, 'import'])->name('datakbk.import');
 
 
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/matkul_kbk', [MatkulkbkController::class, 'index'])->name('matkul_kbk.index');
+    Route::get('/matkul_kbk/create', [MatkulKbkController::class,'create'])->name('matkul_kbk.create');
+    Route::post('/matkul_kbk', [MatkulKbkController::class, 'store'])->name('matkul_kbk.store');
+    Route::delete('/matkul_kbk/{id}', [MatkulKbkController::class, 'destroy'])->name('matkul_kbk.destroy');
+    Route::get('/matkul_kbk/edit/{id}', [MatkulKbkController::class, 'edit'])->name('matkul_kbk.edit');
+    Route::put('/matkul_kbk/update/{id}', [MatkulKbkController::class, 'update'])->name('matkul_kbk.update');
 });
 
 Route::get('/dashboard', function () {

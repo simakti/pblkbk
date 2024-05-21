@@ -24,7 +24,7 @@
                             <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr class="table-dark">
-                                        <th>ID</th>
+                                        <th>NO</th>
                                         <th>Jenis KBK</th>
                                         <th>Deskripsi</th>
                                         <th>Aksi</th>
@@ -41,7 +41,7 @@
                                                 <form action="{{ route('datakbk.destroy', $data->id_jenis_kbk) }}" method="POST" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                                 </form>
                                             </td>
                                         </tr>

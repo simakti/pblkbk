@@ -136,6 +136,12 @@
                 <span>Data KBK</span></a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" href="/matkul_kbk">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Mata Kuliah KBK</span></a>
+        </li>
+
         <!-- Nav Item - Tables -->
         <li class="nav-item">
             <a class="nav-link" href="tables.html">

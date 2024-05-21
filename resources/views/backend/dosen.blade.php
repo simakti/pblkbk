@@ -20,7 +20,6 @@
                                 <thead>
                                     <tr class="table-dark">
                                         <th>NO</th>
-                                        <th>ID</th>
                                         <th>Nama Dosen</th>
                                         <th>NIDN</th>
                                         <th>NIP</th>
@@ -37,7 +36,6 @@
                                     @foreach ($data_dosen as $index => $data)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            <td>{{ $data->id_dosen }}</td>
                                             <td>{{ $data->nama_dosen }}</td>
                                             <td>{{ $data->nidn }}</td>
                                             <td>{{ $data->nip }}</td>

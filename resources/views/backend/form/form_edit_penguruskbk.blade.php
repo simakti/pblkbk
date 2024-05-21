@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Tambah Pengurus KBK</h1>
+    <h1>Edit Pengurus KBK</h1>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -18,7 +18,7 @@
         @csrf
         @method('PUT')
         <div class="form-group">
-            <label for="id_dosen">ID Dosen:</label>
+            <label for="id_dosen">Nama Dosen</label>
             <select name="id_dosen" id="id_dosen" class="form-control">
                 @foreach($data_dosen as $dosen)
                     <option value="{{ $dosen->id_dosen }}" {{ $penguruskbk->id_dosen == $dosen->id_dosen ? 'selected' : '' }}>{{ $dosen->nama_dosen }}</option>
@@ -26,7 +26,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="id_jenis_kbk">ID Jenis KBK:</label>
+            <label for="id_jenis_kbk">Jenis KBK</label>
             <select name="id_jenis_kbk" id="id_jenis_kbk" class="form-control">
                 @foreach($data_jenis_kbk as $jenis_kbk)
                     <option value="{{ $jenis_kbk->id_jenis_kbk }}" {{ $penguruskbk->id_jenis_kbk == $jenis_kbk->id_jenis_kbk ? 'selected' : '' }}>{{ $jenis_kbk->jenis_kbk }}</option>
@@ -34,7 +34,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="id_jabatan_kbk">ID Jabatan KBK:</label>
+            <label for="id_jabatan_kbk">Jabatan KBK</label>
             <select name="id_jabatan_kbk" id="id_jabatan_kbk" class="form-control">
                 @foreach($data_jabatan_kbk as $jabatan_kbk)
                     <option value="{{ $jabatan_kbk->id_jabatan_kbk }}" {{ $penguruskbk->id_jabatan_kbk == $jabatan_kbk->id_jabatan_kbk ? 'selected' : '' }}>{{ $jabatan_kbk->jabatan }}</option>
@@ -42,7 +42,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="status">Status:</label>
+            <label for="status">Status</label>
             <select name="status" id="status" class="form-control">
                 <option value="1" {{ $penguruskbk->status == 1 ? 'selected' : '' }}>Aktif</option>
                 <option value="0" {{ $penguruskbk->status == 0 ? 'selected' : '' }}>Tidak Aktif</option>
