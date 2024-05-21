@@ -11,6 +11,12 @@
                         <h6 class="m-0">Aksi</h6>
                         <div class="mt-3">
                             <a href="{{ route('datakbk.create') }}" class="btn btn-primary">Tambah</a>
+                            <a href="{{ route('datakbk.export') }}" class="btn btn-success"></i> <i class="fas fa-download"></i> Export</a>
+                            <button type="button" class="btn btn-info" onclick="document.getElementById('fileInput').click()"><i class="fas fa-file-import"></i> Import</button>
+                            <form id="importForm" action="{{ route('datakbk.import') }}" method="POST" enctype="multipart/form-data" style="display:none;">
+                                @csrf
+                                <input type="file" id="fileInput" name="file" style="display:none;" onchange="document.getElementById('importForm').submit()">
+                            </form>
                         </div>
                     </div>
                     <div class="card-body">
@@ -31,9 +37,7 @@
                                             <td>{{ $data->jenis_kbk }}</td>
                                             <td>{{ $data->deskripsi }}</td>
                                             <td>
-                                                <form action="{{ route('datakbk.edit', $data->id_jenis_kbk) }}" method="GET" style="display:inline;">
-                                                    <button type="submit" class="btn btn-warning btn-sm">Edit</button>
-                                                </form>
+                                                <a href="{{ route('datakbk.edit', $data->id_jenis_kbk) }}" class="btn btn-warning btn-sm">Edit</a>
                                                 <form action="{{ route('datakbk.destroy', $data->id_jenis_kbk) }}" method="POST" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')

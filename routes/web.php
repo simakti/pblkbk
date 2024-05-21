@@ -122,11 +122,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/datakbk/{id}', [DataKbkController::class, 'destroy'])->name('datakbk.destroy');
     Route::get('/datakbk/edit/{id}', [DataKbkController::class, 'edit'])->name('datakbk.edit');
     Route::put('/datakbk/update/{id}', [DataKbkController::class, 'update'])->name('datakbk.update');
+    //Route::get('/datakbk/export/excel', [DataKbkController::class, 'export_excel']);
+    Route::get('/datakbk/export', [DataKBKController::class, 'export'])->name('datakbk.export');
+    Route::post('/datakbk/import', [DataKbkController::class, 'import'])->name('datakbk.import');
+
+
 });
 
 Route::get('/dashboard', function () {
     return view('backend.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
