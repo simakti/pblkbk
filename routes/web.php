@@ -114,6 +114,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/penguruskbk/{id}', [PenguruskbkController::class, 'destroy'])->name('penguruskbk.destroy');
     Route::get('/penguruskbk/edit/{id}', [PengurusKBKController::class, 'edit'])->name('penguruskbk.edit');
     Route::put('/penguruskbk/update/{id}', [PengurusKBKController::class, 'update'])->name('penguruskbk.update');
+    Route::get('/penguruskbk/export', [PengurusKBKController::class, 'export'])->name('penguruskbk.export');
+    Route::post('/penguruskbk/import', [PengurusKBKController::class, 'import'])->name('penguruskbk.import');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -137,6 +139,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/matkul_kbk/{id}', [MatkulKbkController::class, 'destroy'])->name('matkul_kbk.destroy');
     Route::get('/matkul_kbk/edit/{id}', [MatkulKbkController::class, 'edit'])->name('matkul_kbk.edit');
     Route::put('/matkul_kbk/update/{id}', [MatkulKbkController::class, 'update'])->name('matkul_kbk.update');
+    Route::get('/matkul_kbk/export', [MatkulKbkController::class, 'export'])->name('matkul_kbk.export');
+    Route::post('/matkul_kbk/import', [MatkulKbkController::class, 'import'])->name('matkul_kbk.import');
 });
 
 Route::get('/dashboard', function () {
