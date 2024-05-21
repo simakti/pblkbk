@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ExportDataKBK;
+use App\Imports\ImportDataKBK;
 use App\Models\JenisKBK;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DataKbkController extends Controller
 {
@@ -19,6 +22,30 @@ class DataKbkController extends Controller
             ->get();
         return view('backend.datakbk', compact('data_datakbk'));
     }
+
+    /**
+     * Export the data to an Excel file.
+     */
+    public function export()
+    {
+        return Excel::download(new ExportDataKBK, 'datakbk.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,csv'
+        ]);
+
+        Excel::import(new ImportDataKBK, $request->file('file'));
+
+        return redirect()->route('datakbk.index')->with('success', 'Data imported successfully.');
+    }
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -90,5 +117,6 @@ class DataKbkController extends Controller
         DB::table('jenis_kbk')->where('id_jenis_kbk', $id)->delete();
         return redirect()->route('datakbk.index')->with('success', 'Data berhasil dihapus.');
     }
+
 }
 ?>

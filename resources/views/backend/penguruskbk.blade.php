@@ -12,6 +12,12 @@
                             <h6 class="m-0">Aksi</h6>
                             <div class="mt-3">
                                 <a href="{{ route('penguruskbk.create') }}" class="btn btn-primary">Tambah</a>
+                                <a href="{{ route('penguruskbk.export') }}" class="btn btn-success"></i> <i class="fas fa-download"></i> Export</a>
+                            <button type="button" class="btn btn-info" onclick="document.getElementById('fileInput').click()"><i class="fas fa-file-import"></i> Import</button>
+                            <form id="importForm" action="{{ route('penguruskbk.import') }}" method="POST" enctype="multipart/form-data" style="display:none;">
+                                @csrf
+                                <input type="file" id="fileInput" name="file" style="display:none;" onchange="document.getElementById('importForm').submit()">
+                            </form>
                             </div>
                         </div>
                         <div class="card-body">

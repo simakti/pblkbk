@@ -4,43 +4,56 @@ namespace App\Http\Controllers;
 
 use App\Models\PengurusKBK;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ExportPengurusKBK;
+use App\Imports\ImportPengurusKBK;
 use Illuminate\Support\Facades\DB;
 
 class PengurusKBKController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $data_penguruskbk = DB::table('penguruskbk')
-            ->join('jenis_kbk', 'penguruskbk.id_jenis_kbk', '=', 'jenis_kbk.id_jenis_kbk')
-            ->join('dosen', 'penguruskbk.id_dosen', '=', 'dosen.id_dosen')
-            ->join('jabatankbk', 'penguruskbk.id_jabatan_kbk', '=', 'jabatankbk.id_jabatan_kbk')
-            ->select('penguruskbk.*', 'dosen.nama_dosen', 'jenis_kbk.jenis_kbk', 'jabatankbk.jabatan')
-            ->orderBy('id_penguruskbk')
-            ->get();
-        return view('backend.penguruskbk', compact('data_penguruskbk'));
+        try {
+            $data_penguruskbk = DB::table('penguruskbk')
+                ->join('jenis_kbk', 'penguruskbk.id_jenis_kbk', '=', 'jenis_kbk.id_jenis_kbk')
+                ->join('dosen', 'penguruskbk.id_dosen', '=', 'dosen.id_dosen')
+                ->join('jabatankbk', 'penguruskbk.id_jabatan_kbk', '=', 'jabatankbk.id_jabatan_kbk')
+                ->select('penguruskbk.*', 'dosen.nama_dosen', 'jenis_kbk.jenis_kbk', 'jabatankbk.jabatan')
+                ->orderBy('id_penguruskbk')
+                ->get();
+            return view('backend.penguruskbk', compact('data_penguruskbk'));
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function export()
+    {
+        return Excel::download(new ExportPengurusKBK, 'penguruskbk.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,csv'
+        ]);
+
+        Excel::import(new ImportPengurusKBK, $request->file('file'));
+
+        return redirect()->route('penguruskbk.index')->with('success', 'Data imported successfully.');
+    }
+
     public function create()
     {
-        $data_dosen = DB::table('dosen')->get(); // Mengambil data dosen
-        $data_jenis_kbk = DB::table('jenis_kbk')->get(); // Mengambil data jenis KBK
-        $data_jabatan_kbk = DB::table('jabatankbk')->get(); // Mengambil data jabatan KBK
+        $data_dosen = DB::table('dosen')->get();
+        $data_jenis_kbk = DB::table('jenis_kbk')->get();
+        $data_jabatan_kbk = DB::table('jabatankbk')->get();
 
         return view('backend.form.form_penguruskbk', compact('data_dosen', 'data_jenis_kbk', 'data_jabatan_kbk'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        // Validasi data
         $validatedData = $request->validate([
             'id_dosen' => 'required|integer|exists:dosen,id_dosen',
             'id_jenis_kbk' => 'required|integer|exists:jenis_kbk,id_jenis_kbk',
@@ -48,7 +61,6 @@ class PengurusKBKController extends Controller
             'status' => 'required|string|max:255',
         ]);
 
-        // Simpan data ke database
         DB::table('penguruskbk')->insert([
             'id_dosen' => $validatedData['id_dosen'],
             'id_jenis_kbk' => $validatedData['id_jenis_kbk'],
@@ -56,13 +68,9 @@ class PengurusKBKController extends Controller
             'status' => $validatedData['status'],
         ]);
 
-        // Redirect ke halaman index dengan pesan sukses
         return redirect()->route('penguruskbk.index')->with('success', 'Data Pengurus KBK berhasil ditambahkan.');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
         $data_dosen = DB::table('dosen')->get();
@@ -73,9 +81,6 @@ class PengurusKBKController extends Controller
         return view('backend.form.form_edit_penguruskbk', compact('data_dosen', 'data_jenis_kbk', 'data_jabatan_kbk', 'penguruskbk'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -95,18 +100,12 @@ class PengurusKBKController extends Controller
         DB::table('penguruskbk')->where('id_penguruskbk', $id)->update($data);
 
         return redirect()->route('penguruskbk.index')->with('success', 'Data berhasil diperbarui.');
-
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
         DB::table('penguruskbk')->where('id_penguruskbk', $id)->delete();
         return redirect()->route('penguruskbk.index')->with('success', 'Data berhasil dihapus.');
     }
 }
-
 ?>
-

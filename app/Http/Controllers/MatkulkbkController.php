@@ -9,6 +9,9 @@ use App\Models\Matakuliah;
 use App\Models\matkulkbk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ExportMatkulKBK;
+use App\Imports\ImportMatkulKBK;
 
 class MatkulkbkController extends Controller
 {
@@ -25,6 +28,21 @@ class MatkulkbkController extends Controller
         return view('backend.matkul_kbk', compact('data_matkul_kbk'));
     }
 
+    public function export()
+    {
+        return Excel::download(new ExportMatkulKBK, 'matkul_kbk.xlsx');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,csv'
+        ]);
+
+        Excel::import(new ImportMatkulKBK, $request->file('file'));
+
+        return redirect()->route('matkul_kbk.index')->with('success', 'Data imported successfully.');
+    }
     public function create()
     {
         $data_matakuliah = DB::table('matakuliah')->get(); // Mengambil data matakuliah
