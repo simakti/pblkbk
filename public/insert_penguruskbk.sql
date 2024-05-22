@@ -1,4 +1,4 @@
-INSERT INTO `penguruskbk` (`id_penguruskbk`, `id_jenis_kbk`, `id_dosen`,`id_jabatan_kbk`, `status`) VALUES
+INSERT INTO `penguruskbk` (`id_jenis_kbk`, `id_dosen`,`id_jabatan_kbk`, `status`) VALUES
 (3, 52, 1, 1),
 (3, 132, 2, 1),
 (3, 311, 3, 1),
