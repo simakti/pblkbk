@@ -46,7 +46,7 @@
                                                 <form action="{{ route('matkul_kbk.destroy', $data->id_matkul_kbk) }}" method="POST" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin untuk menghapus?')">Hapus</button>
                                                 </form>
                                             </td>
                                         </tr>
