@@ -5,9 +5,8 @@
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
-            </div>
+            <img src="{{asset('images/logo.png')}}" alt="Image" style="width: 30%; max-width: 300px; margin: 10px auto; display: block;">
+
             <div class="sidebar-brand-text mx-3">SIMAK TI</div>
         </a>
 
@@ -26,7 +25,7 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Interface
+            View
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
@@ -100,43 +99,29 @@
 
         <!-- Heading -->
         <div class="sidebar-heading">
-            Addons
+            KBK
         </div>
 
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Pages</span>
-            </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Login Screens:</h6>
-                    <a class="collapse-item" href="/login">Login</a>
-                    <a class="collapse-item" href="register.html">Register</a>
-                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                    <div class="collapse-divider"></div>
-                    <h6 class="collapse-header">Other Pages:</h6>
-                    <a class="collapse-item" href="404.html">404 Page</a>
-                    <a class="collapse-item" href="blank.html">Blank Page</a>
-                </div>
-            </div>
-        </li>
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="/penguruskbk">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>Charts</span></a>
+                <span>Pengurus KBK</span></a>
         </li>
 
-        <!-- Nav Item - Tables -->
         <li class="nav-item">
-            <a class="nav-link" href="tables.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Tables</span></a>
+            <a class="nav-link" href="/datakbk">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Data KBK</span></a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/matkul_kbk">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Mata Kuliah KBK</span></a>
+        </li>
+
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
@@ -328,9 +313,10 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                            <img class="img-profile rounded-circle"
-                                src="img/undraw_profile.svg">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Sistem Informasi KBK</span>
+
+                            <img src="{{ asset('images/garis3.png')}}" alt="Image" style="width: 20%; max-width: 50px; margin: 10px auto; display: block;">
+
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -349,6 +335,8 @@
                             </a>
                             <div class="dropdown-divider"></div>
                             <form method="POST" action="{{ route('logout') }}">
+                                <img src="images/logout.png" alt="Image" style="width: 15%; max-width: 50px; margin-left: 5px; filter: grayscale(100%);">
+
                                 @csrf
 
                                 <x-responsive-nav-link :href="route('logout')"

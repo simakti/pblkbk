@@ -1,5 +1,5 @@
 @extends('layouts.backend.template')
-@section('thnakd')
+@section('content')
     <div class="card">
         <div class="card-body">
             <!-- Page Heading -->
@@ -9,23 +9,27 @@
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0">Aksi</h6>
+                        <div class="mt-3">
+                            <a href="{{ route('thnakd.create') }}" class="btn btn-primary">Tambah
+                                Dosen</a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr class="table-dark">
-                                        <th>ID</th>
+                                        <th>NO</th>
                                         <th>Tahun Akademik</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data_thnakd as $data)
-                                        <tr class="table-Light">
-                                            <th>{{ $data->id_thnakd }}</th>
-                                            <th>{{ $data->thn_akd }}</th>
-                                            <th>{{ $data->status }}</th>
+                                    @foreach ($data_thnakd as $index => $data)
+                                    <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $data->thn_akd }}</td>
+                                            <td>{{ $data->status }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

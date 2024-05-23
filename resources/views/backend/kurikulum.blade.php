@@ -1,5 +1,5 @@
 @extends('layouts.backend.template')
-@section('kurikulum')
+@section('content')
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
@@ -10,13 +10,17 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0">Aksi</h6>
+                            <div class="mt-3">
+                                <a href="{{ route('kurikulum.create') }}" class="btn btn-primary">Tambah
+                                    Kurikulum</a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr class="table-dark">
-                                            <th>ID</th>
+                                            <th>NO</th>
                                             <th>Kode Kurikulum</th>
                                             <th>Nama Kurikulum</th>
                                             <th>Tahun</th>
@@ -25,6 +29,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+<<<<<<< HEAD:resources/views/kurikulum.blade.php
                                         @foreach ($data_kurikulum as $data)
                                             <tr class="table-Light">
                                                 <th>{{ $data->id_kurikulum }}</th>
@@ -33,6 +38,16 @@
                                                 <th>{{ $data->tahun }}</th>
                                                 <th>{{ $data->prodi }}</th>
                                                 <th>{{ $data->status }}</th>
+=======
+                                        @foreach ($data_kurikulum as $index => $data)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                                <td>{{ $data->kode_kurikulum }}</td>
+                                                <td>{{ $data->nama_kurikulum }}</td>
+                                                <td>{{ $data->tahun }}</td>
+                                                <td>{{ $data->prodi }}</td>
+                                                <td>{{ $data->status }}</td>
+>>>>>>> 158aa074a415d585f03fe37423c3598d2ad10aa8:resources/views/backend/kurikulum.blade.php
                                             </tr>
                                         @endforeach
                                     </tbody>

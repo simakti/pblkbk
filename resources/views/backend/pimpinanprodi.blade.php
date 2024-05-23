@@ -1,38 +1,42 @@
 @extends('layouts.backend.template')
-@section('pimpinanjurusan')
+@section('content')
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
                 <!-- Page Heading -->
-                <h5 class="card-title  mb-4">Data Pimpinan Jurusan</h5>
+                <h5 class="card-title  mb-4">Data Pimpinan Program Studi</h5>
                 <div class="container-fluid">
                     <!-- DataDosen -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0">Aksi</h6>
+                            <div class="mt-3">
+                                <a href="{{ route('pimpinanprodi.create') }}" class="btn btn-primary">Tambah
+                                    Pimpinan Prodi</a>
+                            </div>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr class="table-dark">
-                                            <th>ID</th>
+                                            <th>NO</th>
                                             <th>Jabatan</th>
-                                            <th>Jurusan</th>
+                                            <th>Prodi</th>
                                             <th>Nama Dosen</th>
                                             <th>Periode</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data_pimpinanjurusan as $data)
-                                            <tr class="table-Light">
-                                                <th>{{ $data->id_pimpinan_jurusan }}</th>
-                                                <th>{{ $data->jabatan_pimpinan }}</th>
-                                                <th>{{ $data->jurusan }}</th>
-                                                <th>{{ $data->nama_dosen }}</th>
-                                                <th>{{ $data->periode }}</th>
-                                                <th>{{ $data->status }}</th>
+                                        @foreach ($data_pimpinanprodi as $index => $data)
+                                        <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{ $data->jabatan_pimpinan }}</td>
+                                                <td>{{ $data->prodi }}</td>
+                                                <td>{{ $data->nama_dosen }}</td>
+                                                <td>{{ $data->periode }}</td>
+                                                <td>{{ $data->status }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

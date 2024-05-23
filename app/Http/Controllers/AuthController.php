@@ -37,17 +37,17 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        if (Auth::login($user)) {
-           return redirect('/dashboard');
-        }
 
-        return back()->withInput();
+
+        return redirect('/login'.'Register Succes');
+
     }
 
     public function viewForgotPassword()
     {
         return view('auth.forgot_password');
     }
+
 
     public function forgotPassword(Request $request)
     {
@@ -71,5 +71,9 @@ class AuthController extends Controller
 
         return view('auth.login');
 
+    }
+    public function redirectToHome()
+    {
+        return redirect()->route('home');
     }
 }

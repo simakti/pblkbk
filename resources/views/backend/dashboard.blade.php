@@ -1,5 +1,5 @@
 @extends('layouts.backend.template')
-@section('main-content')
+@section('content')
     <div id="content-wrapper" class="d-flex flex-column">
 
         <!-- Main Content -->

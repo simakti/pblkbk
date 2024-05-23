@@ -18,7 +18,7 @@ class KelasController extends Controller
             ->select('kelas.*', 'thnakd.thn_akd', 'prodi.prodi')
             ->orderBy('id_kelas')
             ->get();
-        return view('kelas', compact('data_kelas'));
+        return view('backend.kelas', compact('data_kelas'));
     }
 
     /**

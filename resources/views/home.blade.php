@@ -1,6 +1,7 @@
 @extends('layouts.frontend.template')
 
 @section('main-content')
+
     <header class="">
         <div class="container px-5">
             <div class="row gx-5 align-items-center justify-content-center">
@@ -67,73 +68,90 @@
                     </div>
                 </div>
             </div>
-            <div class="row gx-5">
-                <div class="col-lg-3 mb-5">
-                    <div class="card h-100 shadow border-0">
-                        <img class="card-img-top" src="frontend/images/default.png" alt="..." />
-                        <div class="card-body p-4">
-                            <div class="badge bg-primary bg-gradient rounded-pill mb-2">SOFTAM</div>
-                            <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                <h5 class="card-title mb-3">YULHERNIWATI, S.Kom, M.T</h5>
-                            </a>
-                            <p class="card-text mb-0">Some quick example text to build on the card title and make up the
-                                bulk of the card's content.</p>
+
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row gx-5">
+                            <div class="col-lg-4 mb-5">
+                                <div class="card h-100 shadow border-0">
+                                    <img class="card-img-top" src="frontend/images/yulherniwati.jpg" alt="..." />
+                                    <div class="card-body p-4">
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">SOFTAM</div>
+                                        <a class="text-decoration-none link-dark stretched-link" href="#!">
+                                            <h5 class="card-title mb-3">YULHERNIWATI, S.Kom, M.T</h5>
+                                        </a>
+                                        <p class="card-text mb-0">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-5">
+                                <div class="card h-100 shadow border-0">
+                                    <img class="card-img-top" src="frontend/images/meriazmi.jpg" alt="..." />
+                                    <div class="card-body p-4">
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">AI</div>
+                                        <a class="text-decoration-none link-dark stretched-link" href="#!">
+                                            <h5 class="card-title mb-3">Meri Azmi, S.T., M.Cs</h5>
+                                        </a>
+                                        <p class="card-text mb-0">Some more quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-5">
+                                <div class="card h-100 shadow border-0">
+                                    <img class="card-img-top" src="frontend/images/default.png" alt="..." />
+                                    <div class="card-body p-4">
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">PROGRAMMING</div>
+                                        <a class="text-decoration-none link-dark stretched-link" href="#!">
+                                            <h5 class="card-title mb-3">DENI SATRIA, S.Kom, M.Kom</h5>
+                                        </a>
+                                        <p class="card-text mb-0">Some more quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row gx-5">
+                            <div class="col-lg-4 mb-5">
+                                <div class="card h-100 shadow border-0">
+                                    <img class="card-img-top" src="frontend/images/alde.jpg" alt="..." />
+                                    <div class="card-body p-4">
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">NETWORK AND CYBERSEC </div>
+                                        <a class="text-decoration-none link-dark stretched-link" href="#!">
+                                            <h5 class="card-title mb-3">ALDE ALANDA, S.Kom, M.T</h5>
+                                        </a>
+                                        <p class="card-text mb-0">Some more quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 mb-5">
+                                <div class="card h-100 shadow border-0">
+                                    <img class="card-img-top" src="frontend/images/hendra.jpg" alt="..." />
+                                    <div class="card-body p-4">
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">MULTIMEDIA</div>
+                                        <a class="text-decoration-none link-dark stretched-link" href="#!">
+                                            <h5 class="card-title mb-3">Hendra Rotama, S.Pd., M.Sn</h5>
+                                        </a>
+                                        <p class="card-text mb-0">Some more quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 mb-5">
-                    <div class="card h-100 shadow border-0">
-                        <img class="card-img-top" src="frontend/images/default.png" alt="..." />
-                        <div class="card-body p-4">
-                            <div class="badge bg-primary bg-gradient rounded-pill mb-2">CAIT</div>
-                            <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                <h5 class="card-title mb-3">HUMAIRA, S.T, M.T</h5>
-                            </a>
-                            <p class="card-text mb-0">Some more quick example text to build on the card title and make up
-                                the bulk of the card's content.</p>
-                        </div>
-                    </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" style="left: -40px;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" style="right: -40px;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
                 </div>
-                <div class="col-lg-3 mb-5">
-                    <div class="card h-100 shadow border-0">
-                        <img class="card-img-top" src="frontend/images/default.png" alt="..." />
-                        <div class="card-body p-4">
-                            <div class="badge bg-primary bg-gradient rounded-pill mb-2">PROGRAMMING</div>
-                            <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                <h5 class="card-title mb-3">DENI SATRIA, S.Kom, M.Kom</h5>
-                            </a>
-                            <p class="card-text mb-0">Some more quick example text to build on the card title and make up
-                                the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 mb-5">
-                    <div class="card h-100 shadow border-0">
-                        <img class="card-img-top" src="frontend/images/default.png" alt="..." />
-                        <div class="card-body p-4">
-                            <div class="badge bg-primary bg-gradient rounded-pill mb-2">NETWORKING</div>
-                            <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                <h5 class="card-title mb-3">ALDE ALANDA, S.Kom, M.T</h5>
-                            </a>
-                            <p class="card-text mb-0">Some more quick example text to build on the card title and make up
-                                the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 mb-5">
-                    <div class="card h-100 shadow border-0">
-                        <img class="card-img-top" src="frontend/images/default.png" alt="..." />
-                        <div class="card-body p-4">
-                            <div class="badge bg-primary bg-gradient rounded-pill mb-2">IT SUPPORT</div>
-                            <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                <h5 class="card-title mb-3">TAUFIK GUSMAN, S.S.T, M.Ds</h5>
-                            </a>
-                            <p class="card-text mb-0">Some more quick example text to build on the card title and make up
-                                the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+
 
             <div class="py-3 bg-light">
                 <div class="container px-5 my-5">
