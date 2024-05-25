@@ -8,6 +8,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\ThnakdController;
 use App\Http\Controllers\DataKbkController;
+use App\Http\Controllers\RpsController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TahunAkdController;
@@ -141,6 +142,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/matkul_kbk/update/{id}', [MatkulKbkController::class, 'update'])->name('matkul_kbk.update');
     Route::get('/matkul_kbk/export', [MatkulKbkController::class, 'export'])->name('matkul_kbk.export');
     Route::post('/matkul_kbk/import', [MatkulKbkController::class, 'import'])->name('matkul_kbk.import');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/rps', [RpsController::class, 'index'])->name('rps.index');
+    Route::get('/rps/create', [RpsController::class,'create'])->name('rps.create');
+    Route::post('/rps', [RpsController::class, 'store'])->name('rps.store');
+    Route::delete('/rps/{id}', [RpsController::class, 'destroy'])->name('rps.destroy');
+    Route::get('/rps/edit/{id}', [RpsController::class, 'edit'])->name('rps.edit');
+    Route::put('/rps/update/{id}', [RpsController::class, 'update'])->name('rps.update');
 });
 
 Route::get('/dashboard', function () {

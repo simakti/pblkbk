@@ -122,6 +122,12 @@
                 <span>Mata Kuliah KBK</span></a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" href="/rps">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>RPS</span></a>
+        </li>
+
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
