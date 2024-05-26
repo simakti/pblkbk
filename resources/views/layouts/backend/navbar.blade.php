@@ -123,9 +123,15 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="/rps">
+            <a class="nav-link" href="/repo_rps">
                 <i class="fas fa-fw fa-chart-area"></i>
-                <span>RPS</span></a>
+                <span>Upload RPS</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/verif_rps">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Verifikasi RPS</span></a>
         </li>
 
 

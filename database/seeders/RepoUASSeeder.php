@@ -24,7 +24,7 @@ class RepoUASSeeder extends Seeder
                 'id_verif_uas' => $data[1],
                 'id_matakuliah' => $data[2],
                 'file' => $data[3],
-                'terakhir_diubah' => $data[4]
+                'terakhir_verif' => $data[4]
             ]);
         }
     }

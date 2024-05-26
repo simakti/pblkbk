@@ -18,6 +18,8 @@ use App\Http\Controllers\MatkulkbkController;
 use App\Http\Controllers\PenguruskbkController;
 use App\Http\Controllers\PimpinanprodiController;
 use App\Http\Controllers\PimpinanjurusanController;
+use App\Http\Controllers\VerifikasiRpsController;
+use App\Http\Controllers\RepoRpsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -145,13 +147,23 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/rps', [RpsController::class, 'index'])->name('rps.index');
-    Route::get('/rps/create', [RpsController::class,'create'])->name('rps.create');
-    Route::post('/rps', [RpsController::class, 'store'])->name('rps.store');
-    Route::delete('/rps/{id}', [RpsController::class, 'destroy'])->name('rps.destroy');
-    Route::get('/rps/edit/{id}', [RpsController::class, 'edit'])->name('rps.edit');
-    Route::put('/rps/update/{id}', [RpsController::class, 'update'])->name('rps.update');
+    Route::get('/verif_rps', [VerifikasiRpsController::class, 'index'])->name('verif_rps.index');
+    Route::get('/verif_rps/create', [VerifikasiRpsController::class,'create'])->name('verif_rps.create');
+    Route::post('/verif_rps', [VerifikasiRpsController::class, 'store'])->name('verif_rps.store');
+    Route::delete('/verif_rps/{id}', [VerifikasiRpsController::class, 'destroy'])->name('verif_rps.destroy');
+    Route::get('/verif_rps/edit/{id}', [VerifikasiRpsController::class, 'edit'])->name('verif_rps.edit');
+    Route::put('/verif_rps/update/{id}', [VerifikasiRpsController::class, 'update'])->name('verif_rps.update');
 });
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/repo_rps', [RepoRpsController::class, 'index'])->name('repo_rps.index');
+    Route::get('/repo_rps/create', [RepoRpsController::class,'create'])->name('repo_rps.create');
+    Route::post('/repo_rps', [RepoRpsController::class, 'store'])->name('repo_rps.store');
+    Route::delete('/repo_rps/{id}', [RepoRpsController::class, 'destroy'])->name('repo_rps.destroy');
+    Route::get('/repo_rps/edit/{id}', [RepoRpsController::class, 'edit'])->name('repo_rps.edit');
+    Route::put('/repo_rps/update/{id}', [RepoRpsController::class, 'update'])->name('repo_rps.update');
+});
+
 
 Route::get('/dashboard', function () {
     return view('backend.dashboard');
