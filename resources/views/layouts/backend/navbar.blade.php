@@ -122,6 +122,18 @@
                 <span>Mata Kuliah KBK</span></a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" href="/verif_uas">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Verifikasi Soal UAS</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/repo_uas">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Upload Soal UAS</span></a>
+        </li>
+
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">

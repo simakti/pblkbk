@@ -10,12 +10,14 @@ use App\Http\Controllers\ThnakdController;
 use App\Http\Controllers\DataKbkController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RepoUasController;
 use App\Http\Controllers\TahunAkdController;
 use App\Http\Controllers\KurikulumController;
-use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\MatkulkbkController;
+use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\PenguruskbkController;
 use App\Http\Controllers\PimpinanprodiController;
+use App\Http\Controllers\VerifikasiUasController;
 use App\Http\Controllers\PimpinanjurusanController;
 
 /*
@@ -142,6 +144,26 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/matkul_kbk/export', [MatkulKbkController::class, 'export'])->name('matkul_kbk.export');
     Route::post('/matkul_kbk/import', [MatkulKbkController::class, 'import'])->name('matkul_kbk.import');
 });
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/verif_uas', [VerifikasiUasController::class, 'index'])->name('verif_uas.index');
+    Route::get('/verif_uas/create', [VerifikasiUasController::class,'create'])->name('verif_uas.create');
+    Route::post('/verif_uas', [VerifikasiUasController::class, 'store'])->name('verif_uas.store');
+    Route::delete('/verif_uas/{id}', [VerifikasiUasController::class, 'destroy'])->name('verif_uas.destroy');
+    Route::get('/verif_uas/edit/{id}', [VerifikasiUasController::class, 'edit'])->name('verif_uas.edit');
+    Route::put('/verif_uas/update/{id}', [VerifikasiUasController::class, 'update'])->name('verif_uas.update');
+
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/repo_uas', [RepoUasController::class, 'index'])->name('repo_uas.index');
+    Route::get('/repo_uas/create', [RepoUasController::class,'create'])->name('repo_uas.create');
+    Route::post('/repo_uas', [RepoUasController::class, 'store'])->name('repo_uas.store');
+    Route::delete('/repo_uas/{id}', [RepoUasController::class, 'destroy'])->name('repo_uas.destroy');
+    Route::get('/repo_uas/edit/{id}', [RepoUasController::class, 'edit'])->name('repo_uas.edit');
+    Route::put('/repo_uas/update/{id}', [RepoUasController::class, 'update'])->name('repo_uas.update');
+});
+
 
 Route::get('/dashboard', function () {
     return view('backend.dashboard');

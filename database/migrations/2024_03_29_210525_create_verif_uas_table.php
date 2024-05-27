@@ -14,13 +14,19 @@ return new class extends Migration
         Schema::create('verif_uas', function (Blueprint $table) {
             $table->id('id_verif_uas');
             $table->unsignedBigInteger('id_dosen');
+            $table->unsignedBigInteger('id_matakuliah');
+            $table->unsignedBigInteger('id_thnakd');
             $table->string('file')->nullable();
             $table->string('status');
             $table->string('catatan')->nullable();
-            $table->timestamp('tanggal_verif', $precision=0);
+            $table->timestamp('tanggal_verif', $precision = 0);
 
             $table->foreign('id_dosen')->references('id_dosen')->on('dosen')
             ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_matakuliah')->references('id_matakuliah')->on('matakuliah')
+                    ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_thnakd')->references('id_thnakd')->on('thnakd')
+                    ->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

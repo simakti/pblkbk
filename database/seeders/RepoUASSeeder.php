@@ -14,17 +14,16 @@ class RepoUASSeeder extends Seeder
     public function run(): void
     {
         $RepoUASData = [
-            [3, 1, 13, '', '2024-01-30']
+            [2, 160, 1, '']
 
         ];
 
         foreach ($RepoUASData as $data) {
             DB::table('repo_uas')->insert([
-                'id_thnakd' => $data[0],
-                'id_verif_uas' => $data[1],
-                'id_matakuliah' => $data[2],
-                'file' => $data[3],
-                'terakhir_diubah' => $data[4]
+                'id_matakuliah' => $data[0],
+                'id_dosen' => $data[1],
+                'id_thnakd' => $data[2],
+                'file' => $data[3]
             ]);
         }
     }
