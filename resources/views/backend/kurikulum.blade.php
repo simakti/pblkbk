@@ -29,6 +29,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+<<<<<<< HEAD:resources/views/kurikulum.blade.php
+                                        @foreach ($data_kurikulum as $data)
+                                            <tr class="table-Light">
+                                                <th>{{ $data->id_kurikulum }}</th>
+                                                <th>{{ $data->kode_kurikulum }}</th>
+                                                <th>{{ $data->nama_kurikulum }}</th>
+                                                <th>{{ $data->tahun }}</th>
+                                                <th>{{ $data->prodi }}</th>
+                                                <th>{{ $data->status }}</th>
+=======
                                         @foreach ($data_kurikulum as $index => $data)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
@@ -37,6 +47,7 @@
                                                 <td>{{ $data->tahun }}</td>
                                                 <td>{{ $data->prodi }}</td>
                                                 <td>{{ $data->status }}</td>
+>>>>>>> 158aa074a415d585f03fe37423c3598d2ad10aa8:resources/views/backend/kurikulum.blade.php
                                             </tr>
                                         @endforeach
                                     </tbody>

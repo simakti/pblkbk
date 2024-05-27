@@ -8,6 +8,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\ThnakdController;
 use App\Http\Controllers\DataKbkController;
+use App\Http\Controllers\RpsController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RepoUasController;
@@ -19,6 +20,8 @@ use App\Http\Controllers\PenguruskbkController;
 use App\Http\Controllers\PimpinanprodiController;
 use App\Http\Controllers\VerifikasiUasController;
 use App\Http\Controllers\PimpinanjurusanController;
+use App\Http\Controllers\VerifikasiRpsController;
+use App\Http\Controllers\RepoRpsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -146,6 +149,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
+<<<<<<< HEAD
     Route::get('/verif_uas', [VerifikasiUasController::class, 'index'])->name('verif_uas.index');
     Route::get('/verif_uas/create', [VerifikasiUasController::class,'create'])->name('verif_uas.create');
     Route::post('/verif_uas', [VerifikasiUasController::class, 'store'])->name('verif_uas.store');
@@ -162,6 +166,23 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/repo_uas/{id}', [RepoUasController::class, 'destroy'])->name('repo_uas.destroy');
     Route::get('/repo_uas/edit/{id}', [RepoUasController::class, 'edit'])->name('repo_uas.edit');
     Route::put('/repo_uas/update/{id}', [RepoUasController::class, 'update'])->name('repo_uas.update');
+=======
+    Route::get('/verif_rps', [VerifikasiRpsController::class, 'index'])->name('verif_rps.index');
+    Route::get('/verif_rps/create', [VerifikasiRpsController::class,'create'])->name('verif_rps.create');
+    Route::post('/verif_rps', [VerifikasiRpsController::class, 'store'])->name('verif_rps.store');
+    Route::delete('/verif_rps/{id}', [VerifikasiRpsController::class, 'destroy'])->name('verif_rps.destroy');
+    Route::get('/verif_rps/edit/{id}', [VerifikasiRpsController::class, 'edit'])->name('verif_rps.edit');
+    Route::put('/verif_rps/update/{id}', [VerifikasiRpsController::class, 'update'])->name('verif_rps.update');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/repo_rps', [RepoRpsController::class, 'index'])->name('repo_rps.index');
+    Route::get('/repo_rps/create', [RepoRpsController::class,'create'])->name('repo_rps.create');
+    Route::post('/repo_rps', [RepoRpsController::class, 'store'])->name('repo_rps.store');
+    Route::delete('/repo_rps/{id}', [RepoRpsController::class, 'destroy'])->name('repo_rps.destroy');
+    Route::get('/repo_rps/edit/{id}', [RepoRpsController::class, 'edit'])->name('repo_rps.edit');
+    Route::put('/repo_rps/update/{id}', [RepoRpsController::class, 'update'])->name('repo_rps.update');
+>>>>>>> 5d7cf6ce038eed78f72a5fd12009f9b47242a3a9
 });
 
 

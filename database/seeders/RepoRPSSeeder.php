@@ -14,18 +14,17 @@ class RepoRPSSeeder extends Seeder
     public function run(): void
     {
         $RepoRPSData = [
-            [3, 1, 13, '', '2024-01-30']
+            [160, 2, 1, '', '2023-12-25']
 
         ];
 
         foreach ($RepoRPSData as $data) {
             DB::table('repo_rps')->insert([
-                'id_thnakd' => $data[0],
-                'id_verif_rps' => $data[1],
-                'id_matakuliah' => $data[2],
+                'id_dosen' => $data[0],
+                'id_matakuliah' => $data[1],
+                'id_thnakd' => $data[2],
                 'file' => $data[3],
-                'terakhir_diubah' => $data[4]
-
+                'tanggal_verif' => $data[4]
             ]);
         }
     }

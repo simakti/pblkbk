@@ -28,6 +28,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+<<<<<<< HEAD:resources/views/prodi.blade.php
+                                        @foreach ($data_prodi as $data)
+                                            <tr class="table-Light">
+                                                <th>{{ $data->id_prodi }}</th>
+                                                <th>{{ $data->kode_prodi }}</th>
+                                                <th>{{ $data->prodi }}</th>
+                                                <th>{{ $data->jurusan }}</th>
+                                                <th>{{ $data->jenjang }}</th>
+=======
                                         @foreach ($data_prodi as $index => $data)
                                         <tr>
                                                 <td>{{ $index + 1 }}</td>
@@ -35,6 +44,7 @@
                                                 <td>{{ $data->prodi }}</td>
                                                 <td>{{ $data->jurusan }}</td>
                                                 <td>{{ $data->jenjang }}</td>
+>>>>>>> 158aa074a415d585f03fe37423c3598d2ad10aa8:resources/views/backend/prodi.blade.php
                                             </tr>
                                         @endforeach
                                     </tbody>

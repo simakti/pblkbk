@@ -28,6 +28,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+<<<<<<< HEAD:resources/views/kelas.blade.php
+                                        @foreach ($data_kelas as $data)
+                                            <tr class="table-Light">
+                                                <th>{{ $data->id_kelas }}</th>
+                                                <th>{{ $data->kode_kelas }}</th>
+                                                <th>{{ $data->nama_kelas }}</th>
+                                                <th>{{ $data->prodi }}</th>
+                                                <th>{{ $data->thn_akd }}</th>
+=======
                                         @foreach ($data_kelas as $index => $data)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
@@ -35,6 +44,7 @@
                                                 <td>{{ $data->nama_kelas }}</td>
                                                 <td>{{ $data->prodi }}</td>
                                                 <td>{{ $data->thn_akd }}</td>
+>>>>>>> 158aa074a415d585f03fe37423c3598d2ad10aa8:resources/views/backend/kelas.blade.php
                                             </tr>
                                         @endforeach
                                     </tbody>
