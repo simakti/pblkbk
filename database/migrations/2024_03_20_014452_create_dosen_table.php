@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('dosen', function (Blueprint $table) {
             $table->unsignedBigInteger('id_dosen');
             $table->string('nama_dosen');
-            $table->string('nidn');
-            $table->string('nip');
+            $table->string('nidn')->unique();
+            $table->string('nip')->unique();
             $table->string('jenis_kelamin');
             $table->unsignedBigInteger('id_jurusan');
             $table->unsignedBigInteger('id_prodi');

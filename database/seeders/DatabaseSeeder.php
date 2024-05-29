@@ -35,10 +35,11 @@ class DatabaseSeeder extends Seeder
         $this->call([jenisKBKSeeder::class,]);
         $this->call([matkulKbkSeeder::class,]);
         $this->call([pengurusKbkSeeder::class,]);
-        $this->call([VerifRPSSeeder::class,]);
-        $this->call([VerifUASSeeder::class,]);
         $this->call([RepoRPSSeeder::class,]);
         $this->call([RepoUASSeeder::class,]);
+        $this->call([VerifRPSSeeder::class,]);
+        $this->call([VerifUASSeeder::class,]);
+
 
     }
 }

@@ -18,6 +18,7 @@ use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\PenguruskbkController;
 use App\Http\Controllers\PimpinanprodiController;
 use App\Http\Controllers\VerifikasiUasController;
+use App\Http\Controllers\VerifikasiRpsController;
 use App\Http\Controllers\PimpinanjurusanController;
 use App\Http\Controllers\VerifikasiRpsController;
 use App\Http\Controllers\RepoRpsController;
@@ -182,6 +183,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/repo_rps/{id}', [RepoRpsController::class, 'destroy'])->name('repo_rps.destroy');
     Route::get('/repo_rps/edit/{id}', [RepoRpsController::class, 'edit'])->name('repo_rps.edit');
     Route::put('/repo_rps/update/{id}', [RepoRpsController::class, 'update'])->name('repo_rps.update');
+
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/verif_rps', [VerifikasiRpsController::class, 'index'])->name('verif_rps.index');
+    Route::get('/verif_rps/create', [VerifikasiRpsController::class,'create'])->name('verif_rps.create');
+    Route::post('/verif_rps', [VerifikasiRpsController::class, 'store'])->name('verif_rps.store');
+    Route::delete('/verif_rps/{id}', [VerifikasiRpsController::class, 'destroy'])->name('verif_rps.destroy');
+    Route::get('/verif_rps/edit/{id}', [VerifikasiRpsController::class, 'edit'])->name('verif_rps.edit');
+    Route::put('/verif_rps/update/{id}', [VerifikasiRpsController::class, 'update'])->name('verif_rps.update');
 
 });
 

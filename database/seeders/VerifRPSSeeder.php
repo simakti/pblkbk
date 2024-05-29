@@ -14,12 +14,17 @@ class VerifRPSSeeder extends Seeder
     public function run(): void
     {
         $VerifRPSData = [
+<<<<<<< HEAD
             [160, 2, 1, '', 'diverifikasi', '', '2023-12-25']
+=======
+            [1, 292, '', 1, '', '2023-12-25']
+>>>>>>> 4fa1c039052e23a0ad5fed4c1d30d390abdf7be3
 
         ];
 
         foreach ($VerifRPSData as $data) {
             DB::table('verif_rps')->insert([
+<<<<<<< HEAD
                 'id_dosen' => $data[0],
                 'id_matakuliah' => $data[1],
                 'id_thnakd' => $data[2],
@@ -27,6 +32,14 @@ class VerifRPSSeeder extends Seeder
                 'status' => $data[4],
                 'catatan' => $data[5],
                 'tanggal_verif' => $data[6]
+=======
+                'id_repo_rps' => $data[0],
+                'id_dosen' => $data[1],
+                'file_verifikasi' => $data[2],
+                'status_verif_rps' => $data[3],
+                'catatan' => $data[4],
+                'tanggal_diverifikasi' => $data[5]
+>>>>>>> 4fa1c039052e23a0ad5fed4c1d30d390abdf7be3
             ]);
         }
     }
