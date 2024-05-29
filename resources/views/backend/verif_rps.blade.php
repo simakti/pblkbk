@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <!-- Page Heading -->
-            <h5 class="card-title  mb-4">Data Soal RPS</h5>
+            <h5 class="card-title  mb-4">Data RPS</h5>
             <div class="container-fluid">
                 <!-- DataDosen -->
                 <div class="card shadow mb-4">
@@ -17,7 +17,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                            <table class="table table-bordered table-striped" id="example" width="100%" cellspacing="0">
                                 <thead>
                                     <tr class="table-dark">
                                         <th>NO</th>
@@ -36,11 +36,11 @@
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $data->nama_dosen }}</td>
-                                        <td>{{ $data->kode_matakuliah }}</td>
+                                        <td>{{ $data->nama_matakuliah }}</td>
                                         <td>{{ $data->thn_akd }}</td>
                                         <td>{{ $data->tanggal_verif }}</td>
                                         <td>
-                                            <a href="{{ asset('storage/' . $data->file) }}" target="_blank">Lihat file</a>
+                                            <a href="{{('storage/uploads/ver_files/' . $data->file) }}" target="_blank">Lihat file</a>
                                         </td>
                                         <td>{{ $data->status }}</td>
                                         <td>{{ $data->catatan }}</td>

@@ -19,27 +19,30 @@
         @method('PUT')
         <div class="form-group">
             <label for="id_repo_rps">ID RPS</label>
-            <input type="text" name="id_repo_rps" id="id_repo_rps" class="form-control" value="{{ $repo_rps->id_repo_rps }}" required>
+            <input type="text" name="id_repo_rps" id="id_repo_rps" class="form-control" value="{{ $repo_rps->id_repo_rps }}" disabled>
         </div>
         <div class="form-group">
             <label for="id_dosen">Nama Dosen</label>
             <select name="id_dosen" id="id_dosen" class="form-control" required>
+                <option selected> --Pilih Dosen-- </option>
                 @foreach($data_dosen as $dosen)
                 <option value="{{ $dosen->id_dosen }}" {{ $repo_rps->id_dosen == $dosen->id_dosen ? 'selected' : '' }}>{{ $dosen->nama_dosen }}</option>
                 @endforeach
             </select>
         </div>
         <div class="form-group">
-            <label for="id_matakuliah">Kode Matakuliah</label>
+            <label for="id_matakuliah">Matakuliah</label>
             <select name="id_matakuliah" id="id_matakuliah" class="form-control" required>
+                <option selected> --Pilih Matakuliah-- </option>
                 @foreach($data_matakuliah as $matakuliah)
-                <option value="{{ $matakuliah->id_matakuliah }}" {{ $repo_rps->id_matakuliah == $matakuliah->id_matakuliah ? 'selected' : '' }}>{{ $matakuliah->kode_matakuliah }}</option>
+                <option value="{{ $matakuliah->id_matakuliah }}" {{ $repo_rps->id_matakuliah == $matakuliah->id_matakuliah ? 'selected' : '' }}>{{ $matakuliah->nama_matakuliah }}</option>
                 @endforeach
             </select>
         </div>
         <div class="form-group">
-            <label for="id_thnakd">Tahun Angkatan</label>
+            <label for="id_thnakd">Tahun Akademik</label>
             <select name="id_thnakd" id="id_thnakd" class="form-control" required>
+                <option selected> --Pilih Tahun Akademik-- </option>
                 @foreach($data_thnakd as $thnakd)
                 <option value="{{ $thnakd->id_thnakd }}" {{ $repo_rps->id_thnakd == $thnakd->id_thnakd ? 'selected' : '' }}>{{ $thnakd->thn_akd }}</option>
                 @endforeach
@@ -50,7 +53,7 @@
             <input type="file" name="file" id="file" class="form-control">
         </div>
         <div class="form-group">
-            <label for="tanggal_verif">Tanggal Verif</label>
+            <label for="tanggal_verif">Tanggal Upload</label>
             <input type="date" name="tanggal_verif" id="tanggal_verif" class="form-control" value="{{ $repo_rps->tanggal_verif }}" required>
         </div>
         <button type="submit" class="btn btn-warning btn-sm">Update</button>

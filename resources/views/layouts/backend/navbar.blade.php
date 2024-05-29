@@ -123,27 +123,26 @@
         </li>
 
         <li class="nav-item">
-<<<<<<< HEAD
+
             <a class="nav-link" href="/verif_uas">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Verifikasi Soal UAS</span></a>
+
+                <a class="nav-link" href="/verif_rps">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Verifikasi RPS</span></a>
+
         </li>
 
         <li class="nav-item">
+
             <a class="nav-link" href="/repo_uas">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Upload Soal UAS</span></a>
-=======
+
             <a class="nav-link" href="/repo_rps">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Upload RPS</span></a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="/verif_rps">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Verifikasi RPS</span></a>
->>>>>>> 5d7cf6ce038eed78f72a5fd12009f9b47242a3a9
         </li>
 
 

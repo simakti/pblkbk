@@ -8,7 +8,6 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\ThnakdController;
 use App\Http\Controllers\DataKbkController;
-use App\Http\Controllers\RpsController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RepoUasController;
@@ -149,7 +148,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-<<<<<<< HEAD
+
     Route::get('/verif_uas', [VerifikasiUasController::class, 'index'])->name('verif_uas.index');
     Route::get('/verif_uas/create', [VerifikasiUasController::class,'create'])->name('verif_uas.create');
     Route::post('/verif_uas', [VerifikasiUasController::class, 'store'])->name('verif_uas.store');
@@ -166,7 +165,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/repo_uas/{id}', [RepoUasController::class, 'destroy'])->name('repo_uas.destroy');
     Route::get('/repo_uas/edit/{id}', [RepoUasController::class, 'edit'])->name('repo_uas.edit');
     Route::put('/repo_uas/update/{id}', [RepoUasController::class, 'update'])->name('repo_uas.update');
-=======
+});
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/verif_rps', [VerifikasiRpsController::class, 'index'])->name('verif_rps.index');
     Route::get('/verif_rps/create', [VerifikasiRpsController::class,'create'])->name('verif_rps.create');
     Route::post('/verif_rps', [VerifikasiRpsController::class, 'store'])->name('verif_rps.store');
@@ -182,7 +182,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/repo_rps/{id}', [RepoRpsController::class, 'destroy'])->name('repo_rps.destroy');
     Route::get('/repo_rps/edit/{id}', [RepoRpsController::class, 'edit'])->name('repo_rps.edit');
     Route::put('/repo_rps/update/{id}', [RepoRpsController::class, 'update'])->name('repo_rps.update');
->>>>>>> 5d7cf6ce038eed78f72a5fd12009f9b47242a3a9
+
 });
 
 

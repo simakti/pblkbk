@@ -19,27 +19,30 @@
         @method('PUT')
         <div class="form-group">
             <label for="id_verif_rps">ID RPS</label>
-            <input type="text" name="id_verif_rps" id="id_verif_rps" class="form-control" value="{{ $verif_rps->id_verif_rps }}" required>
+            <input type="text" name="id_verif_rps" id="id_verif_rps" class="form-control" value="{{ $verif_rps->id_verif_rps }}" disabled>
         </div>
         <div class="form-group">
             <label for="id_dosen">Nama Dosen</label>
             <select name="id_dosen" id="id_dosen" class="form-control" required>
+                <option selected> --Pilih Dosen-- </option>
                 @foreach($data_dosen as $dosen)
                 <option value="{{ $dosen->id_dosen }}" {{ $verif_rps->id_dosen == $dosen->id_dosen ? 'selected' : '' }}>{{ $dosen->nama_dosen }}</option>
                 @endforeach
             </select>
         </div>
         <div class="form-group">
-            <label for="id_matakuliah">Kode Matakuliah</label>
+            <label for="id_matakuliah">Matakuliah</label>
             <select name="id_matakuliah" id="id_matakuliah" class="form-control" required>
+                <option selected> --Pilih Matakuliah-- </option>
                 @foreach($data_matakuliah as $matakuliah)
-                <option value="{{ $matakuliah->id_matakuliah }}" {{ $verif_rps->id_matakuliah == $matakuliah->id_matakuliah ? 'selected' : '' }}>{{ $matakuliah->kode_matakuliah }}</option>
+                <option value="{{ $matakuliah->id_matakuliah }}" {{ $verif_rps->id_matakuliah == $matakuliah->id_matakuliah ? 'selected' : '' }}>{{ $matakuliah->nama_matakuliah }}</option>
                 @endforeach
             </select>
         </div>
         <div class="form-group">
-            <label for="id_thnakd">Tahun Angkatan</label>
+            <label for="id_thnakd">Tahun Akademik</label>
             <select name="id_thnakd" id="id_thnakd" class="form-control" required>
+                <option selected> --Pilih Tahun Akademik-- </option>
                 @foreach($data_thnakd as $thnakd)
                 <option value="{{ $thnakd->id_thnakd }}" {{ $verif_rps->id_thnakd == $thnakd->id_thnakd ? 'selected' : '' }}>{{ $thnakd->thn_akd }}</option>
                 @endforeach
@@ -49,13 +52,22 @@
             <label for="file">File</label>
             <input type="file" name="file" id="file" class="form-control">
         </div>
-        <div class="form-group">
-            <label for="status">Status</label>
-            <select name="status" id="status" class="form-control">
-                <option value="Verified" {{ $verif_rps->status === 'Verified' ? 'selected' : '' }}>Verified</option>
-                <option value="Not Verified" {{ $verif_rps->status === 'Not Verified' ? 'selected' : '' }}>Not Verified</option>
-            </select>
+        <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="status" id="status_verifikasi" value="verifikasi">
+                <label class="form-check-label" for="status_verifikasi">
+                    Verifikasi
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="status" id="status_belum_verifikasi" value="belum verifikasi">
+                <label class="form-check-label" for="status_belum_verifikasi">
+                    Belum Verifikasi
+                </label>
+            </div>
         </div>
+
 
         <div class="form-group">
             <label for="catatan">Catatan</label>

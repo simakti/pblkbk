@@ -14,11 +14,7 @@ class VerifUASSeeder extends Seeder
     public function run(): void
     {
         $VerifUASData = [
-<<<<<<< HEAD
             [160, 2, 1, '', 'diverifikasi', '', '2023-12-25']
-=======
-            [160, '', '', '2023-12-25']
->>>>>>> 5d7cf6ce038eed78f72a5fd12009f9b47242a3a9
 
         ];
 
@@ -28,13 +24,9 @@ class VerifUASSeeder extends Seeder
                 'id_matakuliah' => $data[1],
                 'id_thnakd' => $data[2],
                 'file' => $data[3],
-<<<<<<< HEAD
                 'status' => $data[4],
                 'catatan' => $data[5],
                 'tanggal_verif' => $data[6]
-=======
-                'tanggal_diubah' => $data[4]
->>>>>>> 5d7cf6ce038eed78f72a5fd12009f9b47242a3a9
             ]);
         }
     }

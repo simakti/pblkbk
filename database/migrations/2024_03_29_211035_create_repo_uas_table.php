@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_dosen');
             $table->unsignedBigInteger('id_thnakd');
             $table->string('file')->nullable();
+            $table->timestamp('tanggal_verif', $precision = 0);
 
 
             $table->foreign('id_matakuliah')->references('id_matakuliah')->on('matakuliah')
