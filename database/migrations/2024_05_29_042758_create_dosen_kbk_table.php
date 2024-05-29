@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('verif_rps', function (Blueprint $table) {
-            $table->id('id_verif_rps');
+        Schema::create('dosen_kbk', function (Blueprint $table) {
+            $table->id('id_dosen_kbk');
+            $table->unsignedBigInteger('id_jenis_kbk');
             $table->unsignedBigInteger('id_dosen');
-            $table->string('file')->nullable();
-            $table->string('status');
-            $table->string('catatan')->nullable();
-            $table->timestamp('tanggal_verif', $precision = 0);
 
-            $table->foreign('id_dosen')->references('id_dosen')->on('dosen')
+            $table->foreign('id_jenis_kbk')->references('id_jenis_kbk')->on('jenis_kbk')
             ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_dosen')->references('id_dosen')->on('dosen')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('verif_rps');
+        Schema::dropIfExists('dosen_kbk');
     }
 };
