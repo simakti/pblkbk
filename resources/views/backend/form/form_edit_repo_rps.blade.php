@@ -18,8 +18,13 @@
         @csrf
         @method('PUT')
         <div class="form-group">
-            <label for="id_repo_rps">ID RPS</label>
-            <input type="text" name="id_repo_rps" id="id_repo_rps" class="form-control" value="{{ $repo_rps->id_repo_rps }}" disabled>
+            <label for="id_thnakd">Tahun Akademik</label>
+            <select name="id_thnakd" id="id_thnakd" class="form-control" required>
+                <option selected> --Pilih Tahun Akademik-- </option>
+                @foreach($data_thnakd as $thnakd)
+                <option value="{{ $thnakd->id_thnakd }}" {{ $repo_rps->id_thnakd == $thnakd->id_thnakd ? 'selected' : '' }}>{{ $thnakd->thn_akd }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
             <label for="id_dosen">Nama Dosen</label>
@@ -40,22 +45,10 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="id_thnakd">Tahun Akademik</label>
-            <select name="id_thnakd" id="id_thnakd" class="form-control" required>
-                <option selected> --Pilih Tahun Akademik-- </option>
-                @foreach($data_thnakd as $thnakd)
-                <option value="{{ $thnakd->id_thnakd }}" {{ $repo_rps->id_thnakd == $thnakd->id_thnakd ? 'selected' : '' }}>{{ $thnakd->thn_akd }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
             <label for="file">File</label>
             <input type="file" name="file" id="file" class="form-control">
         </div>
-        <div class="form-group">
-            <label for="tanggal_verif">Tanggal Upload</label>
-            <input type="date" name="tanggal_verif" id="tanggal_verif" class="form-control" value="{{ $repo_rps->tanggal_verif }}" required>
-        </div>
+
         <button type="submit" class="btn btn-warning btn-sm">Update</button>
     </form>
 </div>

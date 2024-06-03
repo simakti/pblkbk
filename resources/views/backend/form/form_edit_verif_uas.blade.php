@@ -1,83 +1,90 @@
 @extends('layouts.backend.template')
-
 @section('content')
-<div class="container">
-    <h1>Edit Data Soal UAS</h1>
-
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            <!-- Page Heading -->
+            <h5 class="card-title mb-4">Edit Data Verifikasi Soal UAS</h5>
+            <div class="container-fluid">
+                <!-- Form Edit Data -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0">Form Edit Data</h6>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ route('verif_uas.update', $verif_uas->id_verif_uas) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                            <!-- Repo RPS -->
+                            <div class="mb-3">
+                                <label for="id_repo_rps" class="form-label">Repo RPS</label>
+                                <select name="id_repo_rps" id="id_repo_rps" class="form-control">
+                                    <option selected> --Pilih Repo RPS-- </option>
+                                    @foreach($data_repo_rps as $repo)
+                                        <option value="{{ $repo->id_repo_rps }}" @if($verif_uas->id_repo_rps == $repo->id_repo_rps) selected @endif>{{ $repo->id_repo_rps }}</option>
+                                    @endforeach
+                                </select>
+                                @error('id_repo_rps')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <!-- Nama Dosen -->
+                            <div class="mb-3">
+                                <label for="id_dosen" class="form-label">Nama Dosen Verifikator</label>
+                                <select name="id_dosen" id="id_dosen" class="form-control">
+                                    <option selected> --Pilih Dosen-- </option>
+                                    @foreach($data_dosen as $dosen)
+                                        <option value="{{ $dosen->id_dosen }}" @if($verif_uas->id_dosen == $dosen->id_dosen) selected @endif>{{ $dosen->nama_dosen }}</option>
+                                    @endforeach
+                                </select>
+                                @error('id_dosen')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <!-- Status Verifikasi -->
+                            <div class="mb-3">
+                                <label for="status_verif_uas" class="form-label">Status Verifikasi</label>
+                                <input type="text" class="form-control" id="status_verif_uas" name="status_verif_uas" value="{{ $verif_uas->status_verif_uas }}">
+                                @error('status_verif_uas')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <!-- Catatan -->
+                            <div class="mb-3">
+                                <label for="catatan" class="form-label">Catatan</label>
+                                <textarea class="form-control" id="catatan" name="catatan" rows="3">{{ $verif_uas->catatan }}</textarea>
+                                @error('catatan')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <!-- Tanggal Verifikasi -->
+                            <div class="mb-3">
+                                <label for="tanggal_diverifikasi" class="form-label">Tanggal Diverifikasi</label>
+                                <input type="date" class="form-control" id="tanggal_diverifikasi" name="tanggal_diverifikasi" value="{{ $verif_uas->tanggal_diverifikasi }}">
+                                @error('tanggal_diverifikasi')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <!-- File -->
+                            <div class="mb-3">
+                                <label for="file" class="form-label">Upload File</label>
+                                <input type="file" class="form-control" id="file" name="file">
+                                @if($verif_uas->file)
+                                    <p>File sebelumnya: <a href="{{ Storage::url($verif_uas->file) }}" target="_blank">Lihat File</a></p>
+                                @endif
+                                @error('file')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <a href="{{ route('verif_uas.index') }}" class="btn btn-secondary">Batal</a>
+                        </form>
+                    </div>
+                </div>
+                <!-- End Form Edit Data -->
+            </div>
+        </div>
     </div>
-    @endif
-
-    <form action="{{ route('verif_uas.update', $verif_uas->id_verif_uas) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-        <div class="form-group">
-            <label for="id_verif_uas">ID Soal UAS</label>
-            <input type="text" name="id_verif_uas" id="id_verif_uas" class="form-control" value="{{ $verif_uas->id_verif_uas }}" disabled>
-        </div>
-        <div class="form-group">
-            <label for="id_dosen">Nama Dosen</label>
-            <select name="id_dosen" id="id_dosen" class="form-control" required>
-                <option selected> --Pilih Dosen-- </option>
-                @foreach($data_dosen as $dosen)
-                <option value="{{ $dosen->id_dosen }}" {{ $verif_uas->id_dosen == $dosen->id_dosen ? 'selected' : '' }}>{{ $dosen->nama_dosen }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="id_matakuliah">Matakuliah</label>
-            <select name="id_matakuliah" id="id_matakuliah" class="form-control" required>
-                <option selected> --Pilih Matakuliah-- </option>
-                @foreach($data_matakuliah as $matakuliah)
-                <option value="{{ $matakuliah->id_matakuliah }}" {{ $verif_uas->id_matakuliah == $matakuliah->id_matakuliah ? 'selected' : '' }}>{{ $matakuliah->nama_matakuliah }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="id_thnakd">Tahun Akademik</label>
-            <select name="id_thnakd" id="id_thnakd" class="form-control" required>
-                <option selected> --Pilih Tahun Akademik-- </option>
-                @foreach($data_thnakd as $thnakd)
-                <option value="{{ $thnakd->id_thnakd }}" {{ $verif_uas->id_thnakd == $thnakd->id_thnakd ? 'selected' : '' }}>{{ $thnakd->thn_akd }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="file">File</label>
-            <input type="file" name="file" id="file" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label for="status" class="form-label">Status</label>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="status" id="status_verifikasi" value="verifikasi">
-                <label class="form-check-label" for="status_verifikasi">
-                    Verifikasi
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="status" id="status_belum_verifikasi" value="belum verifikasi">
-                <label class="form-check-label" for="status_belum_verifikasi">
-                    Belum Verifikasi
-                </label>
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <label for="catatan">Catatan</label>
-            <textarea name="catatan" id="catatan" class="form-control">{{ $verif_uas->catatan }}</textarea>
-        </div>
-        <div class="form-group">
-            <label for="tanggal_verif">Tanggal Verif</label>
-            <input type="date" name="tanggal_verif" id="tanggal_verif" class="form-control" value="{{ $verif_uas->tanggal_verif }}" required>
-        </div>
-        <button type="submit" class="btn btn-warning btn-sm">Update</button>
-    </form>
 </div>
 @endsection

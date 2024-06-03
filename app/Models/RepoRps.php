@@ -16,7 +16,6 @@ class RepoRps extends Model
         'id_matakuliah',
         'id_thnakd',
         'file',
-        'tanggal_verif',
     ];
     public $timestamps = false;
 }

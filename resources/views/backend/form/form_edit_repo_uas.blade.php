@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Edit Data UAS</h1>
+    <h1>Edit Data Soal UAS</h1>
 
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -18,8 +18,13 @@
         @csrf
         @method('PUT')
         <div class="form-group">
-            <label for="id_repo_uas">ID UAS</label>
-            <input type="text" name="id_repo_uas" id="id_repo_uas" class="form-control" value="{{ $repo_uas->id_repo_uas }}" disabled>
+            <label for="id_thnakd">Tahun Akademik</label>
+            <select name="id_thnakd" id="id_thnakd" class="form-control" required>
+                <option selected> --Pilih Tahun Akademik-- </option>
+                @foreach($data_thnakd as $thnakd)
+                <option value="{{ $thnakd->id_thnakd }}" {{ $repo_uas->id_thnakd == $thnakd->id_thnakd ? 'selected' : '' }}>{{ $thnakd->thn_akd }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
             <label for="id_dosen">Nama Dosen</label>
@@ -35,16 +40,7 @@
             <select name="id_matakuliah" id="id_matakuliah" class="form-control" required>
                 <option selected> --Pilih Matakuliah-- </option>
                 @foreach($data_matakuliah as $matakuliah)
-                <option value="{{ $matakuliah->id_matakuliah }}" {{ $repo_ruas->id_matakuliah == $matakuliah->id_matakuliah ? 'selected' : '' }}>{{ $matakuliah->nama_matakuliah }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="id_thnakd">Tahun Akademik</label>
-            <select name="id_thnakd" id="id_thnakd" class="form-control" required>
-                <option selected> --Pilih Tahun Akademik-- </option>
-                @foreach($data_thnakd as $thnakd)
-                <option value="{{ $thnakd->id_thnakd }}" {{ $repo_uas->id_thnakd == $thnakd->id_thnakd ? 'selected' : '' }}>{{ $thnakd->thn_akd }}</option>
+                <option value="{{ $matakuliah->id_matakuliah }}" {{ $repo_uas->id_matakuliah == $matakuliah->id_matakuliah ? 'selected' : '' }}>{{ $matakuliah->nama_matakuliah }}</option>
                 @endforeach
             </select>
         </div>
@@ -52,10 +48,7 @@
             <label for="file">File</label>
             <input type="file" name="file" id="file" class="form-control">
         </div>
-        <div class="form-group">
-            <label for="tanggal_verif">Tanggal Upload</label>
-            <input type="date" name="tanggal_verif" id="tanggal_verif" class="form-control" value="{{ $repo_rps->tanggal_verif }}" required>
-        </div>
+
         <button type="submit" class="btn btn-warning btn-sm">Update</button>
     </form>
 </div>

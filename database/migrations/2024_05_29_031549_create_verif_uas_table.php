@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id('id_verif_uas');
             $table->unsignedBigInteger('id_repo_uas');
             $table->unsignedBigInteger('id_dosen');
-            $table->string('file_verifikasi')->nullable();
             $table->enum('status_verif_uas', ['0','1'])->default('0')->comment('0: Belum Diverifikasi, 1: Diverifikasi');
             $table->text('catatan')->nullable();
             $table->date('tanggal_diverifikasi');

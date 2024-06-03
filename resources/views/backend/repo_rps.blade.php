@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <!-- Page Heading -->
-            <h5 class="card-title  mb-4">Data Upload RPS</h5>
+            <h5 class="card-title mb-4">Data Upload RPS</h5>
             <div class="container-fluid">
                 <!-- DataDosen -->
                 <div class="card shadow mb-4">
@@ -21,10 +21,10 @@
                                 <thead>
                                     <tr class="table-dark">
                                         <th>NO</th>
+                                        <th>Tahun Akademik</th>
                                         <th>Nama Dosen</th>
                                         <th>Matakuliah</th>
-                                        <th>Tahun Akademik</th>
-                                        <th>Tanggal Upload</th>
+                                        <th>Semester</th>
                                         <th>File</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -33,13 +33,14 @@
                                     @foreach ($data_repo_rps as $index => $data)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
+                                        <td>{{ $data->thn_akd }}</td>
                                         <td>{{ $data->nama_dosen }}</td>
                                         <td>{{ $data->nama_matakuliah }}</td>
-                                        <td>{{ $data->thn_akd }}</td>
-                                        <td>{{ $data->tanggal_verif }}</td>
+                                        <td>{{ $data->semester }}</td>
                                         <td>
                                             <a href="{{('storage/uploads/ver_files/' . $data->file) }}" target="_blank">Lihat file</a>
                                         </td>
+
                                         <td>
                                             <form action="{{ route('repo_rps.edit', $data->id_repo_rps) }}" method="GET" style="display:inline;">
                                                 <button type="submit" class="btn btn-warning btn-sm">Edit</button>

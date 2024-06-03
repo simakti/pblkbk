@@ -21,13 +21,15 @@
                                 <thead>
                                     <tr class="table-dark">
                                         <th>NO</th>
-                                        <th>Nama Dosen</th>
-                                        <th>Kode Matakuliah</th>
                                         <th>Tahun Akademik</th>
-                                        <th>Tanggal Verif</th>
+                                        <th>Dosen Upload UAS</th>
+                                        <th>Matakuliah</th>
+                                        <th>Semester</th>
+                                        <th>Dosen Verifikasi</th>
                                         <th>File</th>
                                         <th>Status</th>
                                         <th>Catatan</th>
+                                        <th>Tanggal Verifikasi</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -35,15 +37,18 @@
                                     @foreach ($data_verif_uas as $index => $data)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
-                                        <td>{{ $data->nama_dosen }}</td>
-                                        <td>{{ $data->nama_matakuliah }}</td>
                                         <td>{{ $data->thn_akd }}</td>
-                                        <td>{{ $data->tanggal_verif }}</td>
+                                        <td>{{ $data->nama_upload }}</td>
+                                        <td>{{ $data->nama_matakuliah }}</td>
+                                        <td>{{ $data->semester }}</td>
+                                        <td>{{ $data->nama_verifikasi }}</td>
                                         <td>
-                                            <a href="{{ Storage::url('files/' . $data->file) }}" target="_blank">Lihat file</a>
+                                            <a href="{{('storage/uploads/ver_files/' . $data->file) }}" target="_blank">Lihat file</a>
                                         </td>
-                                        <td>{{ $data->status }}</td>
+                                        <td>{{ $data->status_verif_uas }}</td>
                                         <td>{{ $data->catatan }}</td>
+                                        <td>{{ $data->tanggal_diverifikasi }}</td>
+
                                         <td>
                                             <form action="{{ route('verif_uas.edit', $data->id_verif_uas) }}" method="GET" style="display:inline;">
                                                 <button type="submit" class="btn btn-warning btn-sm">Edit</button>
