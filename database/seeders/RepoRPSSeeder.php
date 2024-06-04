@@ -14,7 +14,7 @@ class RepoRPSSeeder extends Seeder
     public function run(): void
     {
         $RepoRPSData = [
-            [3, 13, 13, '', '2024-01-30', '2024-02-01']
+            [3, 13, 13, '']
         ];
 
         foreach ($RepoRPSData as $data) {
@@ -23,8 +23,6 @@ class RepoRPSSeeder extends Seeder
                 'id_dosen' => $data[1],
                 'id_matakuliah' => $data[2],
                 'file' => $data[3],
-                'created_at' => $data[4],
-                'updated_at' => $data[5],
 
             ]);
         }

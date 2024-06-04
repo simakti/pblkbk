@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RepoUas;
+use App\Models\RepoRps;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-class RepoUasController extends Controller
+class RepoRpsController extends Controller
 {
     public function index()
     {
-        $data_repo_uas = DB::table('repo_uas')
-            ->join('thnakd', 'repo_uas.id_thnakd', '=', 'thnakd.id_thnakd')
-            ->join('dosen', 'repo_uas.id_dosen', '=', 'dosen.id_dosen')
-            ->join('matakuliah', 'repo_uas.id_matakuliah', '=', 'matakuliah.id_matakuliah')
-            ->select('repo_uas.*', 'thnakd.thn_akd','dosen.nama_dosen', 'matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester')
-            ->orderBy('id_repo_uas')
+        $data_repo_rps = DB::table('repo_rps')
+            ->join('thnakd', 'repo_rps.id_thnakd', '=', 'thnakd.id_thnakd')
+            ->join('dosen', 'repo_rps.id_dosen', '=', 'dosen.id_dosen')
+            ->join('matakuliah', 'repo_rps.id_matakuliah', '=', 'matakuliah.id_matakuliah')
+            ->select('repo_rps.*', 'thnakd.thn_akd','dosen.nama_dosen', 'matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester')
+            ->orderBy('id_repo_rps')
             ->get();
 
-        return view('backend.repo_uas', compact('data_repo_uas'));
+        return view('backend.repo_rps', compact('data_repo_rps'));
     }
 
     public function create()
@@ -29,7 +29,7 @@ class RepoUasController extends Controller
         $data_dosen = DB::table('dosen')->get();
         $data_matakuliah = DB::table('matakuliah')->get();
 
-        return view('backend.form.form_repo_uas', compact('data_thnakd', 'data_dosen', 'data_matakuliah'));
+        return view('backend.form.form_repo_rps', compact('data_thnakd', 'data_dosen', 'data_matakuliah'));
     }
 
     public function store(Request $request)
@@ -66,10 +66,10 @@ class RepoUasController extends Controller
 
 
     // Create a new VerifRps record
-    RepoUas::create($data);
+    RepoRps::create($data);
 
     // Redirect with success message
-    return redirect()->route('repo_uas.index')->with('success', 'Data berhasil disimpan.');
+    return redirect()->route('repo_rps.index')->with('success', 'Data berhasil disimpan.');
 }
 
 
@@ -78,9 +78,9 @@ class RepoUasController extends Controller
         $data_thnakd = DB::table('thnakd')->get();
         $data_dosen = DB::table('dosen')->get();
         $data_matakuliah = DB::table('matakuliah')->get();
-        $repo_uas = RepoUas::findOrFail($id);
+        $repo_rps = RepoRps::findOrFail($id);
 
-        return view('backend.form.form_edit_repo_uas', compact('repo_uas', 'data_thnakd', 'data_dosen', 'data_matakuliah'));
+        return view('backend.form.form_edit_repo_rps', compact('repo_rps', 'data_thnakd', 'data_dosen', 'data_matakuliah'));
     }
 
     public function update(Request $request, $id)
@@ -92,40 +92,40 @@ class RepoUasController extends Controller
             'file' => 'nullable|file|mimes:pdf,doc,docx|max:50000',
         ]);
 
-        $repo_uas = RepoUas::findOrFail($id);
+        $repo_rps = RepoRps::findOrFail($id);
 
         // Update data
-        $repo_uas->id_thnakd = $request->id_thnakd;
-        $repo_uas->id_dosen = $request->id_dosen;
-        $repo_uas->id_matakuliah = $request->id_matakuliah;
+        $repo_rps->id_thnakd = $request->id_thnakd;
+        $repo_rps->id_dosen = $request->id_dosen;
+        $repo_rps->id_matakuliah = $request->id_matakuliah;
 
         if ($request->hasFile('file')) {
             // Delete old file if exists
-            if ($repo_uas->file) {
-                Storage::disk('public')->delete($repo_uas->file);
+            if ($repo_rps->file) {
+                Storage::disk('public')->delete($repo_rps->file);
             }
 
             // Store new file
             $filePath = $request->file('file')->store('uploads/ver_files', 'public');
-            $repo_uas->file = $filePath;
+            $repo_rps->file = $filePath;
         }
 
-        $repo_uas->save();
+        $repo_rps->save();
 
-        return redirect()->route('repo_uas.index')->with('success', 'Data berhasil diperbarui.');
+        return redirect()->route('repo_rps.index')->with('success', 'Data berhasil diperbarui.');
     }
 
     public function destroy($id)
     {
-        $repo_uas = RepoUas::findOrFail($id);
+        $repo_rps = RepoRps::findOrFail($id);
 
         // Delete file if exists
-        if ($repo_uas->file) {
-            Storage::disk('public')->delete($repo_uas->file);
+        if ($repo_rps->file) {
+            Storage::disk('public')->delete($repo_rps->file);
         }
 
-        $repo_uas->delete();
+        $repo_rps->delete();
 
-        return redirect()->route('repo_uas.index')->with('success', 'Data berhasil dihapus.');
+        return redirect()->route('repo_rps.index')->with('success', 'Data berhasil dihapus.');
     }
 }

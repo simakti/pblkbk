@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id('id_dosen_kbk');
             $table->unsignedBigInteger('id_jenis_kbk');
             $table->unsignedBigInteger('id_dosen');
-
             $table->foreign('id_jenis_kbk')->references('id_jenis_kbk')->on('jenis_kbk')
             ->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_dosen')->references('id_dosen')->on('dosen')->onUpdate('cascade')->onDelete('cascade');
+
         });
     }
 

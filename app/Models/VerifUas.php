@@ -7,17 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class VerifUas extends Model
 {
-    protected $table = 'verif_uas'; // Assuming the table name is 'verif_uas'
+    protected $table = 'verif_uas';
+
+    public $timestamps = false;
 
     protected $fillable = [
-        'id_verif_uas',
+        'id_repo_uas',
         'id_dosen',
-        'id_matakuliah',
-        'id_thnakd',
-        'file',
-        'status',
+        'status_verif_uas',
         'catatan',
-        'tanggal_verif',
+        'tanggal_diverifikasi',
     ];
-    public $timestamps = false;
 }

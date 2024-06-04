@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <!-- Page Heading -->
-            <h5 class="card-title mb-4">Tambah Data Verifikasi Soal UAS</h5>
+            <h5 class="card-title mb-4">Tambah Data Verifikasi RPS</h5>
             <div class="container-fluid">
                 <!-- Form Tambah Data -->
                 <div class="card shadow mb-4">
@@ -12,18 +12,18 @@
                         <h6 class="m-0">Form Tambah Data</h6>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('verif_uas.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('verif_rps.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <!-- Repo RPS -->
                             <div class="mb-3">
-                                <label for="id_repo_uas" class="form-label">Repo RPS</label>
-                                <select name="id_repo_uas" id="id_repo_uas" class="form-control">
+                                <label for="id_repo_rps" class="form-label">Repo RPS</label>
+                                <select name="id_repo_rps" id="id_repo_rps" class="form-control">
                                     <option selected> --Pilih Repo RPS-- </option>
-                                    @foreach($data_repo_uas as $repo)
-                                        <option value="{{ $repo->id_repo_uas }}">{{ $repo->id_repo_uas }}</option>
+                                    @foreach($data_repo_rps as $repo)
+                                        <option value="{{ $repo->id_repo_rps }}">{{ $repo->id_repo_rps }}</option>
                                     @endforeach
                                 </select>
-                                @error('id_repo_uas')
+                                @error('id_repo_rps')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -43,20 +43,20 @@
 
                             <!-- Status -->
                             <div class="mb-3">
-                                <label for="status_verif_uas" class="form-label">Status</label>
+                                <label for="status_verif_rps" class="form-label">Status</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="status_verif_uas" id="status_verif_uas" value="verifikasi">
-                                    <label class="form-check-label" for="status_verif_uas">
+                                    <input class="form-check-input" type="radio" name="status_verif_rps" id="status_verif_rps" value="1">
+                                    <label class="form-check-label" for="status_verif_rps">
                                         Verifikasi
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="status_verif_uas" id="status_belum_verifikasi" value="belum verifikasi">
+                                    <input class="form-check-input" type="radio" name="status_verif_rps" id="status_belum_verifikasi" value="0">
                                     <label class="form-check-label" for="status_belum_verifikasi">
                                         Belum Verifikasi
                                     </label>
                                 </div>
-                                @error('status_verif_uas')
+                                @error('status_verif_rps')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -80,7 +80,7 @@
 
                             <!-- Submit Button -->
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="{{ route('verif_uas.index') }}" class="btn btn-secondary">Batal</a>
+                            <a href="{{ route('verif_rps.index') }}" class="btn btn-secondary">Batal</a>
                         </form>
                     </div>
                 </div>

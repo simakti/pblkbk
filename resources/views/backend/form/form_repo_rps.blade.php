@@ -3,14 +3,14 @@
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title mb-4">Tambah Data Soal UAS</h5>
+            <h5 class="card-title mb-4">Tambah Data RPS</h5>
             <div class="container-fluid">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0">Form Tambah Data</h6>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('repo_uas.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('repo_rps.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="id_thnakd" class="form-label">Tahun Akademik</label>

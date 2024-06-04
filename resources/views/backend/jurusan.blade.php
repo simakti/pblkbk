@@ -11,12 +11,11 @@
                         <div class="card-header py-3">
                             <h6 class="m-0">Aksi</h6>
                             <div class="mt-3">
-                                <a href="{{ route('jurusan.create') }}" class="btn btn-primary">Tambah
-                                    Jurusan</a>
+                                <a href="{{ route('jurusan.create') }}"></a>
                             </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered table-striped" id="example" width="100%" cellspacing="0">
                                     <thead>
                                         <tr class="table-dark">
                                             <th>NO</th>

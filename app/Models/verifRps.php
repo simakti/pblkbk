@@ -4,18 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class verifRps extends Model
+class VerifRps extends Model
 {
     protected $table = 'verif_rps';
-    protected $primaryKey = 'id_verif_rps';
+
+    public $timestamps = false;
+
     protected $fillable = [
-        'id_verif_rps',
+        'id_repo_rps',
         'id_dosen',
-        'id_matakuliah',
-        'id_thnakd',
-        'file',
-        'status',
+        'status_verif_rps',
         'catatan',
-        'tanggal_verif'
+        'tanggal_diverifikasi',
     ];
 }
