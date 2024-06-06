@@ -12,8 +12,6 @@ use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RepoRpsController;
 use App\Http\Controllers\RepoUasController;
-use App\Http\Controllers\DosenKBKController;
-use App\Http\Controllers\TahunAkdController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\MatkulkbkController;
 use App\Http\Controllers\MatakuliahController;
@@ -123,16 +121,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/penguruskbk/import', [PengurusKBKController::class, 'import'])->name('penguruskbk.import');
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dosenkbk', [DosenKBKController::class, 'index'])->name('dosenkbk.index');
-    Route::get('/dosenkbk/create', [DosenKBKController::class, 'create'])->name('dosenkbk.create');
-    Route::post('/dosenkbk', [DosenKBKController::class, 'store'])->name('dosenkbk.store');
-    Route::delete('/dosenkbk/{id}', [DosenkbkController::class, 'destroy'])->name('dosenkbk.destroy');
-    Route::get('/dosenkbk/edit/{id}', [DosenKBKController::class, 'edit'])->name('dosenkbk.edit');
-    Route::put('/dosenkbk/update/{id}', [DosenKBKController::class, 'update'])->name('dosenkbk.update');
-    Route::get('/dosenkbk/export', [DosenKBKController::class, 'export'])->name('dosenkbk.export');
-    Route::post('/dosenkbk/import', [DosenKBKController::class, 'import'])->name('dosenkbk.import');
-});
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/datakbk', [DataKbkController::class, 'index'])->name('datakbk.index');

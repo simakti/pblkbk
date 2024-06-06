@@ -20,11 +20,10 @@ class VerifRPSSeeder extends Seeder
         foreach ($VerifRPSData as $data) {
             DB::table('verif_rps')->insert([
                 'id_repo_rps' => $data[0],
-                'id_pimpinan_prodi' => $data[1],
-                'id_penguruskbk' => $data[2],
-                'status_verif_rps' => $data[3],
-                'catatan' => $data[4],
-                'tanggal_diverifikasi' => $data[5],
+                'id_penguruskbk' => $data[1],
+                'status_verif_rps' => $data[2],
+                'catatan' => $data[3],
+                'tanggal_diverifikasi' => $data[4],
             ]);
         }
     }
