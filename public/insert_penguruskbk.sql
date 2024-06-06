@@ -1,4 +1,4 @@
-INSERT INTO `penguruskbk` (`id_jenis_kbk`, `id_dosen`,`id_jabatan_kbk`, `status`) VALUES
+INSERT INTO `penguruskbk` (`id_jenis_kbk`, `id_dosen`, `id_jabatan_kbk`, `status`) VALUES
 (3, 52, 1, 1),
 (3, 132, 2, 1),
 (3, 311, 3, 1),
@@ -32,10 +32,6 @@ INSERT INTO `penguruskbk` (`id_jenis_kbk`, `id_dosen`,`id_jabatan_kbk`, `status`
 (4, 359, 1, 1),
 (4, 360, 2, 1),
 (4, 258, 3, 1),
-(4, 258, 3, 1),
-(4, 258, 3, 1),
-(4, 258, 3, 1),
-(4, 258, 3, 1),
 (5, 13, 1, 1),
 (5, 354, 2, 1),
 (5, 352, 3, 1),
@@ -46,8 +42,3 @@ INSERT INTO `penguruskbk` (`id_jenis_kbk`, `id_dosen`,`id_jabatan_kbk`, `status`
 (5, 109, 3, 1),
 (5, 40, 3, 1),
 (5, 103, 3, 1);
-
-
-
-
-

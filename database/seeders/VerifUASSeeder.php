@@ -14,7 +14,7 @@ class VerifUASSeeder extends Seeder
     public function run(): void
     {
         $VerifUASData = [
-            [1, 1, 3, 1, '', '2023-12-25']
+            [1, 1, 1, '', '2023-12-25']
 
         ];
 

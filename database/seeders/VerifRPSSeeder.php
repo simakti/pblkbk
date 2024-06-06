@@ -14,7 +14,7 @@ class VerifRPSSeeder extends Seeder
     public function run(): void
     {
         $VerifRPSData = [
-            [1, 1, 3, 1, '', '2023-12-25']
+            [1, 1, 1, '', '2023-12-25']
         ];
 
         foreach ($VerifRPSData as $data) {
