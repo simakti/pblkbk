@@ -22,7 +22,7 @@
                                     <tr class="table-dark">
                                         <th>NO</th>
                                         <th>Tahun Akademik</th>
-                                        <th>Dosen Upload UAS</th>
+                                        <th>Dosen Upload RPS</th>
                                         <th>Matakuliah</th>
                                         <th>Semester</th>
                                         <th>Dosen Verifikasi</th>

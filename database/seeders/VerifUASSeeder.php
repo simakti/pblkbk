@@ -14,8 +14,7 @@ class VerifUASSeeder extends Seeder
     public function run(): void
     {
         $VerifUASData = [
-            [1, 292, 1, '', '2023-12-25']
-
+            [2, 292, 1, '', '2023-12-25']
         ];
 
         foreach ($VerifUASData as $data) {
@@ -24,7 +23,7 @@ class VerifUASSeeder extends Seeder
                 'id_dosen' => $data[1],
                 'status_verif_uas' => $data[2],
                 'catatan' => $data[3],
-                'tanggal_diverifikasi' => $data[4]
+                'tanggal_diverifikasi' => $data[4],
             ]);
         }
     }

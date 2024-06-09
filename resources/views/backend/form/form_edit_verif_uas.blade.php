@@ -12,19 +12,19 @@
                         <h6 class="m-0">Form Edit Data</h6>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('verif_uas.update', $verif_uas->id_verif_uas) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('verif_rps.update', $verif_rps->id_verif_rps) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <!-- Repo RPS -->
                             <div class="mb-3">
-                                <label for="id_repo_rps" class="form-label">Repo RPS</label>
-                                <select name="id_repo_rps" id="id_repo_rps" class="form-control">
+                                <label for="id_repo_uas" class="form-label">Repo RPS</label>
+                                <select name="id_repo_uas" id="id_repo_uas" class="form-control">
                                     <option selected> --Pilih Repo RPS-- </option>
-                                    @foreach($data_repo_rps as $repo)
-                                        <option value="{{ $repo->id_repo_rps }}" @if($verif_uas->id_repo_rps == $repo->id_repo_rps) selected @endif>{{ $repo->id_repo_rps }}</option>
+                                    @foreach($data_repo_uas as $repo)
+                                        <option value="{{ $repo->id_repo_uas }}" @if($verif_rps->id_repo_uas == $repo->id_repo_uas) selected @endif>{{ $repo->id_repo_uas }}</option>
                                     @endforeach
                                 </select>
-                                @error('id_repo_rps')
+                                @error('id_repo_uas')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>

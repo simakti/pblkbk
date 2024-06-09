@@ -17,7 +17,7 @@
                             <!-- Repo RPS -->
                             <div class="mb-3">
                                 <label for="id_repo_uas" class="form-label">Repo RPS</label>
-                                <select name="id_repo_uas" id="id_repo_uas" class="form-control">
+                                <select name="id_repo_uas" id="repo_uas" class="form-control">
                                     <option selected> --Pilih Repo RPS-- </option>
                                     @foreach($data_repo_uas as $repo)
                                         <option value="{{ $repo->id_repo_uas }}">{{ $repo->id_repo_uas }}</option>
@@ -45,13 +45,13 @@
                             <div class="mb-3">
                                 <label for="status_verif_uas" class="form-label">Status</label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="status_verif_uas" id="status_verif_uas" value="verifikasi">
+                                    <input class="form-check-input" type="radio" name="status_verif_uas" id="status_verif_uas" value="1">
                                     <label class="form-check-label" for="status_verif_uas">
                                         Verifikasi
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="status_verif_uas" id="status_belum_verifikasi" value="belum verifikasi">
+                                    <input class="form-check-input" type="radio" name="status_verif_uas" id="status_belum_verifikasi" value="0">
                                     <label class="form-check-label" for="status_belum_verifikasi">
                                         Belum Verifikasi
                                     </label>

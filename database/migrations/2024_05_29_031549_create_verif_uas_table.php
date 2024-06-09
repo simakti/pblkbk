@@ -18,12 +18,9 @@ return new class extends Migration
             $table->enum('status_verif_uas', ['0','1'])->default('0')->comment('0: Belum Diverifikasi, 1: Diverifikasi');
             $table->text('catatan')->nullable();
             $table->date('tanggal_diverifikasi');
-
-            $table->foreign('id_repo_uas')->references('id_repo_uas')->on('repo_uas')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('id_dosen')->references('id_dosen')->on('dosen')->onUpdate('cascade')->onDelete('cascade');
-
+            $table->foreign('id_repo_uas')->references('id_repo_uas')->on('repo_uas');
+            $table->foreign('id_dosen')->references('id_dosen')->on('dosen');
         });
-
     }
 
     /**

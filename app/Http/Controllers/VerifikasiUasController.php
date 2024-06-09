@@ -36,7 +36,8 @@ class VerifikasiUasController extends Controller
     public function create()
     {
         $data_dosen = DB::table('dosen')->get();
-        $data_repo_uas = DB::table('repo_uas')->get();
+        $data_repo_rps = DB::table('repo_uas')->get();
+        //dd(compact('data_dosen', 'data_repo_uas'));
         return view('backend.form.form_verif_uas', compact('data_dosen', 'data_repo_uas'));
     }
 
@@ -49,7 +50,7 @@ class VerifikasiUasController extends Controller
             'status_verif_uas' => 'required|string|max:255',
             'catatan' => 'nullable|string',
             'tanggal_diverifikasi' => 'required|date',
-            'file' => 'nullable|file|mimes:pdf,doc,docx|max:50000',
+            /* 'file' => 'nullable|file|mimes:pdf,doc,docx|max:50000', */
         ]);
 
         if ($validator->fails()) {
@@ -57,11 +58,11 @@ class VerifikasiUasController extends Controller
         }
 
         // Menyimpan file dan mendapatkan path
-        $filePath = '';
+        /* $filePath = '';
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $filePath = $file->store('uploads/ver_files', 'public');
-        }
+        } */
 
         // Menyimpan data ke database
         VerifUas::create([
@@ -70,9 +71,8 @@ class VerifikasiUasController extends Controller
             'status_verif_uas' => $request->status_verif_uas,
             'catatan' => $request->catatan,
             'tanggal_diverifikasi' => $request->tanggal_diverifikasi,
-            'file' => $filePath,
         ]);
-
+        //dd($request->all());
         return redirect()->route('verif_uas.index')->with('success', 'Data berhasil disimpan.');
     }
 
