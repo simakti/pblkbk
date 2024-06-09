@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class VerifRps extends Model
+class verifRps extends Model
 {
     protected $table = 'verif_rps';
 
