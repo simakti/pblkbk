@@ -20,7 +20,7 @@ class DosenController extends Controller
             ->select('dosen.*', 'jurusan.jurusan', 'prodi.prodi')
             ->orderBy('id_dosen')
             ->get();
-        return view('backend.dosen', compact('data_dosen'));
+        return view('admin.dosen', compact('data_dosen'));
     }
 
     /**
@@ -30,7 +30,7 @@ class DosenController extends Controller
     {
         $data_dosen = DB::table('dosen')->get();
 
-        return view('backend.form.form_dosen', compact('data_dosen'));
+        return view('admin.form.form_dosen', compact('data_dosen'));
     }
 
 

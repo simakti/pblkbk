@@ -15,7 +15,7 @@ class JurusanController extends Controller
         $data_jurusan = DB::table('jurusan')
             ->orderBy('id_jurusan')
             ->get();
-        return view('backend.jurusan', compact('data_jurusan'));
+        return view('admin.jurusan', compact('data_jurusan'));
     }
 
     /**

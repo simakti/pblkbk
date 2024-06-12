@@ -12,11 +12,9 @@ class VerifRps extends Model
 
     protected $fillable = [
         'id_repo_rps',
-        'id_pimpinan_prodi',
-        'id_penguruskbk',
+        'id_dosen',
         'status_verif_rps',
         'catatan',
         'tanggal_diverifikasi',
     ];
-
 }

@@ -20,7 +20,7 @@ class DataKbkController extends Controller
             ->select('jenis_kbk.*')
             ->orderBy('id_jenis_kbk')
             ->get();
-        return view('backend.datakbk', compact('data_datakbk'));
+        return view('admin.datakbk', compact('data_datakbk'));
     }
 
     /**
@@ -47,7 +47,7 @@ class DataKbkController extends Controller
      */
     public function create()
     {
-        return view('backend.form.form_datakbk');
+        return view('admin.form.form_datakbk');
     }
 
     /**
@@ -79,7 +79,7 @@ class DataKbkController extends Controller
     public function edit($id)
     {
         $jenis_kbk = JenisKBK::where('id_jenis_kbk', $id)->first();
-        return view('backend.form.form_edit_datakbk', compact('jenis_kbk'));
+        return view('admin.form.form_edit_datakbk', compact('jenis_kbk'));
     }
 
     /**

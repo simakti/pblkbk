@@ -18,7 +18,7 @@ class VerifikasiRpsController extends Controller
             ->join('thnakd', 'repo_rps.id_thnakd', '=', 'thnakd.id_thnakd')
             ->join('matakuliah', 'repo_rps.id_matakuliah', '=', 'matakuliah.id_matakuliah')
             ->join('dosen as upload', 'repo_rps.id_dosen', '=', 'upload.id_dosen')
-            ->select('verif_rps.*', 'repo_rps.*', 'verifikasi.nama_dosen as nama_verifikasi', 'upload.nama_dosen as nama_upload','matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester','thnakd.thn_akd')
+            ->select('verif_rps.*', 'repo_rps.*', 'verifikasi.nama_dosen as nama_verifikasi', 'upload.nama_dosen as nama_upload', 'matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester', 'thnakd.thn_akd')
             ->orderBy('id_verif_rps')
             ->get();
 
@@ -26,11 +26,11 @@ class VerifikasiRpsController extends Controller
             ->join('thnakd', 'repo_rps.id_thnakd', '=', 'thnakd.id_thnakd')
             ->join('dosen', 'repo_rps.id_dosen', '=', 'dosen.id_dosen')
             ->join('matakuliah', 'repo_rps.id_matakuliah', '=', 'matakuliah.id_matakuliah')
-            ->select('repo_rps.*', 'thnakd.thn_akd','dosen.nama_dosen', 'matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester')
+            ->select('repo_rps.*', 'thnakd.thn_akd', 'dosen.nama_dosen', 'matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester')
             ->orderBy('id_repo_rps')
             ->get();
 
-        return view('backend.verif_rps', compact('data_verif_rps', 'data_repo_rps'));
+        return view('admin.verif_rps', compact('data_verif_rps', 'data_repo_rps'));
     }
 
     public function create()
@@ -38,7 +38,7 @@ class VerifikasiRpsController extends Controller
         $data_dosen = DB::table('dosen')->get();
         $data_repo_rps = DB::table('repo_rps')->get();
         //dd(compact('data_dosen', 'data_repo_rps'));
-        return view('backend.form.form_verif_rps', compact('data_dosen', 'data_repo_rps'));
+        return view('admin.form.form_verif_rps', compact('data_dosen', 'data_repo_rps'));
     }
 
     public function store(Request $request)
@@ -81,8 +81,9 @@ class VerifikasiRpsController extends Controller
         $data_dosen = DB::table('dosen')->get();
         $verif_rps = VerifRps::findOrFail($id);
 
-        return view('backend.form.form_edit_verif_rps', compact('verif_rps', 'data_dosen'));
+        return view('admin.form.form_edit_verif_rps', compact('verif_rps', 'data_dosen'));
     }
+
 
     public function update(Request $request, $id)
     {
