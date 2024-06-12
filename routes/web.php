@@ -10,17 +10,18 @@ use App\Http\Controllers\ThnakdController;
 use App\Http\Controllers\DataKbkController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RepoRpsController;
 use App\Http\Controllers\RepoUasController;
+use App\Http\Controllers\DosenKBKController;
 use App\Http\Controllers\TahunAkdController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\MatkulkbkController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\PenguruskbkController;
 use App\Http\Controllers\PimpinanprodiController;
-use App\Http\Controllers\VerifikasiUasController;
 use App\Http\Controllers\VerifikasiRpsController;
+use App\Http\Controllers\VerifikasiUasController;
 use App\Http\Controllers\PimpinanjurusanController;
-use App\Http\Controllers\RepoRpsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -120,6 +121,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/penguruskbk/update/{id}', [PengurusKBKController::class, 'update'])->name('penguruskbk.update');
     Route::get('/penguruskbk/export', [PengurusKBKController::class, 'export'])->name('penguruskbk.export');
     Route::post('/penguruskbk/import', [PengurusKBKController::class, 'import'])->name('penguruskbk.import');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dosenkbk', [DosenKBKController::class, 'index'])->name('dosenkbk.index');
+    Route::get('/dosenkbk/create', [DosenKBKController::class, 'create'])->name('dosenkbk.create');
+    Route::post('/dosenkbk', [DosenKBKController::class, 'store'])->name('dosenkbk.store');
+    Route::delete('/dosenkbk/{id}', [DosenkbkController::class, 'destroy'])->name('dosenkbk.destroy');
+    Route::get('/dosenkbk/edit/{id}', [DosenKBKController::class, 'edit'])->name('dosenkbk.edit');
+    Route::put('/dosenkbk/update/{id}', [DosenKBKController::class, 'update'])->name('dosenkbk.update');
+    Route::get('/dosenkbk/export', [DosenKBKController::class, 'export'])->name('dosenkbk.export');
+    Route::post('/dosenkbk/import', [DosenKBKController::class, 'import'])->name('dosenkbk.import');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

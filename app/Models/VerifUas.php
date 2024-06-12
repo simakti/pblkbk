@@ -12,9 +12,10 @@ class VerifUas extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'id_repo_uas',
-        'id_dosen',
-        'status_verif_uas',
+        'id_repo_rps',
+        'id_pimpinan_prodi',
+        'id_penguruskbk',
+        'status_verif_rps',
         'catatan',
         'tanggal_diverifikasi',
     ];

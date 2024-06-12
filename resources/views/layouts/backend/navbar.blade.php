@@ -111,6 +111,12 @@
         </li>
 
         <li class="nav-item">
+            <a class="nav-link" href="/dosenkbk">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Dosen KBK</span></a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link" href="/datakbk">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Data KBK</span></a>

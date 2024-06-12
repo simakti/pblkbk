@@ -20,6 +20,7 @@
         <div class="form-group">
             <label for="id_dosen">Nama Dosen</label>
             <select name="id_dosen" id="id_dosen" class="form-control">
+                <option selected> --Pilih Dosen-- </option>
                 @foreach($data_dosen as $dosen)
                     <option value="{{ $dosen->id_dosen }}" {{ $penguruskbk->id_dosen == $dosen->id_dosen ? 'selected' : '' }}>{{ $dosen->nama_dosen }}</option>
                 @endforeach
@@ -28,6 +29,7 @@
         <div class="form-group">
             <label for="id_jenis_kbk">Jenis KBK</label>
             <select name="id_jenis_kbk" id="id_jenis_kbk" class="form-control">
+                <option selected> --Pilih Jenis KBK-- </option>
                 @foreach($data_jenis_kbk as $jenis_kbk)
                     <option value="{{ $jenis_kbk->id_jenis_kbk }}" {{ $penguruskbk->id_jenis_kbk == $jenis_kbk->id_jenis_kbk ? 'selected' : '' }}>{{ $jenis_kbk->jenis_kbk }}</option>
                 @endforeach
