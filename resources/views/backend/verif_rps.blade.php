@@ -16,6 +16,9 @@
                         </div>
                     </div>
                     <div class="card-body">
+                        <!-- Add a canvas for the chart -->
+                        <canvas id="rpsChart" width="400" height="200"></canvas>
+
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped" id="example" width="100%" cellspacing="0">
                                 <thead>
@@ -70,4 +73,39 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('rpsChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {!! json_encode($years) !!},
+            datasets: [{
+                label: 'Total RPS Uploads',
+                data: {!! json_encode($rpsUploads) !!},
+                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }, {
+                label: 'Total RPS Verifications',
+                data: {!! json_encode($rpsVerifications) !!},
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>
 @endsection

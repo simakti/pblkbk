@@ -15,7 +15,7 @@ class VerifUas extends Model
         'id_repo_rps',
         'id_pimpinan_prodi',
         'id_penguruskbk',
-        'status_verif_rps',
+        'status_verif_uas',
         'catatan',
         'tanggal_diverifikasi',
     ];
