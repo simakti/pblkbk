@@ -21,7 +21,7 @@ class PengurusKBKController extends Controller
                 ->select('penguruskbk.*', 'dosen.nama_dosen', 'jenis_kbk.jenis_kbk', 'jabatankbk.jabatan')
                 ->orderBy('id_penguruskbk')
                 ->get();
-            return view('backend.penguruskbk', compact('data_penguruskbk'));
+            return view('admin.penguruskbk', compact('data_penguruskbk'));
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
@@ -49,7 +49,7 @@ class PengurusKBKController extends Controller
         $data_jenis_kbk = DB::table('jenis_kbk')->get();
         $data_jabatan_kbk = DB::table('jabatankbk')->get();
 
-        return view('backend.form.form_penguruskbk', compact('data_dosen', 'data_jenis_kbk', 'data_jabatan_kbk'));
+        return view('admin.form.form_penguruskbk', compact('data_dosen', 'data_jenis_kbk', 'data_jabatan_kbk'));
     }
 
     public function store(Request $request)
@@ -78,7 +78,7 @@ class PengurusKBKController extends Controller
         $data_jabatan_kbk = DB::table('jabatankbk')->get();
 
         $penguruskbk = PengurusKBK::where('id_penguruskbk', $id)->first();
-        return view('backend.form.form_edit_penguruskbk', compact('data_dosen', 'data_jenis_kbk', 'data_jabatan_kbk', 'penguruskbk'));
+        return view('admin.form.form_edit_penguruskbk', compact('data_dosen', 'data_jenis_kbk', 'data_jabatan_kbk', 'penguruskbk'));
     }
 
     public function update(Request $request, $id)

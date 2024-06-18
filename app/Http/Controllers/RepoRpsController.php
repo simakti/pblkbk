@@ -20,7 +20,7 @@ class RepoRpsController extends Controller
             ->orderBy('id_repo_rps')
             ->get();
 
-        return view('backend.repo_rps', compact('data_repo_rps'));
+        return view('admin.repo_rps', compact('data_repo_rps'));
     }
 
     public function create()
@@ -29,7 +29,7 @@ class RepoRpsController extends Controller
         $data_dosen = DB::table('dosen')->get();
         $data_matakuliah = DB::table('matakuliah')->get();
 
-        return view('backend.form.form_repo_rps', compact('data_thnakd', 'data_dosen', 'data_matakuliah'));
+        return view('admin.form.form_repo_rps', compact('data_thnakd', 'data_dosen', 'data_matakuliah'));
     }
 
     public function store(Request $request)
@@ -47,30 +47,30 @@ class RepoRpsController extends Controller
         }
 
         // Store the file and get the path
-    $filename = '';
-    if ($request->hasFile('file')) {
-        $file = $request->file('file');
-        $filename = $file->getClientOriginalName(); // Mendapatkan nama asli file
+        $filename = '';
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $filename = $file->getClientOriginalName(); // Mendapatkan nama asli file
 
-        $path = 'public/uploads/ver_files/';
-        $file->storeAs($path, $filename); // Simpan file dengan nama aslinya
-    }
+            $path = 'public/uploads/ver_files/';
+            $file->storeAs($path, $filename); // Simpan file dengan nama aslinya
+        }
 
         // Prepare data to be stored
-    $data = [
-        'id_dosen' => $request->id_dosen,
-        'id_matakuliah' => $request->id_matakuliah,
-        'id_thnakd' => $request->id_thnakd,
-        'file' =>$filename, // Save only the file name
-    ];
+        $data = [
+            'id_dosen' => $request->id_dosen,
+            'id_matakuliah' => $request->id_matakuliah,
+            'id_thnakd' => $request->id_thnakd,
+            'file' =>$filename, // Simpan hanya nama file
+        ];
 
+        // Create a new RepoRps record
+        RepoRps::create($data);
 
-    // Create a new VerifRps record
-    RepoRps::create($data);
+        // Redirect with success message
+        return redirect()->route('repo_rps.index')->with('success', 'Data berhasil disimpan.');
+    }
 
-    // Redirect with success message
-    return redirect()->route('repo_rps.index')->with('success', 'Data berhasil disimpan.');
-}
 
 
     public function edit($id)
@@ -80,7 +80,7 @@ class RepoRpsController extends Controller
         $data_matakuliah = DB::table('matakuliah')->get();
         $repo_rps = RepoRps::findOrFail($id);
 
-        return view('backend.form.form_edit_repo_rps', compact('repo_rps', 'data_thnakd', 'data_dosen', 'data_matakuliah'));
+        return view('admin.form.form_edit_repo_rps', compact('repo_rps', 'data_thnakd', 'data_dosen', 'data_matakuliah'));
     }
 
     public function update(Request $request, $id)

@@ -16,7 +16,7 @@ class PimpinanjurusanController extends Controller
             ->select('pimpinan_jurusan.*', 'dosen.nama_dosen', 'jurusan.jurusan', 'jabatan_pimpinan.jabatan_pimpinan')
             ->orderBy('id_pimpinan_jurusan')
             ->get();
-        return view('backend.pimpinanjurusan', compact('data_pimpinanjurusan'));
+        return view('admin.pimpinanjurusan', compact('data_pimpinanjurusan'));
     }
 
     /**

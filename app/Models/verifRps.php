@@ -10,14 +10,10 @@ class VerifRps extends Model
     protected $table = 'verif_rps'; // Assuming the table name is 'verif_rps'
 
     protected $fillable = [
-        'id_verif_rps',
-        'id_dosen',
-        'id_matakuliah',
-        'id_thnakd',
-        'file',
-        'status',
+        'id_repo_rps',
+        'id_penguruskbk',
+        'status_verif_rps',
         'catatan',
         'tanggal_verif',
     ];
-    public $timestamps = false;
 }

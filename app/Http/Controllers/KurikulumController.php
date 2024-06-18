@@ -14,7 +14,7 @@ class KurikulumController extends Controller
             ->select('kurikulum.*', 'prodi.prodi')
             ->orderBy('id_kurikulum')
             ->get();
-        return view('backend.kurikulum', compact('data_kurikulum'));
+        return view('admin.kurikulum', compact('data_kurikulum'));
     }
 
     /**
