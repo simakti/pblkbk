@@ -26,31 +26,22 @@
                                         <th>Jurusan</th>
                                         <th>Prodi</th>
                                         <th>Email</th>
-                                        <th>Foto</th>
-                                        <th>Status</th>
-                                        <th>Aksi</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($data_dosen as $index => $data)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            <td>{{ $data->nama_dosen }}</td>
+                                            <td>{{ $data->nama }}</td>
                                             <td>{{ $data->nidn }}</td>
                                             <td>{{ $data->nip }}</td>
-                                            <td>{{ $data->jenis_kelamin }}</td>
+                                            <td>{{ $data->gender }}</td>
                                             <td>{{ $data->jurusan }}</td>
                                             <td>{{ $data->prodi }}</td>
                                             <td>{{ $data->email }}</td>
-                                            <td>{{ $data->image }}</td>
-                                            <td>
-                                                @if ($data->status == 0)
-                                                    Tidak Aktif
-                                                @else
-                                                    Aktif
-                                                @endif
-                                            </td>
-                                            <td>
+
+                                            {{-- <td>
                                                 <form action="{{ route('dosen.destroy', $data->id_dosen) }}"
                                                     method="POST">
                                                     @csrf
@@ -59,7 +50,7 @@
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                                 </form>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>

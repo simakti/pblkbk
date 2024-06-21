@@ -34,7 +34,7 @@
                                                 <td>{{ $data->kode_kelas }}</td>
                                                 <td>{{ $data->nama_kelas }}</td>
                                                 <td>{{ $data->prodi }}</td>
-                                                <td>{{ $data->thn_akd }}</td>
+                                                <td>{{ $data->smt_thn_akd }}</td>
                                              </tr>
                                         @endforeach
                                     </tbody>

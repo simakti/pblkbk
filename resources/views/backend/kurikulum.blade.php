@@ -34,8 +34,14 @@
                                                 <td>{{ $data->kode_kurikulum }}</td>
                                                 <td>{{ $data->nama_kurikulum }}</td>
                                                 <td>{{ $data->tahun }}</td>
-                                                <td>{{ $data->prodi }}</td>
-                                                <td>{{ $data->status }}</td>
+                                                <td>{{ $data->id_prodi }}</td>
+                                                <td>
+                                                    @if ($data->status == 0)
+                                                        Tidak Aktif
+                                                    @else
+                                                        Aktif
+                                                    @endif
+                                                </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

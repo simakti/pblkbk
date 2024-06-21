@@ -67,6 +67,15 @@
         </li>
 
         <li class="nav-item">
+            <li class="nav-item">
+                <a class="nav-link " href="/dosen_matkul">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Dosen Matakuliah</span>
+                </a>
+            </li>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link " href="/jurusan">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Jurusan</span>

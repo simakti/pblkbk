@@ -23,6 +23,8 @@ class RepoRpsController extends Controller
         return view('backend.repo_rps', compact('data_repo_rps'));
     }
 
+    
+
     public function create()
     {
         $data_thnakd = DB::table('thnakd')->get();

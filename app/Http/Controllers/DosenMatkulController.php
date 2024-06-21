@@ -6,21 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
-class PimpinanprodiController extends Controller
+class DosenMatkulController extends Controller
 {
     public function index()
     {
-        // $data_pimpinanprodi = DB::table('pimpinan_prodi')
-        //     ->join('jabatan_pimpinan', 'pimpinan_prodi.id_jabatan_pimpinan', '=', 'jabatan_pimpinan.id_jabatan_pimpinan')
-        //     ->join('prodi', 'pimpinan_prodi.id_prodi', '=', 'prodi.id_prodi')
-        //     ->join('dosen', 'pimpinan_prodi.id_dosen', '=', 'dosen.id_dosen')
-        //     ->select('pimpinan_prodi.*', 'dosen.nama_dosen', 'prodi.prodi', 'jabatan_pimpinan.jabatan_pimpinan')
-        //     ->orderBy('id_pimpinan_prodi')
-        //     ->get();
-        $api_url = "https://umkm-pnp.com/heni/index.php?folder=jurusan&file=kaprodi ";
+
+        $api_url = "https://umkm-pnp.com/heni/index.php?folder=dosen&file=matakuliah";
         $response = Http::get($api_url);
-        $data_pimpinanprodi = $response->object()->list;
-        return view('backend.pimpinanprodi', compact('data_pimpinanprodi'));
+        $data_dosenmatkul = $response->object()->list;
+        return view('backend.dosen_matkul', compact('data_dosenmatkul'));
     }
 
     /**
@@ -37,14 +31,14 @@ class PimpinanprodiController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'id_jabatan_pimpinan'=>$request->id_jabatan_pimpinan,
-            'id_prodi'=>$request->id_prodi,
             'id_dosen'=>$request->id_dosen,
-            'periode'=>$request->periode,
-            'status'=>$request->status
+            'id_matakuliah'=>$request->id_matakuliah,
+            'id_kelas'=>$request->id_kelas,
+            'id_thnakd'=>$request->id_thnakd
+
         ];
 
-        DB::table('pimpinan_prodi')->insert($data);
+        DB::table('dosen_matakuliah')->insert($data);
     }
 
     /**
@@ -79,6 +73,5 @@ class PimpinanprodiController extends Controller
         //
     }
 }
-
 
 

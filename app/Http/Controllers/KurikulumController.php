@@ -4,16 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class KurikulumController extends Controller
 {
     public function index()
     {
-        $data_kurikulum = DB::table('kurikulum')
-            ->join('prodi', 'kurikulum.id_prodi', '=', 'prodi.id_prodi')
-            ->select('kurikulum.*', 'prodi.prodi')
-            ->orderBy('id_kurikulum')
-            ->get();
+        // $data_kurikulum = DB::table('kurikulum')
+        //     ->join('prodi', 'kurikulum.id_prodi', '=', 'prodi.id_prodi')
+        //     ->select('kurikulum.*', 'prodi.prodi')
+        //     ->orderBy('id_kurikulum')
+        //     ->get();
+        $api_url = "https://umkm-pnp.com/heni/index.php?folder=matakuliah&file=kurikulum";
+        $response = Http::get($api_url);
+        $data_kurikulum = $response->object()->list;
         return view('backend.kurikulum', compact('data_kurikulum'));
     }
 

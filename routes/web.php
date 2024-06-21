@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\DataKbk;
-use App\Models\Pimpinanjurusan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\KelasController;
@@ -9,17 +7,21 @@ use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\ThnakdController;
 use App\Http\Controllers\DataKbkController;
 use App\Http\Controllers\JurusanController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RepoRpsController;
 use App\Http\Controllers\RepoUasController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\MatkulkbkController;
 use App\Http\Controllers\MatakuliahController;
-use App\Http\Controllers\PenguruskbkController;
+use App\Http\Controllers\BeritaAcaraRpsController;
+use App\Http\Controllers\PengurusKBKController;
 use App\Http\Controllers\PimpinanprodiController;
 use App\Http\Controllers\VerifikasiRpsController;
 use App\Http\Controllers\VerifikasiUasController;
 use App\Http\Controllers\PimpinanjurusanController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DosenMatkulController;
+use App\Http\Controllers\GrafikRpsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +85,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dosen_matkul', [DosenMatkulController::class, 'index'])->name('dosen_matkul');
+    Route::post('/dosen_matkul', [DosenMatkulController::class, 'store']);
+    Route::get('/dosen_matkul/create', [DosenMatkulController::class, 'create'])->name('dosen_matkul.create');
+    Route::delete('/dosen_matkul/{id}', [DosenMatkulController::class, 'destroy'])->name('dosen_matkul.destroy');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/kurikulum', [KurikulumController::class, 'index'])->name('kurikulum');
     Route::post('/kurikulum', [KurikulumController::class, 'store']);
     Route::get('/kurikulum/create', [KurikulumController::class, 'create'])->name('kurikulum.create');
@@ -114,14 +123,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/penguruskbk', [PengurusKBKController::class, 'index'])->name('penguruskbk.index');
     Route::get('/penguruskbk/create', [PengurusKBKController::class, 'create'])->name('penguruskbk.create');
     Route::post('/penguruskbk', [PengurusKBKController::class, 'store'])->name('penguruskbk.store');
-    Route::delete('/penguruskbk/{id}', [PenguruskbkController::class, 'destroy'])->name('penguruskbk.destroy');
+    Route::delete('/penguruskbk/{id}', [PengurusKBKController::class, 'destroy'])->name('penguruskbk.destroy');
     Route::get('/penguruskbk/edit/{id}', [PengurusKBKController::class, 'edit'])->name('penguruskbk.edit');
     Route::put('/penguruskbk/update/{id}', [PengurusKBKController::class, 'update'])->name('penguruskbk.update');
     Route::get('/penguruskbk/export', [PengurusKBKController::class, 'export'])->name('penguruskbk.export');
     Route::post('/penguruskbk/import', [PengurusKBKController::class, 'import'])->name('penguruskbk.import');
 });
-
-
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/datakbk', [DataKbkController::class, 'index'])->name('datakbk.index');
@@ -186,13 +193,33 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 });
 
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/berita_acara_rps', [BeritaAcaraRpsController::class, 'index'])->name('berita_acara_rps.index');
+    Route::get('/berita_acara_rps/create', [BeritaAcaraRpsController::class,'create'])->name('berita_acara_rps.create');
+    Route::post('/berita_acara_rps', [BeritaAcaraRpsController::class, 'store'])->name('berita_acara_rps.store');
+    Route::delete('/berita_acara_rps/{id}', [BeritaAcaraRpsController::class, 'destroy'])->name('berita_acara_rps.destroy');
+    Route::get('/berita_acara_rps/edit/{id}', [BeritaAcaraRpsController::class, 'edit'])->name('berita_acara_rps.edit');
+    Route::put('/berita_acara_rps/update/{id}', [BeritaAcaraRpsController::class, 'update'])->name('berita_acara_rps.update');
+
+});
 
 
-Route::get('/dashboard', function () {
-    return view('backend.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 
+Route::middleware('guest')->group(function () {
+    Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'signUp'])->name('auth.signup');
+
+    Route::get('/login', [AuthController::class, 'index'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+
+    Route::get('forgot-password', [AuthController::class, 'viewForgotPassword'])->name('auth.view_forgot_password');
+    Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('auth.forgot_password');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+});
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -200,7 +227,13 @@ Route::get('/dashboard', function () {
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 
+Route::middleware('auth')->group(function () {
+    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+});
 
 require __DIR__.'/auth.php';

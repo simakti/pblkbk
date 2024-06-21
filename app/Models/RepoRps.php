@@ -2,20 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class RepoRps extends Model
 {
-    use HasFactory;
-    protected $table = 'repo_rps'; // Assuming the table name is 'verif_rps'
-
-    protected $fillable = [
-        'id_verif_rps',
-        'id_dosen',
-        'id_matakuliah',
-        'id_thnakd',
-        'file',
-    ];
+    protected $table = 'repo_rps';
+    protected $primaryKey = 'id_repo_rps';
     public $timestamps = false;
+
+    public function thnakd()
+    {
+        return $this->belongsTo(Thnakd::class, 'id_thnakd');
+    }
+
+    public function dosen()
+    {
+        return $this->belongsTo(Dosen::class, 'id_dosen');
+    }
+
+    public function matakuliah()
+    {
+        return $this->belongsTo(Matakuliah::class, 'id_matakuliah');
+    }
 }
