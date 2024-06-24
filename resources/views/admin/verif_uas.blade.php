@@ -21,7 +21,6 @@
                                     <tr class="table-dark">
                                         <th>NO</th>
                                         <th>Tahun Akademik</th>
-                                        <th>Dosen Upload RPS</th>
                                         <th>Matakuliah</th>
                                         <th>Semester</th>
                                         <th>Dosen Verifikasi</th>
@@ -37,6 +36,7 @@
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $data->thn_akd }}</td>
+<<<<<<< HEAD
                                         <td>{{ $data->nama_matakuliah }}</td>
                                         <td>{{ $data->semester }}</td>
                                         <td>{{ $data->nama_dosen }}</td>

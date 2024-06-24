@@ -4,18 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class PimpinanjurusanController extends Controller
 {
     public function index()
     {
-        $data_pimpinanjurusan = DB::table('pimpinan_jurusan')
-            ->join('jabatan_pimpinan', 'pimpinan_jurusan.id_jabatan_pimpinan', '=', 'jabatan_pimpinan.id_jabatan_pimpinan')
-            ->join('jurusan', 'pimpinan_jurusan.id_jurusan', '=', 'jurusan.id_jurusan')
-            ->join('dosen', 'pimpinan_jurusan.id_dosen', '=', 'dosen.id_dosen')
-            ->select('pimpinan_jurusan.*', 'dosen.nama_dosen', 'jurusan.jurusan', 'jabatan_pimpinan.jabatan_pimpinan')
-            ->orderBy('id_pimpinan_jurusan')
-            ->get();
+        // $data_pimpinanjurusan = DB::table('pimpinan_jurusan')
+        //     ->join('jabatan_pimpinan', 'pimpinan_jurusan.id_jabatan_pimpinan', '=', 'jabatan_pimpinan.id_jabatan_pimpinan')
+        //     ->join('jurusan', 'pimpinan_jurusan.id_jurusan', '=', 'jurusan.id_jurusan')
+        //     ->join('dosen', 'pimpinan_jurusan.id_dosen', '=', 'dosen.id_dosen')
+        //     ->select('pimpinan_jurusan.*', 'dosen.nama_dosen', 'jurusan.jurusan', 'jabatan_pimpinan.jabatan_pimpinan')
+        //     ->orderBy('id_pimpinan_jurusan')
+        //     ->get();
+        $api_url = "https://umkm-pnp.com/heni/index.php?folder=jurusan&file=pimpinan";
+        $response = Http::get($api_url);
+        $data_pimpinanjurusan = $response->object()->list;
         return view('admin.pimpinanjurusan', compact('data_pimpinanjurusan'));
     }
 

@@ -1,4 +1,9 @@
+<<<<<<<< HEAD:resources/views/admin/repo_rps.blade.php
 @extends('layouts.admin.template')
+========
+@extends('layouts.backend.template')
+
+>>>>>>>> 28d638665c65bf109ef3b6fbd2b2333a2dff0a3e:resources/views/backend/repo_rps.blade.php
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="card">
@@ -37,9 +42,8 @@
                                         <td>{{ $data->nama_matakuliah }}</td>
                                         <td>{{ $data->semester }}</td>
                                         <td>
-                                            <a href="{{('storage/uploads/ver_files/' . $data->file) }}" target="_blank">Lihat file</a>
+                                            <a href="{{ asset('storage/uploads/ver_files/' . $data->file) }}" target="_blank">Lihat file</a>
                                         </td>
-
                                         <td>
                                             <form action="{{ route('repo_rps.edit', $data->id_repo_rps) }}" method="GET" style="display:inline;">
                                                 <button type="submit" class="btn btn-warning btn-sm">Edit</button>
@@ -57,8 +61,61 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Chart Placeholder -->
+                <div class="mt-4">
+                    <h5 class="card-title mb-4">Grafik Upload RPS per Tahun Akademik</h5>
+                    <canvas id="rpsUploadChart" width="400" height="200"></canvas>
+                </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // PHP data passed from Blade to JavaScript
+        const banyakPengunggahan = @json($banyakPengunggahan);
+        const semesters = @json($semesters);
+
+        // Prepare data for Chart.js
+        const data = {
+            labels: semesters,
+            datasets: [{
+                label: 'Number of RPS Uploads',
+                data: Object.values(banyakPengunggahan),
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        // Chart.js configuration
+        const ctx = document.getElementById('rpsUploadChart').getContext('2d');
+        const rpsUploadChart = new Chart(ctx, {
+            type: 'bar',
+            data: data,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Uploads'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Academic Year'
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
 @endsection

@@ -27,9 +27,15 @@
                                                 <td>{{ $index + 1 }}</td>
                                                 <td>{{ $data->jabatan_pimpinan }}</td>
                                                 <td>{{ $data->jurusan }}</td>
-                                                <td>{{ $data->nama_dosen }}</td>
+                                                <td>{{ $data->nama}}</td>
                                                 <td>{{ $data->periode }}</td>
-                                                <td>{{ $data->status }}</td>
+                                                <td>
+                                                    @if ($data->status == 0)
+                                                        Tidak Aktif
+                                                    @else
+                                                        Aktif
+                                                    @endif
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

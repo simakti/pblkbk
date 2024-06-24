@@ -27,6 +27,7 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+<<<<<<< HEAD
                             <!-- Nama Pengurus KBK -->
                             <div class="mb-3">
                                 <label for="id_penguruskbk" class="form-label">Dosen Verifikasi</label>

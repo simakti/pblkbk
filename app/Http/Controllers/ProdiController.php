@@ -4,16 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class ProdiController extends Controller
 {
     public function index()
     {
-        $data_prodi = DB::table('prodi')
-            ->join('jurusan', 'prodi.id_jurusan', '=', 'jurusan.id_jurusan')
-            ->select('prodi.*', 'jurusan.jurusan')
-            ->orderBy('id_prodi')
-            ->get();
+        // $data_prodi = DB::table('prodi')
+        //     ->join('jurusan', 'prodi.id_jurusan', '=', 'jurusan.id_jurusan')
+        //     ->select('prodi.*', 'jurusan.jurusan')
+        //     ->orderBy('id_prodi')
+        //     ->get();
+        $api_url = "https://umkm-pnp.com/heni/index.php?folder=jurusan&file=prodi";
+        $response = Http::get($api_url);
+        $data_prodi = $response->object()->list;
         return view('admin.prodi', compact('data_prodi'));
     }
 

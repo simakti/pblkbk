@@ -31,8 +31,8 @@
                                                 <td>{{ $index + 1 }}</td>
                                                 <td>{{ $data->kode_prodi }}</td>
                                                 <td>{{ $data->prodi }}</td>
-                                                <td>{{ $data->jurusan }}</td>
-                                                <td>{{ $data->jenjang }}</td>
+                                                <td>{{ $data->id_jurusan }}</td>
+                                                <td>{{ $data->id_jenjang }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>

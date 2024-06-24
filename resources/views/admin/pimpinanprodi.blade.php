@@ -29,7 +29,13 @@
                                                 <td>{{ $data->prodi }}</td>
                                                 <td>{{ $data->nama_dosen }}</td>
                                                 <td>{{ $data->periode }}</td>
-                                                <td>{{ $data->status }}</td>
+                                                <td>
+                                                    @if ($data->status == 0)
+                                                        Tidak Aktif
+                                                    @else
+                                                        Aktif
+                                                    @endif
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

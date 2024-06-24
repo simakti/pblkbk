@@ -17,6 +17,7 @@
                             @method('PUT')
                             <!-- Repo RPS -->
                             <div class="mb-3">
+<<<<<<< HEAD
                                 <label for="id_repo_uas" class="form-label">Repo RPS</label>
                                 <select name="id_repo_uas" id="id_repo_uas" class="form-control">
                                     <option selected> --Pilih Repo RPS-- </option>

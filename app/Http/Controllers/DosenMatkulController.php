@@ -6,19 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
-class KurikulumController extends Controller
+class DosenMatkulController extends Controller
 {
     public function index()
     {
-        // $data_kurikulum = DB::table('kurikulum')
-        //     ->join('prodi', 'kurikulum.id_prodi', '=', 'prodi.id_prodi')
-        //     ->select('kurikulum.*', 'prodi.prodi')
-        //     ->orderBy('id_kurikulum')
-        //     ->get();
-        $api_url = "https://umkm-pnp.com/heni/index.php?folder=matakuliah&file=kurikulum";
+
+        $api_url = "https://umkm-pnp.com/heni/index.php?folder=dosen&file=matakuliah";
         $response = Http::get($api_url);
-        $data_kurikulum = $response->object()->list;
-        return view('admin.kurikulum', compact('data_kurikulum'));
+        $data_dosenmatkul = $response->object()->list;
+        return view('backend.dosen_matkul', compact('data_dosenmatkul'));
     }
 
     /**
@@ -35,16 +31,14 @@ class KurikulumController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'kode_kurikulum'=>$request->kode_kurikulum,
-            'nama_kurikulum'=>$request->nama_kurikulum,
-            'tahun'=>$request->tahun,
-            'id_prodi'=>$request->id_prodi,
-            'status'=>$request->status
-
+            'id_dosen'=>$request->id_dosen,
+            'id_matakuliah'=>$request->id_matakuliah,
+            'id_kelas'=>$request->id_kelas,
+            'id_thnakd'=>$request->id_thnakd
 
         ];
 
-        DB::table('kurikulum')->insert($data);
+        DB::table('dosen_matakuliah')->insert($data);
     }
 
     /**
@@ -79,3 +73,5 @@ class KurikulumController extends Controller
         //
     }
 }
+
+

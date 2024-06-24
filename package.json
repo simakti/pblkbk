@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "sneat-bootstrap-html-admin-template-free",
   "description": "Most Powerful & Comprehensive Free Bootstrap 5 HTML Admin Dashboard Template built for developers! 🚀",
   "license": "MIT",
@@ -107,4 +108,19 @@
     ],
     "default": "development"
   }
+=======
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "axios": "^1.7.2",
+        "laravel-vite-plugin": "^0.7.2",
+        "vite": "^4.0.0"
+    },
+    "dependencies": {
+        "apexcharts": "^3.49.1"
+    }
+>>>>>>> 28d638665c65bf109ef3b6fbd2b2333a2dff0a3e
 }
