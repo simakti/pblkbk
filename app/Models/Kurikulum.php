@@ -9,4 +9,5 @@ class Kurikulum extends Model
 {
     use HasFactory;
     protected $table = 'kurikulum';
+    public $timestamps = false;
 }

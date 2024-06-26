@@ -14,7 +14,7 @@
                 <div class="card-header">Forgot Password</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('auth.forgot_password') }}">
-                        @csrf
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}"> <!-- Change this line to add CSRF token -->
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                             <div class="col-md-6">

@@ -14,7 +14,7 @@ class RepoRPSSeeder extends Seeder
     public function run(): void
     {
         $RepoRPSData = [
-            [3, 13, 13, '']
+            [3, 13, 1, '']
         ];
 
         foreach ($RepoRPSData as $data) {

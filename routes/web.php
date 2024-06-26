@@ -203,14 +203,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware('guest')->group(function () {
-    Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
-    Route::post('/register', [AuthController::class, 'signUp'])->name('auth.signup');
-
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
+    Route::post('/register/post', [AuthController::class, 'signUp'])->name('register.post');
+    // Route::post('/register', [AuthController::class, 'register'])->name('register.post');
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
-
-    Route::get('forgot-password', [AuthController::class, 'viewForgotPassword'])->name('auth.view_forgot_password');
-    Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('auth.forgot_password');
+    Route::post('/forgot-password', [AuthController::class, 'forgotPassword'])->name('forgot.password');
 });
 
 Route::middleware('auth')->group(function () {

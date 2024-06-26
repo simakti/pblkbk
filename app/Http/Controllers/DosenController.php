@@ -24,8 +24,8 @@ class DosenController extends Controller
         $api_url = "https://umkm-pnp.com/heni/index.php?folder=dosen&file=index";
         $response = Http::get($api_url);
         $data_dosen = $response->object()->list;
-        // dd($data_dosen->list);
-        return view('admin.dosen', compact('data_dosen'));
+        // dd($data_dosen);
+        return view('backend.dosen', compact('data_dosen'));
     }
 
     /**
