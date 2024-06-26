@@ -69,14 +69,14 @@
     </div>
 </div>
 @endsection
-
+{{--
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         // PHP data passed from Blade to JavaScript
         const banyakPengunggahan = @json($banyakPengunggahan);
-        const semesters = @json($semesters);
+        const semester = @json($semester);
 
         // Prepare data for Chart.js
         const data = {
@@ -115,4 +115,4 @@
         });
     });
 </script>
-@endsection
+@endsection --}}
