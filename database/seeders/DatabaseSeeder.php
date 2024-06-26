@@ -39,6 +39,8 @@ class DatabaseSeeder extends Seeder
         $this->call([RepoUASSeeder::class,]);
         $this->call([VerifRPSSeeder::class,]);
         $this->call([VerifUASSeeder::class,]);
+        $this->call([UsersSeeder::class,]);
+        $this->call([PermissionSeeder::class,]);
 
 
     }

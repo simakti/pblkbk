@@ -11,31 +11,27 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view('auth.login'); // Ensure you have this view
+        return view('auth.login');
     }
 
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard'); // Redirect to the intended page
+        if (Auth::attempt($request->only('email', 'password'))) {
+            return redirect('/dashboard');
         }
-
-        return redirect('login')->withErrors('Login details are not valid');
+        return redirect('/login')->with('error', 'Invalid credentials.');
     }
 
-    public function showRegistrationForm()
-    {
-        return view('auth.register'); // Ensure you have this view
+    public function register(){
+        return view('auth.register');
     }
 
     public function signUp(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed'],
         ]);
 
         $user = User::create([
@@ -44,9 +40,17 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        Auth::login($user);
+        return redirect('/login')->with('success', 'Registration successful. Please login.');
+    }
 
-        return redirect()->route('home')->with('success', 'Registration successful');
+    public function logout(Request $request)
+    {
+        Auth::logout(); // Memanggil fungsi logout dari Auth
+
+        $request->session()->invalidate(); // Menghapus session
+        $request->session()->regenerateToken(); // Me-regenerate token CSRF
+
+        return redirect('/'); // Redirect ke halaman utama setelah logout
     }
 
     public function viewForgotPassword()
@@ -56,19 +60,11 @@ class AuthController extends Controller
 
     public function forgotPassword(Request $request)
     {
-        $request->validate([
-            'email' => 'required|string|email|max:255',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
+        // Implement forgot password functionality
+    }
 
-        $user = User::where('email', $request->email)->first();
-
-        if ($user) {
-            $user->password = Hash::make($request->password);
-            $user->save();
-            return redirect()->route('login')->with('success', 'Password reset successful');
-        }
-
-        return redirect()->back()->withErrors('Email not found');
+    public function redirectToHome()
+    {
+        return redirect()->route('/');
     }
 }

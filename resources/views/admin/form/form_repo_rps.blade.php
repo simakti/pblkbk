@@ -25,18 +25,6 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="id_dosen" class="form-label">Nama Dosen</label>
-                                <select name="id_dosen" id="id_dosen" class="form-control">
-                                    <option selected> --Pilih Dosen-- </option>
-                                    @foreach($data_dosen as $dosen)
-                                        <option value="{{ $dosen->id_dosen }}">{{ $dosen->nama_dosen }}</option>
-                                    @endforeach
-                                </select>
-                                @error('id_dosen')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
                                 <label for="id_matakuliah" class="form-label">Matakuliah</label>
                                 <select name="id_matakuliah" id="id_matakuliah" class="form-control">
                                     <option selected> --Pilih Matakuliah-- </option>
@@ -54,6 +42,10 @@
                                 @error('file')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
+                            </div>
+                            <div class="mb-3">
+                                <p>Sedang login sebagai: {{ Auth::user()->name }}</p>
+                                <p>Matakuliah: {{ $data_matakuliah->first()->nama_matakuliah ?? 'Belum dipilih' }}</p>
                             </div>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </form>

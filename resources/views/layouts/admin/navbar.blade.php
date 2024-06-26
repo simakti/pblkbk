@@ -20,6 +20,7 @@
         </li>
 
         <!-- Layouts -->
+        @hasrole('admin')
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
@@ -30,27 +31,33 @@
                 <li class="menu-item"><a href="/prodi" class="menu-link"><div data-i18n="Without navbar">Prodi</div></a></li>
                 <li class="menu-item"><a href="/jurusan" class="menu-link"><div data-i18n="Blank">Jurusan</div></a></li>
                 <li class="menu-item"><a href="/thnakd" class="menu-link"><div data-i18n="Container">Tahun Akademik</div></a></li>
+                <li class="menu-item"><a href="/dosenmatakuliah" class="menu-link"><div data-i18n="Container">Dosen Matakuliah</div></a></li>
                 <li class="menu-item"><a href="/kurikulum" class="menu-link"><div data-i18n="Fluid">Kurikulum</div></a></li>
                 <li class="menu-item"><a href="/matakuliah" class="menu-link"><div data-i18n="Blank">Matakuliah</div></a></li>
                 <li class="menu-item"><a href="/pimpinanjurusan" class="menu-link"><div data-i18n="Blank">Pimpinan Jurusan</div></a></li>
                 <li class="menu-item"><a href="/pimpinanprodi" class="menu-link"><div data-i18n="Blank">Pimpinan Prodi</div></a></li>
             </ul>
         </li>
+        @endhasrole
 
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Entry Data KBK</span>
         </li>
+
+        @hasrole('penguruskbk|admin')
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Account Settings">KBK</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item"><a href="/penguruskbk" class="menu-link"><div data-i18n="Account">Pengurus KBK</div></a></li>
+                <li class="menu-item"><a href="/penguruskbk" class="menu-link"><div data-i18n="Account">Dosen KBK</div></a></li>
                 <li class="menu-item"><a href="/datakbk" class="menu-link"><div data-i18n="Notifications">Data KBK</div></a></li>
                 <li class="menu-item"><a href="/matkul_kbk" class="menu-link"><div data-i18n="Connections">Mata Kuliah KBK</div></a></li>
+
             </ul>
         </li>
+        @endhasrole
 
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -58,8 +65,12 @@
                 <div data-i18n="Authentications">Data RPS</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item"><a href="/repo_rps" class="menu-link" target="_blank"><div data-i18n="Basic">Upload RPS</div></a></li>
-                <li class="menu-item"><a href="/verif_rps" class="menu-link" target="_blank"><div data-i18n="Basic">Verifikasi RPS</div></a></li>
+                @hasrole('dosenpengampu|admin')
+                <li class="menu-item"><a href="/repo_rps" class="menu-link"><div data-i18n="Basic">Upload RPS</div></a></li>
+                @endhasrole
+                @hasrole('kaprodi|admin|penguruskbk')
+                <li class="menu-item"><a href="/verif_rps" class="menu-link"><div data-i18n="Basic">Verifikasi RPS</div></a></li>
+                @endhasrole
             </ul>
         </li>
 
@@ -69,32 +80,29 @@
                 <div data-i18n="Misc">Data Soal Uas</div>
             </a>
             <ul class="menu-sub">
+                @hasrole('dosenpengampu|admin')
                 <li class="menu-item"><a href="/repo_uas" class="menu-link"><div data-i18n="Error">Upload Soal Uas</div></a></li>
+                @endhasrole
+                @hasrole('kaprodi|admin|penguruskbk')
                 <li class="menu-item"><a href="/verif_uas" class="menu-link"><div data-i18n="Under Maintenance">Verifikasi Uas</div></a></li>
+                @endhasrole
             </ul>
         </li>
+        @hasrole('kaprodi|penguruskbk|admin')
         <li class="menu-item">
             <a href="/berita_acara_rps" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cube-alt"></i>
                 <div data-i18n="Analytics">Berita Acara RPS</div>
             </a>
         </li>
+        <li class="menu-item">
+            <a href="/berita_acara_uas" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                <div data-i18n="Analytics">Berita Acara UAS</div>
+            </a>
+        </li>
+        @endhasrole
 
-        <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Entry Data TA</span>
-        </li>
-        <li class="menu-item">
-            <a href="index.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                <div data-i18n="Analytics">Upload Proposal</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="index.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                <div data-i18n="Analytics">Review Proposal</div>
-            </a>
-        </li>
     </ul>
 </aside>
 
@@ -139,8 +147,8 @@
                                         </div>
                                     </div>
                                     <div class="flex-grow-1">
-                                        <span class="fw-semibold d-block">John Doe</span>
-                                        <small class="text-muted">Admin</small>
+                                        <span class="fw-semibold d-block">{{ Auth::user()->name }}</span>
+                                        <small class="text-muted">{{ Auth::user()->getRoleNames()->join(', ') }}</small>
                                     </div>
                                 </div>
                             </a>
@@ -158,8 +166,7 @@
                             </a>
                         </li>
                         <li><div class="dropdown-divider"></div></li>
-                        <li><a class="dropdown-item" href="/login"><i class="bx bx-power-off me-2"></i><span class="align-middle">Log Out</span></a></li>
-                    </ul>
+                        <li><a class="dropdown-item" href="/"><i class="bx bx-power-off me-2"></i><span class="align-middle">Log Out</span></a></li>                    </ul>
                 </li>
                 <!--/ User -->
             </ul>
@@ -168,8 +175,8 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById('logout-link').addEventListener('click', function(event) {
-                event.preventDefault();
-                document.getElementById('logout-form').submit();
+                event.preventDefault(); // Mencegah perilaku default dari link
+                document.getElementById('logout-form').submit(); // Melakukan submit form
             });
         });
     </script>

@@ -4,9 +4,8 @@
         © <script>document.write(new Date().getFullYear());</script>, Sistem Manajemen KBK
       </div>
       <div>
-        <a href="https://themeselection.com" target="_blank" class="footer-link me-4">ThemeSelection</a>
-        <a href="https://themeselection.com/license/" target="_blank" class="footer-link me-4">License</a>
-        <a href="https://themeselection.com/support/" target="_blank" class="footer-link d-none d-sm-inline-block">Support</a>
+        <a href="https://instagram.com/simak.ti" target="_blank" class="footer-link me-4">Instagram</a>
+        <a href="https://ti.pnp.ac.id" target="_blank" class="footer-link me-4">Teknologi Informasi</a>
       </div>
     </div>
   </footer>

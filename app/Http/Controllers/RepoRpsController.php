@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\RepoRps;
+use App\Models\Dosen;
+use App\Models\Matakuliah;
+use App\Models\Thnakd;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -16,7 +20,7 @@ class RepoRpsController extends Controller
             ->join('thnakd', 'repo_rps.id_thnakd', '=', 'thnakd.id_thnakd')
             ->join('dosen', 'repo_rps.id_dosen', '=', 'dosen.id_dosen')
             ->join('matakuliah', 'repo_rps.id_matakuliah', '=', 'matakuliah.id_matakuliah')
-            ->select('repo_rps.*', 'thnakd.thn_akd','dosen.nama_dosen', 'matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester')
+            ->select('repo_rps.*', 'thnakd.thn_akd', 'dosen.nama_dosen', 'matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester')
             ->orderBy('id_repo_rps')
             ->get();
 
@@ -25,11 +29,15 @@ class RepoRpsController extends Controller
 
     public function create()
     {
-        $data_thnakd = DB::table('thnakd')->get();
-        $data_dosen = DB::table('dosen')->get();
-        $data_matakuliah = DB::table('matakuliah')->get();
+        $data_thnakd = Thnakd::all();
+        $dosen = Auth::user();
+        $data_matakuliah = DB::table('dosen_matakuliah')
+            ->join('matakuliah', 'dosen_matakuliah.id_matakuliah', '=', 'matakuliah.id_matakuliah')
+            ->where('dosen_matakuliah.id_dosen', $dosen->id_dosen)
+            ->select('matakuliah.id_matakuliah', 'matakuliah.nama_matakuliah')
+            ->get();
 
-        return view('admin.form.form_repo_rps', compact('data_thnakd', 'data_dosen', 'data_matakuliah'));
+        return view('admin.form.form_repo_rps', compact('data_thnakd', 'data_matakuliah'));
     }
 
     public function store(Request $request)
@@ -37,7 +45,6 @@ class RepoRpsController extends Controller
         // Validate the request
         $validator = Validator::make($request->all(), [
             'id_thnakd' => 'required|integer|exists:thnakd,id_thnakd',
-            'id_dosen' => 'required|integer|exists:dosen,id_dosen',
             'id_matakuliah' => 'required|integer|exists:matakuliah,id_matakuliah',
             'file' => 'required|file|mimes:pdf,doc,docx|max:50000',
         ]);
@@ -51,17 +58,16 @@ class RepoRpsController extends Controller
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $filename = $file->getClientOriginalName(); // Mendapatkan nama asli file
-
             $path = 'public/uploads/ver_files/';
             $file->storeAs($path, $filename); // Simpan file dengan nama aslinya
         }
 
         // Prepare data to be stored
         $data = [
-            'id_dosen' => $request->id_dosen,
+            'id_dosen' => Auth::user()->id_dosen, // Menggunakan ID dosen yang sedang login
             'id_matakuliah' => $request->id_matakuliah,
             'id_thnakd' => $request->id_thnakd,
-            'file' =>$filename, // Simpan hanya nama file
+            'file' => $filename, // Simpan hanya nama file
         ];
 
         // Create a new RepoRps record
@@ -71,24 +77,25 @@ class RepoRpsController extends Controller
         return redirect()->route('repo_rps.index')->with('success', 'Data berhasil disimpan.');
     }
 
-
-
     public function edit($id)
     {
-        $data_thnakd = DB::table('thnakd')->get();
-        $data_dosen = DB::table('dosen')->get();
-        $data_matakuliah = DB::table('matakuliah')->get();
+        $data_thnakd = Thnakd::all();
+        $dosen = Auth::user();
+        $data_matakuliah = DB::table('dosen_matakuliah')
+            ->join('matakuliah', 'dosen_matakuliah.id_matakuliah', '=', 'matakuliah.id_matakuliah')
+            ->where('dosen_matakuliah.id_dosen', $dosen->id_dosen)
+            ->select('matakuliah.id_matakuliah', 'matakuliah.nama_matakuliah')
+            ->get();
         $repo_rps = RepoRps::findOrFail($id);
 
-        return view('admin.form.form_edit_repo_rps', compact('repo_rps', 'data_thnakd', 'data_dosen', 'data_matakuliah'));
+        return view('admin.form.form_edit_repo_rps', compact('repo_rps', 'data_thnakd', 'data_matakuliah'));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'id_thnakd' => 'required|integer',
-            'id_dosen' => 'required|integer',
-            'id_matakuliah' => 'required|integer',
+            'id_thnakd' => 'required|integer|exists:thnakd,id_thnakd',
+            'id_matakuliah' => 'required|integer|exists:matakuliah,id_matakuliah',
             'file' => 'nullable|file|mimes:pdf,doc,docx|max:50000',
         ]);
 
@@ -96,18 +103,19 @@ class RepoRpsController extends Controller
 
         // Update data
         $repo_rps->id_thnakd = $request->id_thnakd;
-        $repo_rps->id_dosen = $request->id_dosen;
         $repo_rps->id_matakuliah = $request->id_matakuliah;
 
         if ($request->hasFile('file')) {
             // Delete old file if exists
             if ($repo_rps->file) {
-                Storage::disk('public')->delete($repo_rps->file);
+                Storage::disk('public')->delete('uploads/ver_files/' . $repo_rps->file);
             }
 
             // Store new file
-            $filePath = $request->file('file')->store('uploads/ver_files', 'public');
-            $repo_rps->file = $filePath;
+            $file = $request->file('file');
+            $filename = $file->getClientOriginalName();
+            $filePath = $file->storeAs('uploads/ver_files', $filename, 'public');
+            $repo_rps->file = $filename;
         }
 
         $repo_rps->save();
@@ -121,7 +129,7 @@ class RepoRpsController extends Controller
 
         // Delete file if exists
         if ($repo_rps->file) {
-            Storage::disk('public')->delete($repo_rps->file);
+            Storage::disk('public')->delete('uploads/ver_files/' . $repo_rps->file);
         }
 
         $repo_rps->delete();

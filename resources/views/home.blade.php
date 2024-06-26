@@ -6,7 +6,7 @@
         <div class="container px-5">
             <div class="row gx-5 align-items-center justify-content-center">
                 <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5"
-                        src="frontend/images/ti.jpg" alt="..." /></div>
+                        src=" {{ asset ('images/frontend/postti.jpg')}}" alt="..." /></div>
                 <div class="col-lg-8 col-xl-7 col-xxl-6">
                     <div class="my-5 text-center text-xl-start">
                         <h1 class="display-5 fw-bolder text-black mb-2">WELCOME TO SIMAK TI</h1>
@@ -75,7 +75,7 @@
                         <div class="row gx-5">
                             <div class="col-lg-4 mb-5">
                                 <div class="card h-100 shadow border-0">
-                                    <img class="card-img-top" src="frontend/images/yulherniwati.jpg" alt="..." />
+                                    <img class="card-img-top" src="{{ asset ('images/frontend/yulherniwati.jpg')}}" alt="..." />
                                     <div class="card-body p-4">
                                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">SOFTAM</div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
@@ -88,7 +88,7 @@
                             </div>
                             <div class="col-lg-4 mb-5">
                                 <div class="card h-100 shadow border-0">
-                                    <img class="card-img-top" src="frontend/images/meriazmi.jpg" alt="..." />
+                                    <img class="card-img-top"  src="{{ asset ('images/frontend/meriazmi.jpg')}}" alt="..." />
                                     <div class="card-body p-4">
                                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">AI</div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
@@ -100,7 +100,7 @@
                             </div>
                             <div class="col-lg-4 mb-5">
                                 <div class="card h-100 shadow border-0">
-                                    <img class="card-img-top" src="frontend/images/default.png" alt="..." />
+                                    <img class="card-img-top" src="{{ asset ('images/frontend/default.png')}}" alt="..." />
                                     <div class="card-body p-4">
                                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">PROGRAMMING</div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
@@ -116,7 +116,7 @@
                         <div class="row gx-5">
                             <div class="col-lg-4 mb-5">
                                 <div class="card h-100 shadow border-0">
-                                    <img class="card-img-top" src="frontend/images/alde.jpg" alt="..." />
+                                    <img class="card-img-top" src="{{ asset ('images/frontend/alde.jpg')}}" alt="..." />
                                     <div class="card-body p-4">
                                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">NETWORK AND CYBERSEC </div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
@@ -128,7 +128,7 @@
                             </div>
                             <div class="col-lg-4 mb-5">
                                 <div class="card h-100 shadow border-0">
-                                    <img class="card-img-top" src="frontend/images/hendra.jpg" alt="..." />
+                                    <img class="card-img-top" src="{{ asset ('images/frontend/hendra.jpg')}}" alt="..." />
                                     <div class="card-body p-4">
                                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">MULTIMEDIA</div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
@@ -160,7 +160,7 @@
                             <div class="text-center">
                                 <div class="fs-4 mb-4 fst-italic">"The Stepping Stone to International Journey"</div>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <img class="rounded-circle me-3" height="40" src="frontend/images/logoti.png"
+                                    <img class="rounded-circle me-3" height="40" src="{{ asset ('images/frontend/logoti.png')}}"
                                         alt="..." />
                                     <div class="fw-bold">
                                         Teknologi Informasi
