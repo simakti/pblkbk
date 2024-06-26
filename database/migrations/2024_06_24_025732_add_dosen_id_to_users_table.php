@@ -11,7 +11,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('dosen_id')->after('id'); // Adding dosen_id after id
+            $table->unsignedBigInteger('dosen_id')->nullable()->after('id');
 
             // Setting up the foreign key constraint
             $table->foreign('dosen_id')->references('id_dosen')->on('dosen')

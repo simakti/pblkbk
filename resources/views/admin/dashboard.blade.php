@@ -12,7 +12,7 @@
                             <div class="card-body">
                                 <h5 class="card-title text-primary">Welcome, {{ Auth::user()->name }}!</h5>
                                 <p class="mb-4">
-                                    Your email is {{ Auth::user()->email }}. Your roles are: {{ Auth::user()->getRoleNames()->join(', ') }}.
+                                    Your roles are: {{ Auth::user()->getRoleNames()->join(', ') }}.
                                 </p>
 
                                 <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>

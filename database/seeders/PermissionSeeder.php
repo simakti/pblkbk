@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 
 class PermissionSeeder extends Seeder
 {
@@ -15,6 +14,7 @@ class PermissionSeeder extends Seeder
     public function run(): void
     {
         // Membuat atau memperbarui peran
+        $roleSuperAdmin = Role::updateOrCreate(['name' => 'superadmin']);
         $roleAdmin = Role::updateOrCreate(['name' => 'admin']);
         $rolePengurusKbk = Role::updateOrCreate(['name' => 'penguruskbk']);
         $roleKaprodi = Role::updateOrCreate(['name' => 'kaprodi']);
@@ -22,25 +22,36 @@ class PermissionSeeder extends Seeder
         $roleDosenPengampu = Role::updateOrCreate(['name' => 'dosenpengampu']);
 
         // Menetapkan peran kepada pengguna
-        $userAdmin = User::find(1); // Sesuaikan dengan ID pengguna Anda
-        $userPengurusKbk = User::find(2); // Sesuaikan dengan ID pengguna Anda
-        $userKaprodi = User::find(3); // Sesuaikan dengan ID pengguna Anda
+        $userSuperAdmin = User::find(1); // Sesuaikan dengan ID pengguna Anda
+        $userAdmin = User::find(2); // Sesuaikan dengan ID pengguna Anda
+        $userPengurusKbk = User::find(3); // Sesuaikan dengan ID pengguna Anda
+        $usersKaprodiIds = [19, 32, 31, 40, 15, 6];
+        $usersKaprodi = User::whereIn('id', $usersKaprodiIds)->get(); // Menggunakan whereIn untuk beberapa ID
+        $userKajur = User::find(24); // Sesuaikan dengan ID pengguna Anda
         $userDosenPengampu = User::find(4); // Sesuaikan dengan ID pengguna Anda
 
+        if ($userSuperAdmin) {
+            $userSuperAdmin->assignRole($roleSuperAdmin);
+        }
+
         if ($userAdmin) {
-            $userAdmin->assignRole('admin');
+            $userAdmin->assignRole($roleAdmin);
         }
 
         if ($userPengurusKbk) {
-            $userPengurusKbk->assignRole('penguruskbk');
+            $userPengurusKbk->assignRole($rolePengurusKbk);
         }
 
-        if ($userKaprodi) {
-            $userKaprodi->assignRole('kaprodi');
+        foreach ($usersKaprodi as $user) {
+            $user->assignRole($roleKaprodi);
+        }
+
+        if ($userKajur) {
+            $userKajur->assignRole($roleKajur);
         }
 
         if ($userDosenPengampu) {
-            $userDosenPengampu->assignRole('dosenpengampu');
+            $userDosenPengampu->assignRole($roleDosenPengampu);
         }
     }
 }
