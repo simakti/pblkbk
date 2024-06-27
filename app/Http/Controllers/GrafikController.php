@@ -60,7 +60,7 @@ class GrafikController extends Controller
 
     public function grafik_uas()
     {
-        $tahun_akademik = Thnakd::get();
+        $tahun_akademik = Thnakd::where('status', 1)->get();
         $banyak_pengunggahan = [];
         foreach ($tahun_akademik as $value) {
             $data['tahun_akademik'] = $value->thn_akd;
