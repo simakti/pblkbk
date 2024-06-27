@@ -35,7 +35,7 @@ class DosenController extends Controller
     {
         $data_dosen = DB::table('dosen')->get();
 
-        return view('backend.form.form_dosen', compact('data_dosen'));
+        return view('admin.form.form_dosen', compact('data_dosen'));
     }
 
 
