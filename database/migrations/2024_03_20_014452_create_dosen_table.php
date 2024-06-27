@@ -21,11 +21,11 @@ return new class extends Migration
             $table->unsignedBigInteger('id_prodi');
             $table->string('email')->unique();
             $table->string('image')->nullable();
-            $table->string('status');
+            $table->string('status')->nullable();
            // $table->unsignedBigInteger('id_jabatan');
            // $table->string('password');
            // $table->unsignedBigInteger('id_kbk');
-           $table->primary('id_dosen');
+           $table->primary('nidn');
 
         });
         Schema::table('dosen', function (Blueprint $table) {

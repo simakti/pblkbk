@@ -20,10 +20,8 @@ class RepoRpsController extends Controller
             ->orderBy('id_repo_rps')
             ->get();
 
-        return view('backend.repo_rps', compact('data_repo_rps'));
+        return view('admin.repo_rps', compact('data_repo_rps'));
     }
-
-    
 
     public function create()
     {
@@ -31,7 +29,7 @@ class RepoRpsController extends Controller
         $data_dosen = DB::table('dosen')->get();
         $data_matakuliah = DB::table('matakuliah')->get();
 
-        return view('backend.form.form_repo_rps', compact('data_thnakd', 'data_dosen', 'data_matakuliah'));
+        return view('admin.form.form_repo_rps', compact('data_thnakd', 'data_dosen', 'data_matakuliah'));
     }
 
     public function store(Request $request)
@@ -82,7 +80,7 @@ class RepoRpsController extends Controller
         $data_matakuliah = DB::table('matakuliah')->get();
         $repo_rps = RepoRps::findOrFail($id);
 
-        return view('backend.form.form_edit_repo_rps', compact('repo_rps', 'data_thnakd', 'data_dosen', 'data_matakuliah'));
+        return view('admin.form.form_edit_repo_rps', compact('repo_rps', 'data_thnakd', 'data_dosen', 'data_matakuliah'));
     }
 
     public function update(Request $request, $id)

@@ -21,7 +21,7 @@ use App\Http\Controllers\PimpinanjurusanController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DosenMatkulController;
-use App\Http\Controllers\GrafikRpsController;
+use App\Http\Controllers\GrafikController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,6 +89,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/dosen_matkul', [DosenMatkulController::class, 'store']);
     Route::get('/dosen_matkul/create', [DosenMatkulController::class, 'create'])->name('dosen_matkul.create');
     Route::delete('/dosen_matkul/{id}', [DosenMatkulController::class, 'destroy'])->name('dosen_matkul.destroy');
+    Route::get('/dosen_matkul/export', [DosenMatkulController::class, 'export'])->name('dosen_matkul.export');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -201,6 +202,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/berita_acara_rps/edit/{id}', [BeritaAcaraRpsController::class, 'edit'])->name('berita_acara_rps.edit');
     Route::put('/berita_acara_rps/update/{id}', [BeritaAcaraRpsController::class, 'update'])->name('berita_acara_rps.update');
 
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/grafik_rps', [GrafikController::class, 'grafik_rps'])->name('grafik_rps');
+});
+Route::get('/notifikasi_verif', function(){
+    notify()->success('Laravel Notify is awesome!');
+    return view('notifikasi_verif');
 });
 
 

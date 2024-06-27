@@ -15,7 +15,7 @@ class RepoUASSeeder extends Seeder
     {
         $RepoUASData = [
 
-            [3, 160, 10, '', '2024-01-30', '2024-02-01']
+            [3, 16, 1, '', '2024-01-30', '2024-02-01']
         ];
 
         foreach ($RepoUASData as $data) {
