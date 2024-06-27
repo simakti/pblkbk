@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\RepoUas;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\Request;
 
 class RepoUasController extends Controller
 {
@@ -65,7 +65,7 @@ class RepoUasController extends Controller
     ];
 
 
-    // Create a new VerifRps record
+    // Create a new VerifUas record
     RepoUas::create($data);
 
     // Redirect with success message

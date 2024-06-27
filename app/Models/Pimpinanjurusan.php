@@ -9,4 +9,5 @@ class Pimpinanjurusan extends Model
 {
     use HasFactory;
     protected $table = 'pimpinan_jurusan';
+    public $timestamps = false;
 }

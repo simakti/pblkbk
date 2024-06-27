@@ -47,30 +47,30 @@ class RepoRpsController extends Controller
         }
 
         // Store the file and get the path
-        $filename = '';
-        if ($request->hasFile('file')) {
-            $file = $request->file('file');
-            $filename = $file->getClientOriginalName(); // Mendapatkan nama asli file
+    $filename = '';
+    if ($request->hasFile('file')) {
+        $file = $request->file('file');
+        $filename = $file->getClientOriginalName(); // Mendapatkan nama asli file
 
-            $path = 'public/uploads/ver_files/';
-            $file->storeAs($path, $filename); // Simpan file dengan nama aslinya
-        }
-
-        // Prepare data to be stored
-        $data = [
-            'id_dosen' => $request->id_dosen,
-            'id_matakuliah' => $request->id_matakuliah,
-            'id_thnakd' => $request->id_thnakd,
-            'file' =>$filename, // Simpan hanya nama file
-        ];
-
-        // Create a new RepoRps record
-        RepoRps::create($data);
-
-        // Redirect with success message
-        return redirect()->route('repo_rps.index')->with('success', 'Data berhasil disimpan.');
+        $path = 'public/uploads/ver_files/';
+        $file->storeAs($path, $filename); // Simpan file dengan nama aslinya
     }
 
+        // Prepare data to be stored
+    $data = [
+        'id_dosen' => $request->id_dosen,
+        'id_matakuliah' => $request->id_matakuliah,
+        'id_thnakd' => $request->id_thnakd,
+        'file' =>$filename, // Save only the file name
+    ];
+
+
+    // Create a new VerifRps record
+    RepoRps::create($data);
+
+    // Redirect with success message
+    return redirect()->route('repo_rps.index')->with('success', 'Data berhasil disimpan.');
+}
 
 
     public function edit($id)

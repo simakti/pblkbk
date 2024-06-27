@@ -20,6 +20,8 @@ use App\Http\Controllers\VerifikasiUasController;
 use App\Http\Controllers\PimpinanjurusanController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DosenMatkulController;
+use App\Http\Controllers\GrafikController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +82,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/matakuliah', [MatakuliahController::class, 'store']);
     Route::get('/matakuliah/create', [MatakuliahController::class, 'create'])->name('matakuliah.create');
     Route::delete('/matakuliah/{id}', [MatakuliahController::class, 'destroy'])->name('matakuliah.destroy');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dosen_matkul', [DosenMatkulController::class, 'index'])->name('dosen_matkul');
+    Route::post('/dosen_matkul', [DosenMatkulController::class, 'store']);
+    Route::get('/dosen_matkul/create', [DosenMatkulController::class, 'create'])->name('dosen_matkul.create');
+    Route::delete('/dosen_matkul/{id}', [DosenMatkulController::class, 'destroy'])->name('dosen_matkul.destroy');
+    Route::get('/dosen_matkul/export', [DosenMatkulController::class, 'export'])->name('dosen_matkul.export');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -194,6 +204,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 });
 
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/grafik_rps', [GrafikController::class, 'grafik_rps'])->name('grafik_rps');
+});
+Route::get('/notifikasi_verif', function(){
+    notify()->success('Laravel Notify is awesome!');
+    return view('notifikasi_verif');
+});
+
+
+
 
 Route::middleware('guest')->group(function () {
     Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
@@ -210,6 +230,11 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');

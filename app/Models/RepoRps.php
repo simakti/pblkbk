@@ -2,20 +2,20 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class RepoRps extends Model
 {
-    protected $table = 'repo_rps';
-
-    protected $primaryKey = 'id_repo_rps';
+    use HasFactory;
+    protected $table = 'repo_rps'; // Assuming the table name is 'verif_rps'
 
     protected $fillable = [
-        'id_thnakd',
+        'id_verif_rps',
         'id_dosen',
         'id_matakuliah',
+        'id_thnakd',
         'file',
     ];
-
     public $timestamps = false;
 }

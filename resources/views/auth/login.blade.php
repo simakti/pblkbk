@@ -1,45 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="slide navbar style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{asset('css/login.css')}}">
 </head>
 <body>
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Login</div>
-                <div class="card-body">
-                    <form method="POST" action="{{ route('auth.login') }}">
-                        @csrf
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" required autofocus>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-                            </div>
-                        </div>
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">Login</button>
-                            </div>
-                        </div>
-                    </form>
-                    <div class="text-center mt-3">
-                        <a href="{{ route('register') }}">Register</a>
-                    </div>
-                </div>
+    <div class="main">
+        <div>
+            <a href="{{route('home')}}" class="back-to-home" style="color: white; display: inline-block; margin-left: 20px; vertical-align: middle; "><img src="images/home.png" alt="Home" style="width:20px; height:20px; margin-right: 5px; "> Home</a>
+        </div>
+        <input type="checkbox" id="chk" aria-hidden="true">
+        <div class="signup">
+            <img src="images/logo.png" alt="Image" style="width: 30%; max-width: 300px; margin: 10px auto; display: block;">
+            <form method="POST" action="{{route('auth.login')}}">
+                @csrf
+                <label for="chk" aria-hidden="true">Login</label>
+                <input type="email" name="email" placeholder="Email" required="">
+                <input type="password" name="password" placeholder="Password" required="">
+                <button>Login</button>
+
+            </form>
+            <div class="forgot-password">
+                <a href="{{route('auth.view_forgot_password')}}" style="margin-left: 20px;">Lupa Password?</a>
             </div>
+
+        </div>
+        <div class="login">
+            <form method="POST" action="{{route('auth.signup')}}">
+                @csrf
+                <label for="chk" aria-hidden="true">Sign up</label>
+                <input type="text" name="name" placeholder="Username" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button>Sign up</button>
+            </form>
         </div>
     </div>
-</div>
 </body>
 </html>

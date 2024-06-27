@@ -25,7 +25,7 @@ class MatkulkbkController extends Controller
             ->orderBy('id_matkul_kbk')
             ->get();
 
-        return view('admin.matkul_kbk', compact('data_matkul_kbk'));
+        return view('backend.matkul_kbk', compact('data_matkul_kbk'));
     }
 
     public function export()
@@ -49,7 +49,7 @@ class MatkulkbkController extends Controller
         $data_jenis_kbk = DB::table('jenis_kbk')->get(); // Mengambil data jenis KBK
         $data_kurikulum = DB::table('kurikulum')->get(); // Mengambil data kurikulum
 
-        return view('admin.form.form_matkul_kbk', compact('data_matakuliah', 'data_jenis_kbk', 'data_kurikulum'));
+        return view('backend.form.form_matkul_kbk', compact('data_matakuliah', 'data_jenis_kbk', 'data_kurikulum'));
     }
 
     public function store(Request $request)
@@ -79,7 +79,7 @@ class MatkulkbkController extends Controller
         $data_kurikulum = DB::table('kurikulum')->get();
 
         $matkul_kbk =matkulkbk::where('id_matkul_kbk', $id)->first();
-        return view('admin.form.form_edit_matkul_kbk', compact('data_matakuliah', 'data_jenis_kbk', 'data_kurikulum', 'matkul_kbk'));
+        return view('backend.form.form_edit_matkul_kbk', compact('data_matakuliah', 'data_jenis_kbk', 'data_kurikulum', 'matkul_kbk'));
     }
 
     /**

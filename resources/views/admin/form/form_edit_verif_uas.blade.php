@@ -28,19 +28,7 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <!-- Nama Dosen -->
-                            <div class="mb-3">
-                                <label for="id_dosen" class="form-label">Nama Dosen Verifikator</label>
-                                <select name="id_dosen" id="id_dosen" class="form-control">
-                                    <option selected> --Pilih Dosen-- </option>
-                                    @foreach($data_dosen as $dosen)
-                                        <option value="{{ $dosen->id_dosen }}" @if($verif_uas->id_dosen == $dosen->id_dosen) selected @endif>{{ $dosen->nama_dosen }}</option>
-                                    @endforeach
-                                </select>
-                                @error('id_dosen')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
+
                             <!-- Status Verifikasi -->
                             <div class="mb-3">
                                 <label for="status_verif_uas" class="form-label">Status Verifikasi</label>
@@ -49,6 +37,7 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+
                             <!-- Catatan -->
                             <div class="mb-3">
                                 <label for="catatan" class="form-label">Catatan</label>
@@ -57,6 +46,7 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+
                             <!-- Tanggal Verifikasi -->
                             <div class="mb-3">
                                 <label for="tanggal_diverifikasi" class="form-label">Tanggal Diverifikasi</label>
@@ -65,6 +55,7 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
+
                             <!-- File -->
                             <div class="mb-3">
                                 <label for="file" class="form-label">Upload File</label>

@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <!-- Page Heading -->
-            <h5 class="card-title mb-4">Data Soal UAS</h5>
+            <h5 class="card-title mb-4">Data Upload Soal UAS</h5>
             <div class="container-fluid">
                 <!-- DataDosen -->
                 <div class="card shadow mb-4">
@@ -57,8 +57,85 @@
                         </div>
                     </div>
                 </div>
+                <h6 class="card-title mb-4">Grafik Upload Soal UAS</h6>
+                <!-- Grafik Section -->
+                <div id="chart"></div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Script Section -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script type="text/javascript">
+
+    async function getData() {
+        var pengunggahan = []
+        var updatedData = []
+        let hitApi = await fetch('http://127.0.0.1:8000/api/graphics/uas')
+            .then(response => response.json())
+            .then((data) => {
+                pengunggahan = data.data.banyak_pengunggahan;
+                updatedData = pengunggahan.map(item => {
+                    return {
+                        x: item.tahun_akademik,
+                        y: item.banyak_pengunggahan
+                    };
+                });
+                // console.log(pengunggahan);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        console.log(updatedData);
+        var options = {
+            chart: {
+            type: 'bar',
+            height: 350
+        },
+        yaxis: {
+            title: {
+                text: 'Jumlah'
+            },
+            labels: {
+                formatter: function(value) {
+                    if (Number.isInteger(value)) {
+                        return value;
+                    }
+                    return '';
+                }
+            }
+        },
+        fill: {
+            opacity: 1
+        },
+        plotOptions: {
+            bar: {
+                horizontal: false,
+                columnWidth: '15%',
+                endingShape: 'rounded'
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            show: true,
+            width: 2,
+            colors: ['transparent']
+        },
+            series: [{
+                data: updatedData
+            }]
+        }
+        console.log(options);
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+        // return updatedData
+    }
+
+    getData();
+
+    
+</script>
 @endsection

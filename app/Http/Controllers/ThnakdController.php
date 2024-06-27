@@ -12,7 +12,7 @@ class ThnakdController extends Controller
         $data_thnakd = DB::table('thnakd')
             ->orderBy('id_thnakd')
             ->get();
-        return view('admin.thnakd', compact('data_thnakd'));
+        return view('backend.thnakd', compact('data_thnakd'));
     }
 
     /**

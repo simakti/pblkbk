@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class KelasController extends Controller
 {
@@ -12,13 +13,16 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $data_kelas = DB::table('kelas')
-            ->join('prodi', 'kelas.id_prodi', '=', 'prodi.id_prodi')
-            ->join('thnakd', 'kelas.id_thnakd', '=', 'thnakd.id_thnakd')
-            ->select('kelas.*', 'thnakd.thn_akd', 'prodi.prodi')
-            ->orderBy('id_kelas')
-            ->get();
-        return view('admin.kelas', compact('data_kelas'));
+        // $data_kelas = DB::table('kelas')
+        //     ->join('prodi', 'kelas.id_prodi', '=', 'prodi.id_prodi')
+        //     ->join('thnakd', 'kelas.id_thnakd', '=', 'thnakd.id_thnakd')
+        //     ->select('kelas.*', 'thnakd.thn_akd', 'prodi.prodi')
+        //     ->orderBy('id_kelas')
+        //     ->get();
+        $api_url = "https://umkm-pnp.com/heni/index.php?folder=mahasiswa&file=kelas";
+        $response = Http::get($api_url);
+        $data_kelas = $response->object()->list;
+        return view('backend.kelas', compact('data_kelas'));
     }
 
     /**

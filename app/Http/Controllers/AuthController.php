@@ -11,31 +11,24 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view('auth.login'); // Ensure you have this view
+        return view('auth.login');
     }
 
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard'); // Redirect to the intended page
+        if(Auth::attempt($request->only('email','password'))){
+            return redirect('/dashboard');
         }
-
-        return redirect('login')->withErrors('Login details are not valid');
-    }
-
-    public function showRegistrationForm()
-    {
-        return view('auth.register'); // Ensure you have this view
+        dd('password salah');
+        return redirect('/login');
     }
 
     public function signUp(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required'],
         ]);
 
         $user = User::create([
@@ -44,9 +37,10 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        Auth::login($user);
 
-        return redirect()->route('home')->with('success', 'Registration successful');
+
+        return redirect('/login'.'Register Succes');
+
     }
 
     public function viewForgotPassword()
@@ -54,21 +48,32 @@ class AuthController extends Controller
         return view('auth.forgot_password');
     }
 
+
     public function forgotPassword(Request $request)
     {
         $request->validate([
-            'email' => 'required|string|email|max:255',
-            'password' => 'required|string|min:8|confirmed',
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255'],
+            'password' => ['required'],
+            'password_confirmation' => ['required'],
         ]);
 
-        $user = User::where('email', $request->email)->first();
-
-        if ($user) {
-            $user->password = Hash::make($request->password);
-            $user->save();
-            return redirect()->route('login')->with('success', 'Password reset successful');
+        if ($request->password != $request->password_confirmation) {
+            echo('<script>alert("Password tidak sesuai!"); history.back()</script>');
         }
 
-        return redirect()->back()->withErrors('Email not found');
+        $user = User::where('email', $request->email)->first();
+        if($user){
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }else{
+            echo('<script>alert("Email tidak ditemukan!")</script>');
+        }
+
+        return view('auth.login');
+
+    }
+    public function redirectToHome()
+    {
+        return redirect()->route('home');
     }
 }

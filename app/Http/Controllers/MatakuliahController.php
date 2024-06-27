@@ -4,17 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class MatakuliahController extends Controller
 {
     public function index()
     {
-        $data_matakuliah = DB::table('matakuliah')
-            ->join('kurikulum', 'matakuliah.id_kurikulum', '=', 'kurikulum.id_kurikulum')
-            ->select('matakuliah.*', 'kurikulum.nama_kurikulum')
-            ->orderBy('id_matakuliah')
-            ->get();
-        return view('admin.matakuliah', compact('data_matakuliah'));
+        // $data_matakuliah = DB::table('matakuliah')
+        //     ->join('kurikulum', 'matakuliah.id_kurikulum', '=', 'kurikulum.id_kurikulum')
+        //     ->select('matakuliah.*', 'kurikulum.nama_kurikulum')
+        //     ->orderBy('id_matakuliah')
+        //     ->get();
+        $api_url = "https://umkm-pnp.com/heni/index.php?folder=matakuliah&file=index";
+        $response = Http::get($api_url);
+        $data_matakuliah = $response->object()->list;
+        return view('backend.matakuliah', compact('data_matakuliah'));
     }
 
     /**

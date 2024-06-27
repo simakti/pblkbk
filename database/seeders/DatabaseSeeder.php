@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\JenisKBK;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,18 +19,20 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        $this->call([jurusanSeeder::class,]);
-        $this->call([prodiSeeder::class,]);
-        $this->call([dosenSeeder::class,]);
+
+        $this->call([JurusanSeeder::class,]);
         $this->call([thnAkdSeeder::class,]);
-        $this->call([KelasSeeder::class,]);
+        $this->call([ProdiSeeder::class,]);
+        $this->call([DosenSeeder::class,]);
+        $this->call([jenisKbkSeeder::class,]);
         $this->call([JabatanPimpinanSeeder::class,]);
-        $this->call([KurikulumSeeder::class,]);
         $this->call([jabatanKbkSeeder::class,]);
-        $this->call([MatakuliahSeeder::class,]);
-        $this->call([DosenMatakuliahSeeder::class,]);
-        $this->call([PimpinanProdiSeeder::class,]);
-        $this->call([PimpinanJurusanSeeder::class,]);
+        $this->call([pimpinanProdiSeeder::class,]);
+        $this->call([kurikulumSeeder::class,]);
+        $this->call([kelasSeeder::class,]);
+        $this->call([matakuliahSeeder::class,]);
+        $this->call([dosenMatkulSeeder::class,]);
+        $this->call([pimpinanJurusanSeeder::class,]);
         $this->call([jenisKBKSeeder::class,]);
         $this->call([matkulKbkSeeder::class,]);
         $this->call([pengurusKbkSeeder::class,]);
@@ -39,6 +40,7 @@ class DatabaseSeeder extends Seeder
         $this->call([RepoUASSeeder::class,]);
         $this->call([VerifRPSSeeder::class,]);
         $this->call([VerifUASSeeder::class,]);
+
 
 
     }

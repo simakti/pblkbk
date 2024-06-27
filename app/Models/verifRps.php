@@ -2,19 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class VerifRps extends Model
 {
+    use HasFactory;
+
     protected $table = 'verif_rps';
-
-    public $timestamps = false;
-
-    protected $fillable = [
-        'id_repo_rps',
-        'id_dosen',
-        'status_verif_rps',
-        'catatan',
-        'tanggal_diverifikasi',
-    ];
+    protected $primaryKey = 'id_verif_rps';
 }

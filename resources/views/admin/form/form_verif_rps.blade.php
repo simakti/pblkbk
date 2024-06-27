@@ -27,19 +27,7 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <!-- Nama Dosen -->
-                            <div class="mb-3">
-                                <label for="id_dosen" class="form-label">Nama Dosen Verifikator</label>
-                                <select name="id_dosen" id="id_dosen" class="form-control">
-                                    <option selected> --Pilih Dosen-- </option>
-                                    @foreach($data_dosen as $dosen)
-                                        <option value="{{ $dosen->id_dosen }}">{{ $dosen->nama_dosen }}</option>
-                                    @endforeach
-                                </select>
-                                @error('id_dosen')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
+
 
                             <!-- Status -->
                             <div class="mb-3">

@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <!-- Page Heading -->
-            <h5 class="card-title  mb-4">Data RPS</h5>
+            <h5 class="card-title  mb-4">Data Verifikasi RPS</h5>
             <div class="container-fluid">
                 <!-- DataDosen -->
                 <div class="card shadow mb-4">
@@ -23,7 +23,7 @@
                                         <th>Tahun Akademik</th>
                                         <th>Matakuliah</th>
                                         <th>Smstr</th>
-                                        <th>Dosen Verifikasi</th>
+                                        <th>Dosen Upload</th>
                                         <th>File</th>
                                         <th>Status</th>
                                         <th>Catatan</th>
@@ -38,7 +38,7 @@
                                         <td>{{ $data->thn_akd }}</td>
                                         <td>{{ $data->nama_matakuliah }}</td>
                                         <td>{{ $data->semester }}</td>
-                                        <td>{{ $data->nama_verifikasi }}</td>
+                                        <td>{{ $data->nama_upload }}</td>
                                         <td>
                                             <a href="{{('storage/uploads/ver_files/' . $data->file) }}" target="_blank">Lihat file</a>
                                         </td>
