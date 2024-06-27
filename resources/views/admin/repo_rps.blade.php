@@ -99,7 +99,8 @@
             var options = {
                 chart: {
                 type: 'bar',
-                height: 350
+                height: 250,
+                width: 600
             },
             yaxis: {
                 title: {
@@ -120,7 +121,7 @@
             plotOptions: {
                 bar: {
                     horizontal: false,
-                    columnWidth: '15%',
+                    columnWidth: '5%',
                     endingShape: 'rounded'
                 }
             },
