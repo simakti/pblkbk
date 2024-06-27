@@ -20,7 +20,7 @@ class GrafikController extends Controller
         //     ->where('status', '=', '1') //
         //     ->groupBy('thnakd.thn_akd')
         //     ->pluck('banyak_pengunggahan', 'thnakd.thn_akd');
-        $tahun_akademik = Thnakd::get();
+        $tahun_akademik = Thnakd::where('status', 1)->get();
         $banyak_pengunggahan = [];
         foreach ($tahun_akademik as $key => $value) {
             $data['tahun_akademik'] = $value->thn_akd;
