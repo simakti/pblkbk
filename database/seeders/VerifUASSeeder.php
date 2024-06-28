@@ -14,17 +14,16 @@ class VerifUASSeeder extends Seeder
     public function run(): void
     {
         $VerifUASData = [
-            [1, 1, 1, '', '2023-12-25']
+            [1, 1, '', '2023-12-25']
 
         ];
 
         foreach ($VerifUASData as $data) {
             DB::table('verif_uas')->insert([
                 'id_repo_uas' => $data[0],
-                'id_penguruskbk' => $data[1],
-                'status_verif_uas' => $data[2],
-                'catatan' => $data[3],
-                'tanggal_diverifikasi' => $data[4],
+                'status_verif_uas' => $data[1],
+                'catatan' => $data[2],
+                'tanggal_diverifikasi' => $data[3],
             ]);
         }
     }

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ExportDosenMatkul;
+
 
 class DosenMatkulController extends Controller
 {
@@ -23,6 +26,11 @@ class DosenMatkulController extends Controller
     public function create()
     {
         //
+    }
+
+    public function export()
+    {
+        return Excel::download(new ExportDosenMatkul, 'dosen_matkul.xlsx');
     }
 
     /**

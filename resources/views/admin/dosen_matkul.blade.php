@@ -12,6 +12,7 @@
                             <h6 class="m-0">Aksi</h6>
                             <div class="mt-3">
                                 <a href="{{ route('dosen_matkul.create') }}"></a>
+                                <a href="{{ route('dosen_matkul.export') }}" class="btn btn-success"></i> <i class="fas fa-download"></i> Export</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -32,7 +33,7 @@
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
                                                 <td>{{ $data->nama }}</td>
-                                                <td>{{ $data->kode_matakuliah }}</td>
+                                                <td>{{ $data->nama_matakuliah }}</td>
                                                 <td>{{ $data->nama_kelas }}</td>
                                                 <td>{{ $data->smt_thn_akd }}</td>
                                              </tr>

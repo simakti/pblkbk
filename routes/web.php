@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Dosenmatakuliah;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\ProdiController;
@@ -12,16 +14,16 @@ use App\Http\Controllers\RepoUasController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\MatkulkbkController;
 use App\Http\Controllers\MatakuliahController;
-use App\Http\Controllers\BeritaAcaraRpsController;
+use App\Http\Controllers\BeritaAcaraController;
+use App\Http\Controllers\DosenMatkulController;
 use App\Http\Controllers\PengurusKBKController;
 use App\Http\Controllers\PimpinanprodiController;
 use App\Http\Controllers\VerifikasiRpsController;
 use App\Http\Controllers\VerifikasiUasController;
 use App\Http\Controllers\PimpinanjurusanController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DosenMatkulController;
-use App\Http\Controllers\GrafikRpsController;
+use App\Http\Controllers\GrafikController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,6 +58,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dosen_matakuliah', [DosenMatkulController::class, 'index'])->name('dosen_matakuliah');
+    Route::post('/dosen_matakuliah', [DosenMatkulController::class, 'store']);
+    Route::get('/dosen_matakuliah/create', [DosenMatkulController::class, 'create'])->name('dosen_matakuliah.create');
+    Route::delete('/dosen_matakuliah/{id}', [DosenMatkulController::class, 'destroy'])->name('dosen_matakuliah.destroy');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/prodi', [ProdiController::class, 'index'])->name('prodi');
     Route::post('/prodi', [ProdiController::class, 'store']);
     Route::get('/prodi/create', [ProdiController::class, 'create'])->name('prodi.create');
@@ -81,13 +90,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/matakuliah', [MatakuliahController::class, 'store']);
     Route::get('/matakuliah/create', [MatakuliahController::class, 'create'])->name('matakuliah.create');
     Route::delete('/matakuliah/{id}', [MatakuliahController::class, 'destroy'])->name('matakuliah.destroy');
-});
-
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dosen_matkul', [DosenMatkulController::class, 'index'])->name('dosen_matkul');
-    Route::post('/dosen_matkul', [DosenMatkulController::class, 'store']);
-    Route::get('/dosen_matkul/create', [DosenMatkulController::class, 'create'])->name('dosen_matkul.create');
-    Route::delete('/dosen_matkul/{id}', [DosenMatkulController::class, 'destroy'])->name('dosen_matkul.destroy');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -186,11 +188,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/repo_rps', [RepoRpsController::class, 'index'])->name('repo_rps.index');
     Route::get('/repo_rps/create', [RepoRpsController::class,'create'])->name('repo_rps.create');
     Route::post('/repo_rps', [RepoRpsController::class, 'store'])->name('repo_rps.store');
-    Route::delete('/repo_rps/{id}', [RepoRpsController::class, 'destroy'])->name('repo_rps.destroy');
-    Route::get('/repo_rps/edit/{id}', [RepoRpsController::class, 'edit'])->name('repo_rps.edit');
-    Route::put('/repo_rps/update/{id}', [RepoRpsController::class, 'update'])->name('repo_rps.update');
-
+    Route::delete('/repo_rps/{id_repo_rps}', [RepoRpsController::class, 'destroy'])->name('repo_rps.destroy'); // Use the correct parameter
+    Route::get('/repo_rps/edit/{id_repo_rps}', [RepoRpsController::class, 'edit'])->name('repo_rps.edit'); // Use the correct parameter
+    Route::put('/repo_rps/update/{id_repo_rps}', [RepoRpsController::class, 'update'])->name('repo_rps.update'); // Use the correct parameter
 });
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/berita_acara_rps', [BeritaAcaraRpsController::class, 'index'])->name('berita_acara_rps.index');
@@ -202,13 +204,25 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 });
 
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/berita_acara_uas', [BeritaAcaraUasController::class, 'index'])->name('berita_acara_uas.index');
+    Route::get('/berita_acara_uas/create', [BeritaAcaraUasController::class,'create'])->name('berita_acara_uas.create');
+    Route::post('/berita_acara_uas', [BeritaAcaraUasController::class, 'store'])->name('berita_acara_uas.store');
+    Route::delete('/berita_acara_uas/{id}', [BeritaAcaraUasController::class, 'destroy'])->name('berita_acara_uas.destroy');
+    Route::get('/berita_acara_uas/edit/{id}', [BeritaAcaraUasController::class, 'edit'])->name('berita_acara_uas.edit');
+    Route::put('/berita_acara_uas/update/{id}', [BeritaAcaraUasController::class, 'update'])->name('berita_acara_uas.update');
+
+});
+
 Route::middleware('guest')->group(function () {
-    Route::get('/register', [AuthController::class, 'register'])->name('register');
-    Route::post('/register/post', [AuthController::class, 'signUp'])->name('register.post');
-    // Route::post('/register', [AuthController::class, 'register'])->name('register.post');
+    Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'signUp'])->name('auth.signup');
+
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
-    Route::post('/forgot-password', [AuthController::class, 'forgotPassword'])->name('forgot.password');
+
+    Route::get('forgot-password', [AuthController::class, 'viewForgotPassword'])->name('auth.view_forgot_password');
+    Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('auth.forgot_password');
 });
 
 Route::middleware('auth')->group(function () {

@@ -38,8 +38,8 @@ class dosenMatkulSeeder extends Seeder
         ];
         foreach ($dataDosenMatkul as $key => $value) {
             $id_dosen = DB::table('dosen')->where('nama_dosen', $value['nama_dosen'])->select('id_dosen')->first()->id_dosen;
-            $id_matakuliah = DB::table('matakuliah')->where('kode_matakuliah', $value['kode_matakuliah'])->select('id_matakuliah')->first()->id_matakuliah;
-            $id_kelas = DB::table('kelas')->where('kode_kelas', $value['kode_kelas'])->select('id_kelas')->first()->id_kelas;
+            $id_matakuliah = DB::table('matakuliah')->where('nama_matakuliah', $value['nama_matakuliah'])->select('id_matakuliah')->first()->id_matakuliah;
+            $id_kelas = DB::table('kelas')->where('nama_kelas', $value['nama_kelas'])->select('id_kelas')->first()->id_kelas;
             $id_thnakd = DB::table('thnakd')->where('thn_akd', $value['thn_akd'])->select('id_thnakd')->first()->id_thnakd;
 
             $dosenMatkul = new DosenMatkul;

@@ -25,7 +25,7 @@ return new class extends Migration
            // $table->unsignedBigInteger('id_jabatan');
            // $table->string('password');
            // $table->unsignedBigInteger('id_kbk');
-           $table->primary('id_dosen');
+           $table->primary('nidn');
 
         });
         Schema::table('dosen', function (Blueprint $table) {

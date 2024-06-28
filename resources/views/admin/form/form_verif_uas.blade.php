@@ -14,11 +14,11 @@
                     <div class="card-body">
                         <form action="{{ route('verif_uas.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <!-- Repo RPS -->
+                            <!-- Repo Soal UAS -->
                             <div class="mb-3">
-                                <label for="id_repo_uas" class="form-label">Repo RPS</label>
+                                <label for="id_repo_uas" class="form-label">Repo Soal UAS</label>
                                 <select name="id_repo_uas" id="id_repo_uas" class="form-control">
-                                    <option selected> --Pilih Repo RPS-- </option>
+                                    <option selected> --Pilih Repo Soal UAS-- </option>
                                     @foreach($data_repo_uas as $repo)
                                         <option value="{{ $repo->id_repo_uas }}">{{ $repo->id_repo_uas }}</option>
                                     @endforeach
@@ -27,19 +27,7 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <!-- Nama Dosen -->
-                            <div class="mb-3">
-                                <label for="id_dosen" class="form-label">Nama Dosen Verifikator</label>
-                                <select name="id_dosen" id="id_dosen" class="form-control">
-                                    <option selected> --Pilih Dosen-- </option>
-                                    @foreach($data_dosen as $dosen)
-                                        <option value="{{ $dosen->id_dosen }}">{{ $dosen->nama_dosen }}</option>
-                                    @endforeach
-                                </select>
-                                @error('id_dosen')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
+
 
                             <!-- Status -->
                             <div class="mb-3">

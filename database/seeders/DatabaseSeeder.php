@@ -35,6 +35,8 @@ class DatabaseSeeder extends Seeder
         $this->call([matakuliahSeeder::class,]);
         $this->call([dosenMatkulSeeder::class,]);
         $this->call([pimpinanJurusanSeeder::class,]);
+        $this->call([jenisKBKSeeder::class,]);
+        $this->call([matkulKbkSeeder::class,]);
         $this->call([pengurusKbkSeeder::class,]);
         $this->call([matkulKbkSeeder::class,]);
         $this->call([RepoRPSSeeder::class,]);

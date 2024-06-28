@@ -27,20 +27,7 @@
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-<<<<<<< HEAD
-                            <!-- Nama Pengurus KBK -->
-                            <div class="mb-3">
-                                <label for="id_penguruskbk" class="form-label">Dosen Verifikasi</label>
-                                <select name="id_penguruskbk" id="id_penguruskbk" class="form-control">
-                                    <option selected> --Pilih Dosen-- </option>
-                                    @foreach($data_penguruskbk as $penguruskbk)
-                                        <option value="{{ $penguruskbk->id_penguruskbk }}">{{ $penguruskbk->nama_dosen }}</option>
-                                    @endforeach
-                                </select>
-                                @error('id_penguruskbk')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
+
 
                             <!-- Status -->
                             <div class="mb-3">

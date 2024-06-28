@@ -16,15 +16,15 @@ class VerifikasiRpsController extends Controller
             ->join('repo_rps', 'verif_rps.id_repo_rps', '=', 'repo_rps.id_repo_rps')
             ->join('thnakd', 'repo_rps.id_thnakd', '=', 'thnakd.id_thnakd')
             ->join('matakuliah', 'repo_rps.id_matakuliah', '=', 'matakuliah.id_matakuliah')
-            ->join('pengurus_kbk', 'verif_rps.id_penguruskbk', '=', 'pengurus_kbk.id_penguruskbk')
-            ->select('verif_rps.*', 'repo_rps.*',  'matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester', 'thnakd.thn_akd', 'pengurus_kbk.nama_dosen')
+            ->join('dosen as upload', 'repo_rps.id_dosen', '=', 'upload.id_dosen')
+            ->select('verif_rps.*', 'repo_rps.*',  'upload.nama_dosen as nama_upload', 'matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester', 'thnakd.thn_akd')
             ->orderBy('id_verif_rps')
             ->get();
 
         $data_repo_rps = DB::table('repo_rps')
             ->join('thnakd', 'repo_rps.id_thnakd', '=', 'thnakd.id_thnakd')
             ->join('matakuliah', 'repo_rps.id_matakuliah', '=', 'matakuliah.id_matakuliah')
-            ->select('repo_rps.*', 'thnakd.thn_akd', 'matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester')
+            ->select('repo_rps.*', 'thnakd.thn_akd', 'dosen.nama_dosen', 'matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester')
             ->orderBy('id_repo_rps')
             ->get();
 
@@ -33,53 +33,52 @@ class VerifikasiRpsController extends Controller
 
     public function create()
     {
-        $data_penguruskbk = DB::table('pengurus_kbk')->get();
         $data_repo_rps = DB::table('repo_rps')->get();
-        //dd(compact('data_penguruskbk', 'data_repo_rps'));
-        return view('admin.form.form_verif_rps', compact('data_penguruskbk', 'data_repo_rps'));
+        //dd(compact('data_dosen', 'data_repo_rps'));
+        return view('admin.form.form_verif_rps', compact('data_repo_rps'));
     }
 
     public function store(Request $request)
-    {
-        // Validasi permintaan
-        $validator = Validator::make($request->all(), [
-            'id_repo_rps' => 'required|integer|exists:repo_rps,id_repo_rps',
-            'id_penguruskbk' => 'required|integer|exists:pengurus_kbk,id_penguruskbk',
-            'status_verif_rps' => 'required|string|max:255',
-            'catatan' => 'nullable|string',
-            'tanggal_diverifikasi' => 'required|date',
-            /* 'file' => 'nullable|file|mimes:pdf,doc,docx|max:50000', */
-        ]);
+{
+    // Validasi permintaan
+    $validator = Validator::make($request->all(), [
+        'id_repo_rps' => 'required|integer|exists:repo_rps,id_repo_rps',
+        'status_verif_rps' => 'required|string|max:255',
+        'catatan' => 'nullable|string',
+        'tanggal_diverifikasi' => 'required|date',
+        'file' => 'nullable|file|mimes:pdf,doc,docx|max:50000',
+    ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withInput()->withErrors($validator);
-        }
-
-        // Menyimpan file dan mendapatkan path
-        /* $filePath = '';
-        if ($request->hasFile('file')) {
-            $file = $request->file('file');
-            $filePath = $file->store('uploads/ver_files', 'public');
-        } */
-
-        // Menyimpan data ke database
-        VerifRps::create([
-            'id_repo_rps' => $request->id_repo_rps,
-            'id_penguruskbk' => $request->id_penguruskbk,
-            'status_verif_rps' => $request->status_verif_rps,
-            'catatan' => $request->catatan,
-            'tanggal_diverifikasi' => $request->tanggal_diverifikasi,
-        ]);
-        //dd($request->all());
-        return redirect()->route('verif_rps.index')->with('success', 'Data berhasil disimpan.');
+    if ($validator->fails()) {
+        return redirect()->back()->withInput()->withErrors($validator);
     }
+
+    // Menyimpan file dan mendapatkan path
+    $filePath = '';
+    if ($request->hasFile('file')) {
+        $file = $request->file('file');
+        $filePath = $file->store('uploads/ver_files', 'public');
+    }
+
+    // Menyimpan data ke database
+    VerifRps::create([
+        'id_repo_rps' => $request->id_repo_rps,
+        'status_verif_rps' => $request->status_verif_rps,
+        'catatan' => $request->catatan,
+        'tanggal_diverifikasi' => $request->tanggal_diverifikasi,
+        'file' => $filePath,
+    ]);
+
+    return redirect()->route('verif_rps.index')->with('success', 'Data berhasil disimpan.');
+}
+
 
     public function edit($id)
     {
         $data_penguruskbk = DB::table('pengurus_kbk')->get();
         $verif_rps = VerifRps::findOrFail($id);
 
-        return view('admin.form.form_edit_verif_rps', compact('verif_rps', 'data_penguruskbk'));
+        return view('admin.form.form_edit_verif_rps', compact('verif_rps', 'data_dosen'));
     }
 
 
