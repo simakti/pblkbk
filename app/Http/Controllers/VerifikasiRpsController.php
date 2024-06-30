@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\VerifRps;
+
+use App\Models\verifRps;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -23,6 +24,7 @@ class VerifikasiRpsController extends Controller
 
         $data_repo_rps = DB::table('repo_rps')
             ->join('thnakd', 'repo_rps.id_thnakd', '=', 'thnakd.id_thnakd')
+            ->join('dosen', 'repo_rps.id_dosen', '=', 'dosen.id_dosen')
             ->join('matakuliah', 'repo_rps.id_matakuliah', '=', 'matakuliah.id_matakuliah')
             ->select('repo_rps.*', 'thnakd.thn_akd', 'dosen.nama_dosen', 'matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester')
             ->orderBy('id_repo_rps')
@@ -54,19 +56,21 @@ class VerifikasiRpsController extends Controller
     }
 
     // Menyimpan file dan mendapatkan path
-    $filePath = '';
-    if ($request->hasFile('file')) {
-        $file = $request->file('file');
-        $filePath = $file->store('uploads/ver_files', 'public');
-    }
+    $filename = '';
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $filename = $file->getClientOriginalName(); // Mendapatkan nama asli file
+            $path = 'uploads/ver_files/';
+            $file->storeAs('public/' . $path, $filename); // Simpan file dengan nama aslinya
+        }
 
     // Menyimpan data ke database
-    VerifRps::create([
+    verifRps::create([
         'id_repo_rps' => $request->id_repo_rps,
         'status_verif_rps' => $request->status_verif_rps,
         'catatan' => $request->catatan,
         'tanggal_diverifikasi' => $request->tanggal_diverifikasi,
-        'file' => $filePath,
+        'file' => $filename,
     ]);
 
     return redirect()->route('verif_rps.index')->with('success', 'Data berhasil disimpan.');
@@ -75,56 +79,44 @@ class VerifikasiRpsController extends Controller
 
     public function edit($id)
     {
-        $data_penguruskbk = DB::table('pengurus_kbk')->get();
-        $verif_rps = VerifRps::findOrFail($id);
+        $data_repo_rps = DB::table('repo_rps')->get(); // Ganti dengan model dan relasi yang sesuai jika perlu
+        $verif_rps = verifRps::findOrFail($id);
 
-        return view('admin.form.form_edit_verif_rps', compact('verif_rps', 'data_dosen'));
+        return view('admin.form.form_edit_verif_rps', compact('verif_rps', 'data_repo_rps'));
     }
+
 
 
     public function update(Request $request, $id)
     {
         $request->validate([
             'id_repo_rps' => 'required|integer|exists:repo_rps,id_repo_rps',
-            'id_penguruskbk' => 'required|integer|exists:pengurus_kbk,id_penguruskbk',
             'status_verif_rps' => 'required|string|max:255',
             'catatan' => 'nullable|string',
             'tanggal_diverifikasi' => 'required|date',
-            'file' => 'nullable|file|mimes:pdf,doc,docx|max:50000',
         ]);
 
-        $verif_rps = VerifRps::findOrFail($id);
+        $verif_rps = verifRps::findOrFail($id);
 
         // Update data
         $verif_rps->id_repo_rps = $request->id_repo_rps;
-        $verif_rps->id_penguruskbk = $request->id_penguruskbk;
         $verif_rps->status_verif_rps = $request->status_verif_rps;
         $verif_rps->catatan = $request->catatan;
         $verif_rps->tanggal_diverifikasi = $request->tanggal_diverifikasi;
-
-        if ($request->hasFile('file')) {
-            // Delete old file if exists
-            if ($verif_rps->file) {
-                Storage::disk('public')->delete($verif_rps->file);
-            }
-
-            // Store new file
-            $filePath = $request->file('file')->store('uploads/ver_files', 'public');
-            $verif_rps->file = $filePath;
-        }
 
         $verif_rps->save();
 
         return redirect()->route('verif_rps.index')->with('success', 'Data berhasil diperbarui.');
     }
 
+
     public function destroy($id)
     {
         $verif_rps = VerifRps::findOrFail($id);
-
+        // dd($verif_rps->file);
         // Delete file if exists
         if ($verif_rps->file) {
-            Storage::disk('public')->delete($verif_rps->file);
+            Storage::delete('public/uploads/ver_files/' . $verif_rps->file);
         }
 
         $verif_rps->delete();

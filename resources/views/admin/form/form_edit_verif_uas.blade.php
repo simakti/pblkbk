@@ -1,4 +1,4 @@
-@extends('layouts.backend.template')
+@extends('layouts.admin.template')
 @section('content')
 <div class="container-fluid">
     <div class="card">
@@ -12,17 +12,16 @@
                         <h6 class="m-0">Form Edit Data</h6>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('verif_rps.update', $verif_rps->id_verif_rps) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('verif_uas.update', $verif_uas->id_verif_uas) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            <!-- Repo RPS -->
+                            <!-- Repo UAS -->
                             <div class="mb-3">
-<<<<<<< HEAD
-                                <label for="id_repo_uas" class="form-label">Repo RPS</label>
+                                <label for="id_repo_uas" class="form-label">Repo UAS</label>
                                 <select name="id_repo_uas" id="id_repo_uas" class="form-control">
-                                    <option selected> --Pilih Repo RPS-- </option>
+                                    <option selected> --Pilih Repo UAS-- </option>
                                     @foreach($data_repo_uas as $repo)
-                                        <option value="{{ $repo->id_repo_uas }}" @if($verif_rps->id_repo_uas == $repo->id_repo_uas) selected @endif>{{ $repo->id_repo_uas }}</option>
+                                        <option value="{{ $repo->id_repo_uas }}" @if($verif_uas->id_repo_uas == $repo->id_repo_uas) selected @endif>{{ $repo->id_repo_uas }}</option>
                                     @endforeach
                                 </select>
                                 @error('id_repo_uas')
@@ -57,17 +56,7 @@
                                 @enderror
                             </div>
 
-                            <!-- File -->
-                            <div class="mb-3">
-                                <label for="file" class="form-label">Upload File</label>
-                                <input type="file" class="form-control" id="file" name="file">
-                                @if($verif_uas->file)
-                                    <p>File sebelumnya: <a href="{{ Storage::url($verif_uas->file) }}" target="_blank">Lihat File</a></p>
-                                @endif
-                                @error('file')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
+
                             <!-- Submit Button -->
                             <button type="submit" class="btn btn-primary">Simpan</button>
                             <a href="{{ route('verif_uas.index') }}" class="btn btn-secondary">Batal</a>

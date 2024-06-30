@@ -13,13 +13,6 @@ class GrafikController extends Controller
 {
     public function grafik_rps()
     {
-
-        // Query untuk mengambil data banyak pengunggahan
-        // $banyak_pengunggahan = RepoRps::join('thnakd', 'repo_rps.id_thnakd', '=', 'thnakd.id_thnakd')
-        //     ->select(DB::raw("thnakd.thn_akd, COUNT(repo_rps.id_repo_rps) as banyak_pengunggahan"))
-        //     ->where('status', '=', '1') //
-        //     ->groupBy('thnakd.thn_akd')
-        //     ->pluck('banyak_pengunggahan', 'thnakd.thn_akd');
         $tahun_akademik = Thnakd::where('status', 1)->get();
         $banyak_pengunggahan = [];
         foreach ($tahun_akademik as $key => $value) {
@@ -28,34 +21,21 @@ class GrafikController extends Controller
             array_push($banyak_pengunggahan, $data);
         }
 
-        $repo_rps = RepoRPS::get();
+        $repo_rps = RepoRps::get();
         $banyak_verifikasi = [];
         foreach ($repo_rps as $key => $value) {
-            //$data['repo_rps'] = $value->id_thnakd;
+            $data['repo_rps'] = $value->id_thnakd;
             $data['banyak_verifikasi'] = VerifRps::where('id_repo_rps', $value->id_repo_rps)->count();
             array_push($banyak_verifikasi, $data);
         }
 
-        // // Query untuk mengambil data banyak verifikasi
-        // $banyak_verifikasi = VerifRps::join('repo_rps', 'verif_rps.id_repo_rps', '=', 'repo_rps.id_repo_rps')
-        //     ->join('thnakd', 'repo_rps.id_thnakd', '=', 'thnakd.id_thnakd')
-        //     ->select(DB::raw("thnakd.thn_akd, COUNT(verif_rps.id_verif_rps) as banyak_verifikasi"))
-        //     ->where('repo_rps.type', '=', '0')
-        //     ->groupBy('thnakd.thn_akd')
-        //     ->pluck('banyak_verifikasi', 'thnakd.thn_akd');
-
-        // Query untuk mengambil data semester
-        $semester = Thnakd::select('thn_akd')->groupBy('thn_akd')->pluck('thn_akd');
-
-        // Mengirim data ke view
         return response()->json([
             'message' => 'Success',
             'data' => [
                 'banyak_pengunggahan' => $banyak_pengunggahan,
                 'banyak_verifikasi' => $banyak_verifikasi,
             ]
-        , 200]);
-        // return view('admin.repo_rps', compact('banyak_pengunggahan', 'banyak_verifikasi', 'semester'));
+        ], 200);
     }
 
     public function grafik_uas()
@@ -76,5 +56,49 @@ class GrafikController extends Controller
         ], 200);
     }
 
+    public function grafik_verifikasi_rps()
+    {
+        $tahun_akademik = Thnakd::where('status', 1)->get();
+        $data_grafik = [];
 
+        foreach ($tahun_akademik as $tahun) {
+            $data = [
+                'tahun_akademik' => $tahun->thn_akd,
+                'jumlah_verifikasi' => VerifRps::whereHas('repoRps', function ($query) use ($tahun) {
+                    $query->where('id_thnakd', $tahun->id_thnakd);
+                })->count(),
+            ];
+
+            array_push($data_grafik, $data);
+        }
+
+        return response()->json([
+            'message' => 'Success',
+            'data' => $data_grafik,
+        ], 200);
+    }
+
+    public function grafik_repo_rps_verif()
+    {
+        $tahun_akademik = Thnakd::where('status', 1)->get();
+
+        $data_grafik = [];
+
+        foreach ($tahun_akademik as $tahun) {
+            $data = [
+                'tahun_akademik' => $tahun->thn_akd,
+                'banyak_pengunggahan' => RepoRps::where('id_thnakd', $tahun->id_thnakd)->count(),
+                'banyak_verifikasi' => VerifRps::whereHas('repoRps', function ($query) use ($tahun) {
+                    $query->where('id_thnakd', $tahun->id_thnakd);
+                })->count(),
+            ];
+
+            array_push($data_grafik, $data);
+        }
+
+        return response()->json([
+            'message' => 'Success',
+            'data' => $data_grafik,
+        ], 200);
+    }
 }

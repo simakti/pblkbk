@@ -4,32 +4,26 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Str;
 
-class matakuliahSeeder extends Seeder
+class MatakuliahSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $dataMatkul = [
-                [
-                    "id_matakuliah" => "1",
-                    "kode_matakuliah" => "RPL3205",
-                    "nama_matakuliah" => "Pengantar Rekayasa Perangkat Lunak",
-                    "TP" => "T",
-                    "sks" => "2",
-                    "jam" => "2",
-                    "sks_teori" => "2",
-                    "sks_praktek" => "0",
-                    "jam_teori" => "2",
-                    "jam_praktek" => "0",
-                    "semester" => "2",
-                    "id_kurikulum" => "5",
-
-            ],
+        $path = public_path('insert_matakuliah.sql');
+        $sqlfile = DB::unprepared(file_get_contents($path));
+        $db_bin = "C:\xampp\mysql\bin";
+        // PDO Credentials
+        $db = [
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
+            'host' => env('DB_HOST'),
+            'database' => env('DB_DATABASE')
         ];
-        DB::table('matakuliah')->insert($dataMatkul);
+
+        exec("$db_bin}\mysql --user={$db['username']} --password={$db['password']} --host={$db['host']} --database {$db['database']} < $sqlfile");
     }
 }

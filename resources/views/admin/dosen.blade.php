@@ -9,8 +9,6 @@
                 <!-- DataDosen -->
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                            <div class="d-grid gap-2 d-md-block">
-                            <a href="{{ route('dosen.create') }}" ></a>
                         </div>
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped" width="100%" cellspacing="0" id="example" >

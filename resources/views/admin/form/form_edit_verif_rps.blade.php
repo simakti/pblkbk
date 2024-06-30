@@ -1,4 +1,4 @@
-@extends('layouts.backend.template')
+@extends('layouts.admin.template')
 @section('content')
 <div class="container-fluid">
     <div class="card">
@@ -23,6 +23,7 @@
                                     @foreach($data_repo_rps as $repo)
                                         <option value="{{ $repo->id_repo_rps }}" @if($verif_rps->id_repo_rps == $repo->id_repo_rps) selected @endif>{{ $repo->id_repo_rps }}</option>
                                     @endforeach
+
                                 </select>
                                 @error('id_repo_rps')
                                     <div class="text-danger">{{ $message }}</div>
@@ -56,17 +57,7 @@
                                 @enderror
                             </div>
 
-                            <!-- File -->
-                            <div class="mb-3">
-                                <label for="file" class="form-label">Upload File</label>
-                                <input type="file" class="form-control" id="file" name="file">
-                                @if($verif_rps->file)
-                                    <p>File sebelumnya: <a href="{{ Storage::url($verif_rps->file) }}" target="_blank">Lihat File</a></p>
-                                @endif
-                                @error('file')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
+                            
                             <!-- Submit Button -->
                             <button type="submit" class="btn btn-primary">Simpan</button>
                             <a href="{{ route('verif_rps.index') }}" class="btn btn-secondary">Batal</a>

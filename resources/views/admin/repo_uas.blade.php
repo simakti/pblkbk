@@ -37,7 +37,7 @@
                                         <td>{{ $data->nama_matakuliah }}</td>
                                         <td>{{ $data->semester }}</td>
                                         <td>
-                                            <a href="{{('storage/uploads/ver_files/' . $data->file) }}" target="_blank">Lihat file</a>
+                                            <a href="{{('storage/public/uploads/ver_files/' . $data->file) }}" target="_blank">Lihat file</a>
                                         </td>
 
                                         <td>
@@ -136,6 +136,11 @@
 
     getData();
 
-    
+
 </script>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection

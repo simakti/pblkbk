@@ -17,7 +17,7 @@ class DosenMatkulController extends Controller
         $api_url = "https://umkm-pnp.com/heni/index.php?folder=dosen&file=matakuliah";
         $response = Http::get($api_url);
         $data_dosenmatkul = $response->object()->list;
-        return view('backend.dosen_matkul', compact('data_dosenmatkul'));
+        return view('admin.dosen_matkul', compact('data_dosenmatkul'));
     }
 
     /**

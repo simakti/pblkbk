@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BeritaAcaraRps;
+use App\Models\DosenMatakuliah;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class MataKuliah extends Model
 {
@@ -29,7 +31,12 @@ class MataKuliah extends Model
     // Mendefinisikan relasi hasMany dengan model BeritaAcara
     public function beritaAcara()
     {
-        return $this->hasMany(BeritaAcara::class, 'id_matakuliah', 'id_matakuliah');
+        return $this->hasMany(BeritaAcaraRps::class, 'id_matakuliah', 'id_matakuliah');
+    }
+
+    public function dosenMatakuliah()
+    {
+        return $this->hasMany(DosenMatakuliah::class, 'id_matakuliah');
     }
 }
 

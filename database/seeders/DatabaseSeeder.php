@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\DosenMatkul;
-use App\Models\JenisKBK;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -38,13 +36,13 @@ class DatabaseSeeder extends Seeder
         $this->call([jenisKBKSeeder::class,]);
         $this->call([matkulKbkSeeder::class,]);
         $this->call([pengurusKbkSeeder::class,]);
-        $this->call([matkulKbkSeeder::class,]);
         $this->call([RepoRPSSeeder::class,]);
         $this->call([RepoUASSeeder::class,]);
         $this->call([VerifRPSSeeder::class,]);
         $this->call([VerifUASSeeder::class,]);
-        $this->call([jabatanKbkSeeder::class,]);
-        $this->call([kurikulumSeeder::class,]);
+        $this->call([UsersSeeder::class,]);
+        $this->call([PermissionSeeder::class,]);
+
 
 
     }

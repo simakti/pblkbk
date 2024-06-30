@@ -14,12 +14,11 @@ class BeritaAcaraRpsController extends Controller
     {
         // Fetch data from multiple tables using joins
         $data_verif_rps = DB::table('verif_rps')
-            ->join('dosen as verifikasi', 'verif_rps.id_dosen', '=', 'verifikasi.id_dosen')
             ->join('repo_rps', 'verif_rps.id_repo_rps', '=', 'repo_rps.id_repo_rps')
             ->join('thnakd', 'repo_rps.id_thnakd', '=', 'thnakd.id_thnakd')
             ->join('matakuliah', 'repo_rps.id_matakuliah', '=', 'matakuliah.id_matakuliah')
             ->join('dosen as upload', 'repo_rps.id_dosen', '=', 'upload.id_dosen')
-            ->select('verif_rps.*', 'repo_rps.*', 'verifikasi.nama_dosen as nama_verifikasi', 'upload.nama_dosen as nama_upload', 'matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester', 'thnakd.thn_akd')
+            ->select('verif_rps.*', 'repo_rps.*',  'upload.nama_dosen as nama_upload', 'matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester', 'thnakd.thn_akd')
             ->orderBy('verif_rps.id_verif_rps')
             ->get();
 

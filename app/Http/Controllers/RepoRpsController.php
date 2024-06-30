@@ -51,9 +51,8 @@ class RepoRpsController extends Controller
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $filename = $file->getClientOriginalName(); // Mendapatkan nama asli file
-
-            $path = 'public/uploads/ver_files/';
-            $file->storeAs($path, $filename); // Simpan file dengan nama aslinya
+            $path = 'uploads/ver_files/';
+            $file->storeAs('public/' . $path, $filename); // Simpan file dengan nama aslinya
         }
 
         // Prepare data to be stored
@@ -61,17 +60,15 @@ class RepoRpsController extends Controller
             'id_dosen' => $request->id_dosen,
             'id_matakuliah' => $request->id_matakuliah,
             'id_thnakd' => $request->id_thnakd,
-            'file' =>$filename, // Simpan hanya nama file
+            'file' => $filename, // Simpan path relatif
         ];
 
-        // Create a new RepoRps record
+        // Create a new VerifRps record
         RepoRps::create($data);
 
         // Redirect with success message
         return redirect()->route('repo_rps.index')->with('success', 'Data berhasil disimpan.');
     }
-
-
 
     public function edit($id)
     {
@@ -89,7 +86,7 @@ class RepoRpsController extends Controller
             'id_thnakd' => 'required|integer',
             'id_dosen' => 'required|integer',
             'id_matakuliah' => 'required|integer',
-            'file' => 'nullable|file|mimes:pdf,doc,docx|max:50000',
+            'file' => 'nullable|file|mimes:pdf,doc,docx|max:80000',
         ]);
 
         $repo_rps = RepoRps::findOrFail($id);
@@ -100,15 +97,21 @@ class RepoRpsController extends Controller
         $repo_rps->id_matakuliah = $request->id_matakuliah;
 
         if ($request->hasFile('file')) {
-            // Delete old file if exists
+            // Delete old file if it exists
             if ($repo_rps->file) {
-                Storage::disk('public')->delete($repo_rps->file);
+                Storage::delete('public/uploads/ver_files/' . $repo_rps->file);
             }
 
             // Store new file
-            $filePath = $request->file('file')->store('uploads/ver_files', 'public');
-            $repo_rps->file = $filePath;
+            $filename = $request->file('file')->getClientOriginalName();
+            $path = 'uploads/ver_files/';
+            $request->file('file')->storeAs('public/' . $path, $filename);
+            $repo_rps->file = $filename;
+
+            // Save the repo_rps object to persist changes
+            $repo_rps->save();
         }
+
 
         $repo_rps->save();
 
@@ -118,11 +121,12 @@ class RepoRpsController extends Controller
     public function destroy($id)
     {
         $repo_rps = RepoRps::findOrFail($id);
-
+        // dd($repo_rps->file);
         // Delete file if exists
         if ($repo_rps->file) {
-            Storage::disk('public')->delete($repo_rps->file);
+            Storage::delete('public/uploads/ver_files/' . $repo_rps->file);
         }
+
 
         $repo_rps->delete();
 

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\RepoUas;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RepoUasController extends Controller
 {
@@ -47,31 +47,28 @@ class RepoUasController extends Controller
         }
 
         // Store the file and get the path
-    $filename = '';
-    if ($request->hasFile('file')) {
-        $file = $request->file('file');
-        $filename = $file->getClientOriginalName(); // Mendapatkan nama asli file
-
-        $path = 'public/uploads/ver_files/';
-        $file->storeAs($path, $filename); // Simpan file dengan nama aslinya
-    }
+        $filename = '';
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $filename = $file->getClientOriginalName(); // Mendapatkan nama asli file
+            $path = 'uploads/ver_files/';
+            $file->storeAs('public/' . $path, $filename); // Simpan file dengan nama aslinya
+        }
 
         // Prepare data to be stored
-    $data = [
-        'id_dosen' => $request->id_dosen,
-        'id_matakuliah' => $request->id_matakuliah,
-        'id_thnakd' => $request->id_thnakd,
-        'file' =>$filename, // Save only the file name
-    ];
+        $data = [
+            'id_dosen' => $request->id_dosen,
+            'id_matakuliah' => $request->id_matakuliah,
+            'id_thnakd' => $request->id_thnakd,
+            'file' => $filename, // Simpan path relatif
+        ];
 
+        // Create a new VerifUas record
+        RepoUas::create($data);
 
-    // Create a new VerifUas record
-    RepoUas::create($data);
-
-    // Redirect with success message
-    return redirect()->route('repo_uas.index')->with('success', 'Data berhasil disimpan.');
-}
-
+        // Redirect with success message
+        return redirect()->route('repo_uas.index')->with('success', 'Data berhasil disimpan.');
+    }
 
     public function edit($id)
     {
@@ -89,7 +86,7 @@ class RepoUasController extends Controller
             'id_thnakd' => 'required|integer',
             'id_dosen' => 'required|integer',
             'id_matakuliah' => 'required|integer',
-            'file' => 'nullable|file|mimes:pdf,doc,docx|max:50000',
+            'file' => 'nullable|file|mimes:pdf,doc,docx|max:80000',
         ]);
 
         $repo_uas = RepoUas::findOrFail($id);
@@ -100,15 +97,21 @@ class RepoUasController extends Controller
         $repo_uas->id_matakuliah = $request->id_matakuliah;
 
         if ($request->hasFile('file')) {
-            // Delete old file if exists
+            // Delete old file if it exists
             if ($repo_uas->file) {
-                Storage::disk('public')->delete($repo_uas->file);
+                Storage::delete('public/uploads/ver_files/' . $repo_uas->file);
             }
 
             // Store new file
-            $filePath = $request->file('file')->store('uploads/ver_files', 'public');
-            $repo_uas->file = $filePath;
+            $filename = $request->file('file')->getClientOriginalName();
+            $path = 'uploads/ver_files/';
+            $request->file('file')->storeAs('public/' . $path, $filename);
+            $repo_uas->file = $filename;
+
+            // Save the repo_uas object to persist changes
+            $repo_uas->save();
         }
+
 
         $repo_uas->save();
 
@@ -118,11 +121,12 @@ class RepoUasController extends Controller
     public function destroy($id)
     {
         $repo_uas = RepoUas::findOrFail($id);
-
+        // dd($repo_uas->file);
         // Delete file if exists
         if ($repo_uas->file) {
-            Storage::disk('public')->delete($repo_uas->file);
+            Storage::delete('public/uploads/ver_files/' . $repo_uas->file);
         }
+
 
         $repo_uas->delete();
 

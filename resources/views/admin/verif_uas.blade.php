@@ -36,18 +36,11 @@
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $data->thn_akd }}</td>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                                        <td>{{ $data->nama_matakuliah }}</td>
-                                        <td>{{ $data->semester }}</td>
-                                        <td>{{ $data->nama_dosen }}</td>
-=======
                                         <td>{{ $data->nama_matakuliah }}</td>
                                         <td>{{ $data->semester }}</td>
                                         <td>{{ $data->nama_upload }}</td>
->>>>>>> ded05949c41ec285af94a4d1180ee1b241f7c2bb
                                         <td>
-                                            <a href="{{('storage/uploads/ver_files/' . $data->file) }}" target="_blank">Lihat file</a>
+                                            <a href="{{('storage/public/uploads/ver_files/' . $data->file) }}" target="_blank">Lihat file</a>
                                         </td>
                                         <td>{{ $data->status_verif_uas }}</td>
                                         <td>{{ $data->catatan }}</td>

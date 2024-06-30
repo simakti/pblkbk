@@ -25,7 +25,7 @@ class DosenController extends Controller
         $response = Http::get($api_url);
         $data_dosen = $response->object()->list;
         // dd($data_dosen);
-        return view('backend.dosen', compact('data_dosen'));
+        return view('admin.dosen', compact('data_dosen'));
     }
 
     /**

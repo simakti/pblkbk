@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\PengurusKBK;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ExportPengurusKBK;
 use App\Imports\ImportPengurusKBK;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PengurusKBKController extends Controller
 {
@@ -20,7 +21,7 @@ class PengurusKBKController extends Controller
                 ->join('jabatankbk', 'penguruskbk.id_jabatan_kbk', '=', 'jabatankbk.id_jabatan_kbk')
                 ->select('penguruskbk.*', 'dosen.nama_dosen', 'jenis_kbk.jenis_kbk', 'jabatankbk.jabatan')
                 ->orderBy('id_penguruskbk')
-                ->get();
+                ->paginate(20);
             return view('admin.penguruskbk', compact('data_penguruskbk'));
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
@@ -108,4 +109,3 @@ class PengurusKBKController extends Controller
         return redirect()->route('penguruskbk.index')->with('success', 'Data berhasil dihapus.');
     }
 }
-?>

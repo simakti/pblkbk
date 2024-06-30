@@ -19,6 +19,7 @@ class MatakuliahController extends Controller
         $response = Http::get($api_url);
         $data_matakuliah = $response->object()->list;
         return view('admin.matakuliah', compact('data_matakuliah'));
+
     }
 
     /**

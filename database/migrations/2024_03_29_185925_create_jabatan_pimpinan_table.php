@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('jabatan_pimpinan');
             $table->string('kode_jabatan_pimpinan');
             $table->enum('status',[0,1]);
-            
+
         });
     }
 
