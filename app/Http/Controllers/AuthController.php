@@ -52,9 +52,26 @@ class AuthController extends Controller
     {
         // Implement forgot password functionality
     }
-
-    public function redirectToHome()
+    public function destroy(Request $request)
     {
-        return redirect()->route('home');
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login');
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
+
 }

@@ -24,7 +24,7 @@
                                 <thead>
                                     <tr class="table-dark">
                                         <th>NO</th>
-                                        <th>Jenis KBK</th>
+                                        <th>Kode KBK</th>
                                         <th>Deskripsi</th>
                                         <th>Aksi</th>
                                     </tr>

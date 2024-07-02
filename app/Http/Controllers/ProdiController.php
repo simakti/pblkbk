@@ -10,72 +10,38 @@ class ProdiController extends Controller
 {
     public function index()
     {
-        // $data_prodi = DB::table('prodi')
-        //     ->join('jurusan', 'prodi.id_jurusan', '=', 'jurusan.id_jurusan')
-        //     ->select('prodi.*', 'jurusan.jurusan')
-        //     ->orderBy('id_prodi')
-        //     ->get();
+        // Ambil data prodi dari API
         $api_url = "https://umkm-pnp.com/heni/index.php?folder=jurusan&file=prodi";
         $response = Http::get($api_url);
         $data_prodi = $response->object()->list;
+
+        // Ambil data jurusan dari database lokal
+        $jurusan = DB::table('jurusan')->pluck('jurusan', 'id_jurusan');
+
+        // Gabungkan data prodi dengan nama jurusan
+        foreach ($data_prodi as $prodi) {
+            $prodi->jurusan = $jurusan[$prodi->id_jurusan] ?? 'Tidak Diketahui';
+        }
+
         return view('admin.prodi', compact('data_prodi'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $data = [
-            'kode_prodi'=>$request->kode_prodi,
-            'prodi'=>$request->prodi,
-            'id_jurusan'=>$request->id_jurusan,
-            'jenjang'=>$request->jenjang
-
-
+            'kode_prodi' => $request->kode_prodi,
+            'prodi' => $request->prodi,
+            'id_jurusan' => $request->id_jurusan,
+            'jenjang' => $request->jenjang
         ];
 
         DB::table('prodi')->insert($data);
+        return redirect()->route('prodi.index')->with('success', 'Data Prodi berhasil ditambahkan.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        DB::table('prodi')->where('id_prodi', $id)->delete();
+        return redirect()->route('prodi.index')->with('success', 'Data Prodi berhasil dihapus.');
     }
 }
-

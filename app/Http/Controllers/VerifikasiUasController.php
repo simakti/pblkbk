@@ -45,8 +45,7 @@ class VerifikasiUasController extends Controller
     // Validasi permintaan
     $validator = Validator::make($request->all(), [
         'id_repo_uas' => 'required|integer|exists:repo_uas,id_repo_uas',
-        'status_verif_uas' => 'required|string|max:255',
-        'catatan' => 'nullable|string',
+        'catatan' => 'required|string',
         'tanggal_diverifikasi' => 'required|date',
         'file' => 'nullable|file|mimes:pdf,doc,docx|max:50000',
     ]);
@@ -67,7 +66,7 @@ class VerifikasiUasController extends Controller
     // Menyimpan data ke database
     VerifUas::create([
         'id_repo_uas' => $request->id_repo_uas,
-        'status_verif_uas' => $request->status_verif_uas,
+        'status_verif_uas' => 'Diverifikasi',
         'catatan' => $request->catatan,
         'tanggal_diverifikasi' => $request->tanggal_diverifikasi,
         'file' => $filename,
@@ -90,8 +89,7 @@ class VerifikasiUasController extends Controller
     {
         $request->validate([
             'id_repo_uas' => 'required|integer|exists:repo_uas,id_repo_uas',
-            'status_verif_uas' => 'required|string|max:255',
-            'catatan' => 'nullable|string',
+            'catatan' => 'required|string',
             'tanggal_diverifikasi' => 'required|date',
         ]);
 
@@ -99,7 +97,6 @@ class VerifikasiUasController extends Controller
 
         // Update data
         $verif_uas->id_repo_uas = $request->id_repo_uas;
-        $verif_uas->status_verif_uas = $request->status_verif_uas;
         $verif_uas->catatan = $request->catatan;
         $verif_uas->tanggal_diverifikasi = $request->tanggal_diverifikasi;
 

@@ -10,16 +10,16 @@ class PimpinanprodiController extends Controller
 {
     public function index()
     {
-        // $data_pimpinanprodi = DB::table('pimpinan_prodi')
-        //     ->join('jabatan_pimpinan', 'pimpinan_prodi.id_jabatan_pimpinan', '=', 'jabatan_pimpinan.id_jabatan_pimpinan')
-        //     ->join('prodi', 'pimpinan_prodi.id_prodi', '=', 'prodi.id_prodi')
-        //     ->join('dosen', 'pimpinan_prodi.id_dosen', '=', 'dosen.id_dosen')
-        //     ->select('pimpinan_prodi.*', 'dosen.nama_dosen', 'prodi.prodi', 'jabatan_pimpinan.jabatan_pimpinan')
-        //     ->orderBy('id_pimpinan_prodi')
-        //     ->get();
-        $api_url = "https://umkm-pnp.com/heni/index.php?folder=jurusan&file=kaprodi";
-        $response = Http::get($api_url);
-        $data_pimpinanprodi = $response->object()->list;
+        $data_pimpinanprodi = DB::table('pimpinan_prodi')
+            ->join('jabatan_pimpinan', 'pimpinan_prodi.id_jabatan_pimpinan', '=', 'jabatan_pimpinan.id_jabatan_pimpinan')
+            ->join('prodi', 'pimpinan_prodi.id_prodi', '=', 'prodi.id_prodi')
+            ->join('dosen', 'pimpinan_prodi.id_dosen', '=', 'dosen.id_dosen')
+            ->select('pimpinan_prodi.*', 'dosen.nama_dosen', 'prodi.prodi', 'jabatan_pimpinan.jabatan_pimpinan')
+            ->orderBy('id_pimpinan_prodi')
+            ->get();
+        // $api_url = "https://umkm-pnp.com/heni/index.php?folder=jurusan&file=kaprodi";
+        // $response = Http::get($api_url);
+        // $data_pimpinanprodi = $response->object()->list;
         return view('admin.pimpinanprodi', compact('data_pimpinanprodi'));
     }
 
@@ -79,6 +79,3 @@ class PimpinanprodiController extends Controller
         //
     }
 }
-
-
-

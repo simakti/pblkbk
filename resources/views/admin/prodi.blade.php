@@ -21,18 +21,18 @@
                                             <th>NO</th>
                                             <th>Kode Prodi</th>
                                             <th>Prodi</th>
-                                            <th>ID Jurusan</th>
+                                            <th>Jurusan</th>
                                             <th>Jenjang</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($data_prodi as $index => $data)
                                         <tr>
-                                                <td>{{ $index + 1 }}</td>
-                                                <td>{{ $data->kode_prodi }}</td>
-                                                <td>{{ $data->prodi }}</td>
-                                                <td>{{ $data->id_jurusan }}</td>
-                                                <td>{{ $data->id_jenjang }}</td>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $data->kode_prodi }}</td>
+                                            <td>{{ $data->prodi }}</td>
+                                            <td>{{ $data->jurusan }}</td>
+                                            <td>{{ $data->id_jenjang }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>

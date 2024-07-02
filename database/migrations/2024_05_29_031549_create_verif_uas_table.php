@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('verif_uas', function (Blueprint $table) {
             $table->id('id_verif_uas');
             $table->unsignedBigInteger('id_repo_uas');
-            $table->enum('status_verif_uas', ['0','1'])->default('0')->comment('0: Belum Diverifikasi, 1: Diverifikasi');
-            $table->text('catatan')->nullable();
+            $table->string('status_verif_uas', 50);
+            $table->text('catatan');
             $table->date('tanggal_diverifikasi');
             $table->foreign('id_repo_uas')->references('id_repo_uas')->on('repo_uas')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

@@ -21,6 +21,7 @@
                                             <th>NO</th>
                                             <th>Kode Matakuliah</th>
                                             <th>Nama Matakuliah</th>
+                                            <th>Nama Kurikulum</th>
                                             <th>TP</th>
                                             <th>SKS</th>
                                             <th>Jam</th>
@@ -29,24 +30,23 @@
                                             <th>Jam_Teori</th>
                                             <th>Jam_Praktek</th>
                                             <th>Semester</th>
-                                            <th>ID Kurikulum</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($data_matakuliah as $index => $data)
                                         <tr>
-                                                <td>{{ $index + 1 }}</td>
-                                                <td>{{ $data->kode_matakuliah }}</td>
-                                                <td>{{ $data->nama_matakuliah }}</td>
-                                                <td>{{ $data->TP }}</td>
-                                                <td>{{ $data->sks }}</td>
-                                                <td>{{ $data->jam }}</td>
-                                                <td>{{ $data->sks_teori }}</td>
-                                                <td>{{ $data->sks_praktek }}</td>
-                                                <td>{{ $data->jam_teori }}</td>
-                                                <td>{{ $data->jam_praktek }}</td>
-                                                <td>{{ $data->semester }}</td>
-                                                <td>{{ $data->id_kurikulum }}</td>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $data->kode_matakuliah }}</td>
+                                            <td>{{ $data->nama_matakuliah }}</td>
+                                            <td>{{ $data->nama_kurikulum }}</td>
+                                            <td>{{ $data->TP }}</td>
+                                            <td>{{ $data->sks }}</td>
+                                            <td>{{ $data->jam }}</td>
+                                            <td>{{ $data->sks_teori }}</td>
+                                            <td>{{ $data->sks_praktek }}</td>
+                                            <td>{{ $data->jam_teori }}</td>
+                                            <td>{{ $data->jam_praktek }}</td>
+                                            <td>{{ $data->semester }}</td>
 
                                             </tr>
                                         @endforeach

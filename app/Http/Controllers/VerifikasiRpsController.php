@@ -45,7 +45,6 @@ class VerifikasiRpsController extends Controller
     // Validasi permintaan
     $validator = Validator::make($request->all(), [
         'id_repo_rps' => 'required|integer|exists:repo_rps,id_repo_rps',
-        'status_verif_rps' => 'required|string|max:255',
         'catatan' => 'nullable|string',
         'tanggal_diverifikasi' => 'required|date',
         'file' => 'nullable|file|mimes:pdf,doc,docx|max:50000',
@@ -67,7 +66,7 @@ class VerifikasiRpsController extends Controller
     // Menyimpan data ke database
     verifRps::create([
         'id_repo_rps' => $request->id_repo_rps,
-        'status_verif_rps' => $request->status_verif_rps,
+        'status_verif_rps' => 'Diverifikasi',
         'catatan' => $request->catatan,
         'tanggal_diverifikasi' => $request->tanggal_diverifikasi,
         'file' => $filename,
@@ -91,7 +90,6 @@ class VerifikasiRpsController extends Controller
     {
         $request->validate([
             'id_repo_rps' => 'required|integer|exists:repo_rps,id_repo_rps',
-            'status_verif_rps' => 'required|string|max:255',
             'catatan' => 'nullable|string',
             'tanggal_diverifikasi' => 'required|date',
         ]);
@@ -100,7 +98,6 @@ class VerifikasiRpsController extends Controller
 
         // Update data
         $verif_rps->id_repo_rps = $request->id_repo_rps;
-        $verif_rps->status_verif_rps = $request->status_verif_rps;
         $verif_rps->catatan = $request->catatan;
         $verif_rps->tanggal_diverifikasi = $request->tanggal_diverifikasi;
 

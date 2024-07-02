@@ -29,15 +29,6 @@
                                 @enderror
                             </div>
 
-                            <!-- Status Verifikasi -->
-                            <div class="mb-3">
-                                <label for="status_verif_uas" class="form-label">Status Verifikasi</label>
-                                <input type="text" class="form-control" id="status_verif_uas" name="status_verif_uas" value="{{ $verif_uas->status_verif_uas }}">
-                                @error('status_verif_uas')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-
                             <!-- Catatan -->
                             <div class="mb-3">
                                 <label for="catatan" class="form-label">Catatan</label>

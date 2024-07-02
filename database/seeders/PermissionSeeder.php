@@ -26,9 +26,10 @@ class PermissionSeeder extends Seeder
         $userAdmin = User::find(2); // Sesuaikan dengan ID pengguna Anda
         $userPengurusKbk = User::find(3); // Sesuaikan dengan ID pengguna Anda
         $usersKaprodiIds = [19, 32, 31, 40, 15, 6];
-        $usersKaprodi = User::whereIn('id', $usersKaprodiIds)->get(); // Menggunakan whereIn untuk beberapa ID
+        $userKaprodi = User::whereIn('id', $usersKaprodiIds)->get(); // Menggunakan whereIn untuk beberapa ID
         $userKajur = User::find(24); // Sesuaikan dengan ID pengguna Anda
-        $userDosenPengampu = User::find(4); // Sesuaikan dengan ID pengguna Anda
+        $usersDosenPengampuIds = [3,4];
+        $userDosenPengampu = User::whereIn('id', $usersDosenPengampuIds)->get(); // Menggunakan whereIn untuk beberapa ID
 
         if ($userSuperAdmin) {
             $userSuperAdmin->assignRole($roleSuperAdmin);
@@ -42,7 +43,7 @@ class PermissionSeeder extends Seeder
             $userPengurusKbk->assignRole($rolePengurusKbk);
         }
 
-        foreach ($usersKaprodi as $user) {
+        foreach ($userKaprodi as $user) {
             $user->assignRole($roleKaprodi);
         }
 
@@ -50,8 +51,8 @@ class PermissionSeeder extends Seeder
             $userKajur->assignRole($roleKajur);
         }
 
-        if ($userDosenPengampu) {
-            $userDosenPengampu->assignRole($roleDosenPengampu);
+        foreach ($userDosenPengampu as $user) {
+            $user->assignRole($roleDosenPengampu);
         }
     }
 }

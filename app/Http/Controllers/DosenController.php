@@ -15,15 +15,15 @@ class DosenController extends Controller
      */
     public function index()
     {
-        // $data_dosen = DB::table('dosen')
-        //     ->join('jurusan', 'dosen.id_jurusan', '=', 'jurusan.id_jurusan')
-        //     ->join('prodi', 'dosen.id_prodi', '=', 'prodi.id_prodi')
-        //     ->select('dosen.*', 'jurusan.jurusan', 'prodi.prodi')
-        //     ->orderBy('id_dosen')
-        //     ->get();
-        $api_url = "https://umkm-pnp.com/heni/index.php?folder=dosen&file=index";
-        $response = Http::get($api_url);
-        $data_dosen = $response->object()->list;
+        $data_dosen = DB::table('dosen')
+            ->join('jurusan', 'dosen.id_jurusan', '=', 'jurusan.id_jurusan')
+            ->join('prodi', 'dosen.id_prodi', '=', 'prodi.id_prodi')
+            ->select('dosen.*', 'jurusan.jurusan', 'prodi.prodi')
+            ->orderBy('id_dosen')
+            ->get();
+        // $api_url = "https://umkm-pnp.com/heni/index.php?folder=dosen&file=index";
+        // $response = Http::get($api_url);
+        // $data_dosen = $response->object()->list;
         // dd($data_dosen);
         return view('admin.dosen', compact('data_dosen'));
     }

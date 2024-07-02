@@ -22,6 +22,7 @@ use App\Http\Controllers\VerifikasiRpsController;
 use App\Http\Controllers\VerifikasiUasController;
 use App\Http\Controllers\BeritaAcaraRpsController;
 use App\Http\Controllers\BeritaAcaraUasController;
+use App\Http\Controllers\TampilUserRoleController;
 use App\Http\Controllers\DosenMatakuliahController;
 use App\Http\Controllers\PimpinanjurusanController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
@@ -117,10 +118,12 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
-    Route::get('/dosenmatakuliah', [DosenMatkulController::class, 'index'])->name('pimpinanprodi');
+    Route::get('/dosenmatakuliah', [DosenMatkulController::class, 'index'])->name('dosen_matkul');
     Route::post('/dosenmatakuliah', [DosenMatkulController::class, 'store']);
-    Route::get('/dosenmatakuliah/create', [DosenMatkulController::class, 'create'])->name('pimpinanprodi.create');
-    Route::delete('/dosenmatakuliah/{id}', [DosenMatkulController::class, 'destroy'])->name('pimpinanprodi.destroy');
+    Route::get('/dosenmatakuliah/create', [DosenMatkulController::class, 'create'])->name('dosen_matkul.create');
+    Route::delete('/dosenmatakuliah/{id}', [DosenMatkulController::class, 'destroy'])->name('dosen_matkul.destroy');
+    Route::get('/dosenmatakuliah/export', [DosenMatkulController::class, 'export'])->name('dosen_matkul.export');
+    Route::post('/dosenmatakuliah/import', [DosenMatkulController::class, 'import'])->name('dosen_matkul.import');
 });
 
 Route::middleware(['auth', 'verified', 'role:admin|penguruskbk'])->group(function () {
@@ -157,13 +160,14 @@ Route::middleware(['auth', 'verified', 'role:admin|penguruskbk'])->group(functio
     Route::post('/matkul_kbk/import', [MatkulKbkController::class, 'import'])->name('matkul_kbk.import');
 });
 
-Route::middleware(['auth', 'verified', 'role:admin|kaprodi'])->group(function () {
+Route::middleware(['auth', 'verified', 'role:admin|kaprodi|penguruskbk|kajur'])->group(function () {
     Route::get('/verif_uas', [VerifikasiUasController::class, 'index'])->name('verif_uas.index');
     Route::get('/verif_uas/create', [VerifikasiUasController::class, 'create'])->name('verif_uas.create');
     Route::post('/verif_uas', [VerifikasiUasController::class, 'store'])->name('verif_uas.store');
     Route::delete('/verif_uas/{id}', [VerifikasiUasController::class, 'destroy'])->name('verif_uas.destroy');
     Route::get('/verif_uas/edit/{id}', [VerifikasiUasController::class, 'edit'])->name('verif_uas.edit');
     Route::put('/verif_uas/update/{id}', [VerifikasiUasController::class, 'update'])->name('verif_uas.update');
+    Route::get('/grafik/verifikasi-uas', [GrafikController::class, 'grafik_verifikasi_uas'])->name('grafik.verifikasi_uas');
 });
 
 Route::middleware(['auth', 'verified', 'role:admin|dosenpengampu'])->group(function () {
@@ -174,7 +178,7 @@ Route::middleware(['auth', 'verified', 'role:admin|dosenpengampu'])->group(funct
     Route::get('/repo_uas/edit/{id}', [RepoUasController::class, 'edit'])->name('repo_uas.edit');
     Route::put('/repo_uas/update/{id}', [RepoUasController::class, 'update'])->name('repo_uas.update');
 });
-Route::middleware(['auth', 'verified', 'role:admin|kaprodi'])->group(function () {
+Route::middleware(['auth', 'verified', 'role:admin|kaprodi|penguruskbk|kajur'])->group(function () {
     Route::get('/verif_rps', [VerifikasiRpsController::class, 'index'])->name('verif_rps.index');
     Route::get('/verif_rps/create', [VerifikasiRpsController::class, 'create'])->name('verif_rps.create');
     Route::post('/verif_rps', [VerifikasiRpsController::class, 'store'])->name('verif_rps.store');
@@ -192,31 +196,39 @@ Route::middleware(['auth', 'verified', 'role:admin|dosenpengampu'])->group(funct
     Route::delete('/repo_rps/{id}', [RepoRpsController::class, 'destroy'])->name('repo_rps.destroy');
     Route::get('/repo_rps/edit/{id}', [RepoRpsController::class, 'edit'])->name('repo_rps.edit');
     Route::put('/repo_rps/update/{id}', [RepoRpsController::class, 'update'])->name('repo_rps.update');
-    Route::get('/grafik-repo-rps', [GrafikController::class, 'grafik_rps'])->name('grafik.repo_rps');
-    Route::get('/grafik/repo-rps-verif', [GrafikController::class, 'grafik_rps_rps_verif'])->name('grafik.repo_rps_verif');
+    Route::get('/grafik_rps', [GrafikController::class, 'grafikRps'])->name('grafik.rps');
+    Route::get('/grafik/repo_rps', [GrafikController::class, 'grafik_rps'])->name('grafik.repo_rps');
+    Route::get('/grafik/repo-rps-verif', [GrafikController::class, 'grafik_repo_rps_verif'])->name('grafik.repo_rps_verif');
 
 
 });
 
-Route::middleware(['auth', 'verified', 'role:admin|penguruskbk'])->group(function () {
+Route::middleware(['auth', 'verified', 'role:admin|penguruskbk|kaprodi'])->group(function () {
     Route::get('/berita_acara_rps', [BeritaAcaraRpsController::class, 'index'])->name('berita_acara_rps.index');
     Route::get('/berita_acara_rps/create', [BeritaAcaraRpsController::class, 'create'])->name('berita_acara_rps.create');
     Route::post('/berita_acara_rps', [BeritaAcaraRpsController::class, 'store'])->name('berita_acara_rps.store');
     Route::delete('/berita_acara_rps/{id}', [BeritaAcaraRpsController::class, 'destroy'])->name('berita_acara_rps.destroy');
     Route::get('/berita_acara_rps/edit/{id}', [BeritaAcaraRpsController::class, 'edit'])->name('berita_acara_rps.edit');
     Route::put('/berita_acara_rps/update/{id}', [BeritaAcaraRpsController::class, 'update'])->name('berita_acara_rps.update');
+    Route::post('/berita_acara_rps/export', [BeritaAcaraRpsController::class, 'export'])->name('berita_acara_rps.export');
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'role:admin|penguruskbk|kaprodi'])->group(function () {
     Route::get('/berita_acara_uas', [BeritaAcaraUasController::class, 'index'])->name('berita_acara_uas.index');
     Route::get('/berita_acara_uas/create', [BeritaAcaraUasController::class,'create'])->name('berita_acara_uas.create');
     Route::post('/berita_acara_uas', [BeritaAcaraUasController::class, 'store'])->name('berita_acara_uas.store');
     Route::delete('/berita_acara_uas/{id}', [BeritaAcaraUasController::class, 'destroy'])->name('berita_acara_uas.destroy');
     Route::get('/berita_acara_uas/edit/{id}', [BeritaAcaraUasController::class, 'edit'])->name('berita_acara_uas.edit');
     Route::put('/berita_acara_uas/update/{id}', [BeritaAcaraUasController::class, 'update'])->name('berita_acara_uas.update');
+    Route::post('/berita_acara_uas/export', [BeritaAcaraUasController::class, 'export'])->name('berita_acara_uas.export');
 
 });
 
+Route::middleware(['auth', 'verified', 'role:superadmin'])->group(function () {
+    Route::get('/tampiluser', [TampilUserRoleController::class, 'index'])->name('tampiluser.index');
+    Route::get('/editrole', [TampilUserRoleController::class, 'editRole'])->name('role.edit');
+    Route::put('/tampil/update', [TampilUserRoleController::class, 'updateRole'])->name('role.update');
+});
 
 Route::middleware('guest')->group(function () {
     Route::get('/register', [AuthController::class, 'register'])->name('register');
@@ -225,6 +237,18 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
     Route::post('/forgot-password', [AuthController::class, 'forgotPassword'])->name('forgot.password');
+// Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+// Route::post('/register', [AuthController::class, 'signUp'])->name('auth.signup');
+
+// Route::get('/login', [AuthController::class, 'index'])->name('login');
+// Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+
+// Route::get('forgot-password', [AuthController::class, 'viewForgotPassword'])->name('auth.view_forgot_password');
+// Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('auth.forgot_password');
+});
+
+Route::middleware('auth')->group(function () {
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 Route::get('/signup', 'AuthController@showSignupForm')->name('auth.signup');

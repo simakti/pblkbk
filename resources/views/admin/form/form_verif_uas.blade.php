@@ -30,24 +30,7 @@
 
 
                             <!-- Status -->
-                            <div class="mb-3">
-                                <label for="status_verif_uas" class="form-label">Status</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="status_verif_uas" id="status_verif_uas" value="1">
-                                    <label class="form-check-label" for="status_verif_uas">
-                                        Verifikasi
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="status_verif_uas" id="status_belum_verifikasi" value="0">
-                                    <label class="form-check-label" for="status_belum_verifikasi">
-                                        Belum Verifikasi
-                                    </label>
-                                </div>
-                                @error('status_verif_uas')
-                                    <div class="text-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
+                            <input type="hidden" name="status_verif_rps" value="Diverifikasi">
 
                             <!-- Catatan -->
                             <div class="mb-3">

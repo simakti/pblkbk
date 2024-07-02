@@ -4,7 +4,7 @@
         <div class="card">
             <div class="card-body">
                 <!-- Page Heading -->
-                <h5 class="card-title  mb-4">Data Prodi</h5>
+                <h5 class="card-title  mb-4">Data Jurusan</h5>
                 <div class="container-fluid">
                     <!-- DataJurusan -->
                     <div class="card shadow mb-4">
