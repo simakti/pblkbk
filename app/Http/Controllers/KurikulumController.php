@@ -35,11 +35,11 @@ class KurikulumController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'kode_kurikulum'=>$request->kode_kurikulum,
-            'nama_kurikulum'=>$request->nama_kurikulum,
-            'tahun'=>$request->tahun,
-            'id_prodi'=>$request->id_prodi,
-            'status'=>$request->status
+            'kode_kurikulum' => $request->kode_kurikulum,
+            'nama_kurikulum' => $request->nama_kurikulum,
+            'tahun' => $request->tahun,
+            'id_prodi' => $request->id_prodi,
+            'status' => $request->status
 
 
         ];

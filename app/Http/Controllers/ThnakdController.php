@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class ThnakdController extends Controller
 {
     public function index()
     {
-        $data_thnakd = DB::table('thnakd')
-            ->orderBy('id_thnakd')
-            ->get();
+        // $data_thnakd = DB::table('thnakd')
+        //     ->orderBy('id_thnakd')
+        //     ->get();
+        $api_url = "https://umkm-pnp.com/heni/index.php?folder=jurusan&file=thn_ta";
+        $response = Http::get($api_url);
+        $data_thnakd = $response->object()->list;
         return view('admin.thnakd', compact('data_thnakd'));
     }
 
@@ -29,8 +33,8 @@ class ThnakdController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'thn_akd'=>$request->thn_akd,
-            'status'=>$request->status
+            'smt_thn_akd' => $request->smt_thn_akd,
+            'status' => $request->status
 
         ];
 
@@ -69,4 +73,3 @@ class ThnakdController extends Controller
         //
     }
 }
-

@@ -17,9 +17,8 @@ class ExportMatkulKBK implements FromCollection, WithHeadings
             ->select(
                 'matkul_kbk.id_matkul_kbk',
                 'matakuliah.nama_matakuliah',
-                'jenis_kbk.jenis_kbk',         
-                'kurikulum.nama_kurikulum',
-                'matkul_kbk.status'
+                'jenis_kbk.jenis_kbk',
+                'kurikulum.nama_kurikulum'
             )
             ->orderBy('matkul_kbk.id_matkul_kbk')
             ->get();

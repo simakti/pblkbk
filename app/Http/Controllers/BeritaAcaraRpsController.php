@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\verifRps;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\BeritaAcara;
 use Illuminate\Http\Request;
 use App\Models\BeritaAcaraRps;
@@ -91,5 +93,14 @@ class BeritaAcaraRpsController extends Controller
         // Delete the BeritaAcaraRps instance
         $berita_acara_rps->delete();
         return redirect()->route('berita_acara_rps.index')->with('success', 'Berita Acara deleted successfully.');
+    }
+
+    public function generatePDF()
+    {
+        $data_verif_rps = verifRps::with(['repoRps.matakuliah', 'repoRps.thnakd', 'repoRps.dosen'])->get();
+
+        $pdf = PDF::loadView('admin.cetak_rps', compact('data_verif_rps'));
+
+        return $pdf->stream('berita_acara_rps.pdf');
     }
 }

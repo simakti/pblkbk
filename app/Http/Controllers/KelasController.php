@@ -39,10 +39,10 @@ class KelasController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'kode_kelas'=>$request->nama_dosen,
-            'nama_kelas'=>$request->nidn,
-            'id_prodi'=>$request->id_prodi,
-            'id_thnakd'=>$request->id_thnakd
+            'kode_kelas' => $request->nama_dosen,
+            'nama_kelas' => $request->nidn,
+            'id_prodi' => $request->id_prodi,
+            'id_thnakd' => $request->id_thnakd
 
         ];
 
@@ -81,4 +81,3 @@ class KelasController extends Controller
         //
     }
 }
-

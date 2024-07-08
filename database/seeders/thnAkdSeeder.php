@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class thnAkdSeeder extends Seeder
 {
@@ -14,15 +14,24 @@ class thnAkdSeeder extends Seeder
     public function run(): void
     {
         $thn_akdData = [
-            ['2022/2023-Genap', '0'],
-            ['2023/2024-Ganjil', '0'],
-            ['2023/2024-Genap', '1']
+            [
+                "smt_thn_akd" => "2022/2023-Genap",
+                "status" => "0",
+            ],
+            [
+                "smt_thn_akd" => "2023/2024-Ganjil",
+                "status" => "0",
+            ],
+            [
+                "smt_thn_akd" => "2023/2024-Genap",
+                "status" => "1",
+            ],
         ];
 
         foreach ($thn_akdData as $data) {
             DB::table('thnakd')->insert([
-                'thn_akd' => $data[0],
-                'status' => $data[1]
+                'thn_akd' => $data['smt_thn_akd'],
+                'status' => $data['status'],
             ]);
         }
     }

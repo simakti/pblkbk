@@ -37,11 +37,11 @@ class PimpinanjurusanController extends Controller
     public function store(Request $request)
     {
         $data = [
-            'id_jabatan_pimpinan'=>$request->id_jabatan_pimpinan,
-            'id_jurusan'=>$request->id_jurusan,
-            'id_dosen'=>$request->id_dosen,
-            'periode'=>$request->periode,
-            'status'=>$request->status
+            'id_jabatan_pimpinan' => $request->id_jabatan_pimpinan,
+            'id_jurusan' => $request->id_jurusan,
+            'id_dosen' => $request->id_dosen,
+            'periode' => $request->periode,
+            'status' => $request->status
         ];
 
         DB::table('pimpinan_jurusan')->insert($data);
@@ -79,5 +79,3 @@ class PimpinanjurusanController extends Controller
         //
     }
 }
-
-

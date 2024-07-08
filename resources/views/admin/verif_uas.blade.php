@@ -6,7 +6,7 @@
                 <!-- Page Heading -->
                 <h5 class="card-title mb-4">Data Verifikasi Soal UAS</h5>
                 <div class="container-fluid">
-                    <!-- DataDosen -->
+                    <!-- DataVerifikasi -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <div class="mt-3">

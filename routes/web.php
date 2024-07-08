@@ -186,7 +186,6 @@ Route::middleware(['auth', 'verified', 'role:admin|kaprodi|penguruskbk|kajur'])-
     Route::get('/verif_rps/edit/{id}', [VerifikasiRpsController::class, 'edit'])->name('verif_rps.edit');
     Route::put('/verif_rps/update/{id}', [VerifikasiRpsController::class, 'update'])->name('verif_rps.update');
     Route::get('/grafik/verifikasi-rps', [GrafikController::class, 'grafik_verifikasi_rps'])->name('grafik.verifikasi_rps');
-
 });
 
 Route::middleware(['auth', 'verified', 'role:admin|dosenpengampu'])->group(function () {
@@ -199,8 +198,6 @@ Route::middleware(['auth', 'verified', 'role:admin|dosenpengampu'])->group(funct
     Route::get('/grafik_rps', [GrafikController::class, 'grafikRps'])->name('grafik.rps');
     Route::get('/grafik/repo_rps', [GrafikController::class, 'grafik_rps'])->name('grafik.repo_rps');
     Route::get('/grafik/repo-rps-verif', [GrafikController::class, 'grafik_repo_rps_verif'])->name('grafik.repo_rps_verif');
-
-
 });
 
 Route::middleware(['auth', 'verified', 'role:admin|penguruskbk|kaprodi'])->group(function () {
@@ -211,23 +208,31 @@ Route::middleware(['auth', 'verified', 'role:admin|penguruskbk|kaprodi'])->group
     Route::get('/berita_acara_rps/edit/{id}', [BeritaAcaraRpsController::class, 'edit'])->name('berita_acara_rps.edit');
     Route::put('/berita_acara_rps/update/{id}', [BeritaAcaraRpsController::class, 'update'])->name('berita_acara_rps.update');
     Route::post('/berita_acara_rps/export', [BeritaAcaraRpsController::class, 'export'])->name('berita_acara_rps.export');
+    Route::get('/berita_acara_rps/generatePDF', [BeritaAcaraRpsController::class, 'generatePDF'])->name('berita_acara_rps.generatePDF');
 });
 
 Route::middleware(['auth', 'verified', 'role:admin|penguruskbk|kaprodi'])->group(function () {
     Route::get('/berita_acara_uas', [BeritaAcaraUasController::class, 'index'])->name('berita_acara_uas.index');
-    Route::get('/berita_acara_uas/create', [BeritaAcaraUasController::class,'create'])->name('berita_acara_uas.create');
+    Route::get('/berita_acara_uas/create', [BeritaAcaraUasController::class, 'create'])->name('berita_acara_uas.create');
     Route::post('/berita_acara_uas', [BeritaAcaraUasController::class, 'store'])->name('berita_acara_uas.store');
     Route::delete('/berita_acara_uas/{id}', [BeritaAcaraUasController::class, 'destroy'])->name('berita_acara_uas.destroy');
     Route::get('/berita_acara_uas/edit/{id}', [BeritaAcaraUasController::class, 'edit'])->name('berita_acara_uas.edit');
     Route::put('/berita_acara_uas/update/{id}', [BeritaAcaraUasController::class, 'update'])->name('berita_acara_uas.update');
     Route::post('/berita_acara_uas/export', [BeritaAcaraUasController::class, 'export'])->name('berita_acara_uas.export');
-
+    Route::get('/berita_acara_uas/generatePDF', [BeritaAcaraUasController::class, 'generatePDF'])->name('berita_acara_uas.generatePDF');
 });
 
 Route::middleware(['auth', 'verified', 'role:superadmin'])->group(function () {
     Route::get('/tampiluser', [TampilUserRoleController::class, 'index'])->name('tampiluser.index');
-    Route::get('/editrole', [TampilUserRoleController::class, 'editRole'])->name('role.edit');
-    Route::put('/tampil/update', [TampilUserRoleController::class, 'updateRole'])->name('role.update');
+    Route::get('/editrole/{user}', [TampilUserRoleController::class, 'editRole'])->name('role.edit');
+    Route::put('/updateRole/{user}', [TampilUserRoleController::class, 'updateRole'])->name('role.update');
+    Route::get('/users/create', [TampilUserRoleController::class, 'create'])->name('user.create');
+    Route::post('/users/store', [TampilUserRoleController::class, 'store'])->name('users.store');
+    Route::get('/users/{user}/edit', [TampilUserRoleController::class, 'edit'])->name('user.edit');
+    Route::put('/users/{user}', [TampilUserRoleController::class, 'update'])->name('user.update');
+    Route::delete('/users/{user}', [TampilUserRoleController::class, 'destroy'])->name('user.destroy');
+    Route::get('/tampilrole', [TampilUserRoleController::class, 'tampilrole'])->name('tampilrole');
+    Route::delete('/role/{user}', [TampilUserRoleController::class, 'destroy'])->name('role.destroy');
 });
 
 Route::middleware('guest')->group(function () {
@@ -237,18 +242,18 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
     Route::post('/forgot-password', [AuthController::class, 'forgotPassword'])->name('forgot.password');
-// Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
-// Route::post('/register', [AuthController::class, 'signUp'])->name('auth.signup');
+    // Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+    // Route::post('/register', [AuthController::class, 'signUp'])->name('auth.signup');
 
-// Route::get('/login', [AuthController::class, 'index'])->name('login');
-// Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+    // Route::get('/login', [AuthController::class, 'index'])->name('login');
+    // Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
 
-// Route::get('forgot-password', [AuthController::class, 'viewForgotPassword'])->name('auth.view_forgot_password');
-// Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('auth.forgot_password');
+    // Route::get('forgot-password', [AuthController::class, 'viewForgotPassword'])->name('auth.view_forgot_password');
+    // Route::post('forgot-password', [AuthController::class, 'forgotPassword'])->name('auth.forgot_password');
 });
 
 Route::middleware('auth')->group(function () {
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 Route::get('/signup', 'AuthController@showSignupForm')->name('auth.signup');

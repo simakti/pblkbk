@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <!-- Page Heading -->
-            <h5 class="card-title mb-4">Tambah Pengurus KBK</h5>
+            <h5 class="card-title mb-4">Tambah Dosen KBK</h5>
             <div class="container-fluid">
                 <!-- Form Tambah Data -->
                 <div class="card shadow mb-4">

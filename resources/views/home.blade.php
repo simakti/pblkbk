@@ -1,12 +1,11 @@
 @extends('layouts.frontend.template')
 
 @section('main-content')
-
     <header class="">
         <div class="container px-5">
             <div class="row gx-5 align-items-center justify-content-center">
                 <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5"
-                        src=" {{ asset ('images/frontend/postti.jpg')}}" alt="..." /></div>
+                        src=" {{ asset('images/frontend/postti.jpg') }}" alt="..." /></div>
                 <div class="col-lg-8 col-xl-7 col-xxl-6">
                     <div class="my-5 text-center text-xl-start">
                         <h1 class="display-5 fw-bolder text-black mb-2">WELCOME TO SIMAK TI</h1>
@@ -75,38 +74,44 @@
                         <div class="row gx-5">
                             <div class="col-lg-4 mb-5">
                                 <div class="card h-100 shadow border-0">
-                                    <img class="card-img-top" src="{{ asset ('images/frontend/yulherniwati.jpg')}}" alt="..." />
+                                    <img class="card-img-top" src="{{ asset('images/frontend/yulherniwati.jpg') }}"
+                                        alt="..." />
                                     <div class="card-body p-4">
                                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">SOFTAM</div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
                                             <h5 class="card-title mb-3">YULHERNIWATI, S.Kom, M.T</h5>
                                         </a>
-                                        <p class="card-text mb-0">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <p class="card-text mb-0">Some quick example text to build on the card title and
+                                            make up the bulk of the card's content.</p>
 
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 mb-5">
                                 <div class="card h-100 shadow border-0">
-                                    <img class="card-img-top"  src="{{ asset ('images/frontend/meriazmi.jpg')}}" alt="..." />
+                                    <img class="card-img-top" src="{{ asset('images/frontend/meriazmi.jpg') }}"
+                                        alt="..." />
                                     <div class="card-body p-4">
                                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">AI</div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
                                             <h5 class="card-title mb-3">Meri Azmi, S.T., M.Cs</h5>
                                         </a>
-                                        <p class="card-text mb-0">Some more quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <p class="card-text mb-0">Some more quick example text to build on the card title
+                                            and make up the bulk of the card's content.</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 mb-5">
                                 <div class="card h-100 shadow border-0">
-                                    <img class="card-img-top" src="{{ asset ('images/frontend/default.png')}}" alt="..." />
+                                    <img class="card-img-top" src="{{ asset('images/frontend/default.png') }}"
+                                        alt="..." />
                                     <div class="card-body p-4">
                                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">PROGRAMMING</div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
                                             <h5 class="card-title mb-3">DENI SATRIA, S.Kom, M.Kom</h5>
                                         </a>
-                                        <p class="card-text mb-0">Some more quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <p class="card-text mb-0">Some more quick example text to build on the card title
+                                            and make up the bulk of the card's content.</p>
                                     </div>
                                 </div>
                             </div>
@@ -116,84 +121,103 @@
                         <div class="row gx-5">
                             <div class="col-lg-4 mb-5">
                                 <div class="card h-100 shadow border-0">
-                                    <img class="card-img-top" src="{{ asset ('images/frontend/alde.jpg')}}" alt="..." />
+                                    <img class="card-img-top" src="{{ asset('images/frontend/alde.jpg') }}"
+                                        alt="..." />
                                     <div class="card-body p-4">
-                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">NETWORK AND CYBERSEC </div>
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">NETWORK AND CYBERSEC
+                                        </div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
                                             <h5 class="card-title mb-3">ALDE ALANDA, S.Kom, M.T</h5>
                                         </a>
-                                        <p class="card-text mb-0">Some more quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <p class="card-text mb-0">Some more quick example text to build on the card title
+                                            and make up the bulk of the card's content.</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 mb-5">
                                 <div class="card h-100 shadow border-0">
-                                    <img class="card-img-top" src="{{ asset ('images/frontend/hendra.jpg')}}" alt="..." />
+                                    <img class="card-img-top" src="{{ asset('images/frontend/hendra.jpg') }}"
+                                        alt="..." />
                                     <div class="card-body p-4">
                                         <div class="badge bg-primary bg-gradient rounded-pill mb-2">MULTIMEDIA</div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
                                             <h5 class="card-title mb-3">Hendra Rotama, S.Pd., M.Sn</h5>
                                         </a>
-                                        <p class="card-text mb-0">Some more quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                        <p class="card-text mb-0">Some more quick example text to build on the card title
+                                            and make up the bulk of the card's content.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" style="left: -40px;">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"
+                    style="left: -40px;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" style="right: -40px;">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="next" style="right: -40px;">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
-                </div>
+            </div>
 
-                <section class="py-5" id="prodi">
-                    <div class="container px-5 my-5">
-                        <div class="row gx-5 justify-content-center">
-                            <div class="col-lg-8 col-xl-6">
-                                <div class="text-center">
-                                    <h2 class="fw-bolder">Prodi</h2>
-                                </div>
+            <section class="py-5" id="prodi">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-8 col-xl-6">
+                            <div class="text-center">
+                                <h2 class="fw-bolder">Prodi</h2>
                             </div>
                         </div>
                     </div>
-                        <div class="row gx-4 gx-lg-5 justify-content-center">
-                            <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
-                              <div class="card shadow border-0 d-flex justify-content-center align-items-center" style="height: 150px; border-radius: 25px;">
-                                <img class="img-fluid" src="{{ asset('images/frontend/gambar1.jpg') }}" alt="..." style="width: 100%; height: 100%; object-fit: cover; border-radius: 25px;" />
-                              </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
-                              <div class="card shadow border-0 d-flex justify-content-center align-items-center" style="height: 150px; border-radius: 25px;">
-                                <img class="img-fluid" src="{{ asset('images/frontend/gambar2.jpg') }}" alt="..." style="width: 100%; height: 100%; object-fit: cover; border-radius: 25px;" />
-                              </div>
-                            </div>
-                            <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
-                                <div class="card shadow border-0 d-flex justify-content-center align-items-center" style="height: 150px; border-radius: 25px;">
-                                  <img class="img-fluid" src="{{ asset('images/frontend/gambar3.jpg') }}" alt="..." style="width: 100%; height: 100%; object-fit: cover; border-radius: 25px;" />
-                                </div>
-                              </div>
-                              <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
-                                <div class="card shadow border-0 d-flex justify-content-center align-items-center" style="height: 150px; border-radius: 25px;">
-                                  <img class="img-fluid" src="{{ asset('images/frontend/gambar4.jpg') }}" alt="..." style="width: 100%; height: 100%; object-fit: cover; border-radius: 25px;" />
-                                </div>
-                              </div>
-                              <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
-                                <div class="card shadow border-0 d-flex justify-content-center align-items-center" style="height: 150px; border-radius: 25px;">
-                                  <img class="img-fluid" src="{{ asset('images/frontend/gambar5.jpg') }}" alt="..." style="width: 100%; height: 100%; object-fit: cover; border-radius: 25px;" />
-                                </div>
-                              </div>
-                              <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
-                                <div class="card shadow border-0 d-flex justify-content-center align-items-center" style="height: 150px; border-radius: 25px;">
-                                  <img class="img-fluid" src="{{ asset('images/frontend/gambar6.jpg') }}" alt="..." style="width: 100%; height: 100%; object-fit: cover; border-radius: 25px;" />
-                                </div>
-                            </div>
+                </div>
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
+                        <div class="card shadow border-0 d-flex justify-content-center align-items-center"
+                            style="height: 150px; border-radius: 25px;">
+                            <img class="img-fluid" src="{{ asset('images/frontend/gambar1.jpg') }}" alt="..."
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 25px;" />
                         </div>
-              </section>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
+                        <div class="card shadow border-0 d-flex justify-content-center align-items-center"
+                            style="height: 150px; border-radius: 25px;">
+                            <img class="img-fluid" src="{{ asset('images/frontend/gambar2.jpg') }}" alt="..."
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 25px;" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
+                        <div class="card shadow border-0 d-flex justify-content-center align-items-center"
+                            style="height: 150px; border-radius: 25px;">
+                            <img class="img-fluid" src="{{ asset('images/frontend/gambar3.jpg') }}" alt="..."
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 25px;" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
+                        <div class="card shadow border-0 d-flex justify-content-center align-items-center"
+                            style="height: 150px; border-radius: 25px;">
+                            <img class="img-fluid" src="{{ asset('images/frontend/gambar4.jpg') }}" alt="..."
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 25px;" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
+                        <div class="card shadow border-0 d-flex justify-content-center align-items-center"
+                            style="height: 150px; border-radius: 25px;">
+                            <img class="img-fluid" src="{{ asset('images/frontend/gambar5.jpg') }}" alt="..."
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 25px;" />
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
+                        <div class="card shadow border-0 d-flex justify-content-center align-items-center"
+                            style="height: 150px; border-radius: 25px;">
+                            <img class="img-fluid" src="{{ asset('images/frontend/gambar6.jpg') }}" alt="..."
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 25px;" />
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 
 
@@ -204,8 +228,8 @@
                             <div class="text-center">
                                 <div class="fs-4 mb-4 fst-italic">"The Stepping Stone to International Journey"</div>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <img class="rounded-circle me-3" height="40" src="{{ asset ('images/frontend/logoti.png')}}"
-                                        alt="..." />
+                                    <img class="rounded-circle me-3" height="40"
+                                        src="{{ asset('images/frontend/logoti.png') }}" alt="..." />
                                     <div class="fw-bold">
                                         Teknologi Informasi
                                         <span class="fw-bold text-primary mx-1">/</span>

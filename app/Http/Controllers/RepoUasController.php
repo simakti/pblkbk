@@ -16,7 +16,7 @@ class RepoUasController extends Controller
             ->join('thnakd', 'repo_uas.id_thnakd', '=', 'thnakd.id_thnakd')
             ->join('dosen', 'repo_uas.id_dosen', '=', 'dosen.id_dosen')
             ->join('matakuliah', 'repo_uas.id_matakuliah', '=', 'matakuliah.id_matakuliah')
-            ->select('repo_uas.*', 'thnakd.thn_akd','dosen.nama_dosen', 'matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester')
+            ->select('repo_uas.*', 'thnakd.thn_akd', 'dosen.nama_dosen', 'matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester')
             ->orderBy('id_repo_uas')
             ->get();
 

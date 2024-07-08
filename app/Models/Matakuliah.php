@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\BeritaAcaraRps;
-use App\Models\DosenMatakuliah;
+use App\Models\DosenMatkul;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -36,7 +36,6 @@ class MataKuliah extends Model
 
     public function dosenMatakuliah()
     {
-        return $this->hasMany(DosenMatakuliah::class, 'id_matakuliah');
+        return $this->hasMany(DosenMatkul::class, 'id_matakuliah');
     }
 }
-

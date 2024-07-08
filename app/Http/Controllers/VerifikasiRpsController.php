@@ -41,21 +41,21 @@ class VerifikasiRpsController extends Controller
     }
 
     public function store(Request $request)
-{
-    // Validasi permintaan
-    $validator = Validator::make($request->all(), [
-        'id_repo_rps' => 'required|integer|exists:repo_rps,id_repo_rps',
-        'catatan' => 'nullable|string',
-        'tanggal_diverifikasi' => 'required|date',
-        'file' => 'nullable|file|mimes:pdf,doc,docx|max:50000',
-    ]);
+    {
+        // Validasi permintaan
+        $validator = Validator::make($request->all(), [
+            'id_repo_rps' => 'required|integer|exists:repo_rps,id_repo_rps',
+            'catatan' => 'nullable|string',
+            'tanggal_diverifikasi' => 'required|date',
+            'file' => 'nullable|file|mimes:pdf,doc,docx|max:50000',
+        ]);
 
-    if ($validator->fails()) {
-        return redirect()->back()->withInput()->withErrors($validator);
-    }
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
 
-    // Menyimpan file dan mendapatkan path
-    $filename = '';
+        // Menyimpan file dan mendapatkan path
+        $filename = '';
         if ($request->hasFile('file')) {
             $file = $request->file('file');
             $filename = $file->getClientOriginalName(); // Mendapatkan nama asli file
@@ -63,17 +63,17 @@ class VerifikasiRpsController extends Controller
             $file->storeAs('public/' . $path, $filename); // Simpan file dengan nama aslinya
         }
 
-    // Menyimpan data ke database
-    verifRps::create([
-        'id_repo_rps' => $request->id_repo_rps,
-        'status_verif_rps' => 'Diverifikasi',
-        'catatan' => $request->catatan,
-        'tanggal_diverifikasi' => $request->tanggal_diverifikasi,
-        'file' => $filename,
-    ]);
+        // Menyimpan data ke database
+        verifRps::create([
+            'id_repo_rps' => $request->id_repo_rps,
+            'status_verif_rps' => 'Diverifikasi',
+            'catatan' => $request->catatan,
+            'tanggal_diverifikasi' => $request->tanggal_diverifikasi,
+            'file' => $filename,
+        ]);
 
-    return redirect()->route('verif_rps.index')->with('success', 'Data berhasil disimpan.');
-}
+        return redirect()->route('verif_rps.index')->with('success', 'Data berhasil disimpan.');
+    }
 
 
     public function edit($id)

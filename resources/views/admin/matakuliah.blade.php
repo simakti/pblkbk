@@ -1,6 +1,6 @@
 @extends('layouts.admin.template')
 @section('content')
-<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="container-xxl flex-grow-1 container-p-y">
         <div class="card">
             <div class="card-body">
                 <!-- Page Heading -->
@@ -15,7 +15,8 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped" id="example" width="100%" cellspacing="0">
+                                <table class="table table-bordered table-striped" id="example" width="100%"
+                                    cellspacing="0">
                                     <thead>
                                         <tr class="table-dark">
                                             <th>NO</th>
@@ -34,19 +35,19 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($data_matakuliah as $index => $data)
-                                        <tr>
-                                            <td>{{ $index + 1 }}</td>
-                                            <td>{{ $data->kode_matakuliah }}</td>
-                                            <td>{{ $data->nama_matakuliah }}</td>
-                                            <td>{{ $data->nama_kurikulum }}</td>
-                                            <td>{{ $data->TP }}</td>
-                                            <td>{{ $data->sks }}</td>
-                                            <td>{{ $data->jam }}</td>
-                                            <td>{{ $data->sks_teori }}</td>
-                                            <td>{{ $data->sks_praktek }}</td>
-                                            <td>{{ $data->jam_teori }}</td>
-                                            <td>{{ $data->jam_praktek }}</td>
-                                            <td>{{ $data->semester }}</td>
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{ $data->kode_matakuliah }}</td>
+                                                <td>{{ $data->nama_matakuliah }}</td>
+                                                <td>{{ $data->nama_kurikulum }}</td>
+                                                <td>{{ $data->TP }}</td>
+                                                <td>{{ $data->sks }}</td>
+                                                <td>{{ $data->jam }}</td>
+                                                <td>{{ $data->sks_teori }}</td>
+                                                <td>{{ $data->sks_praktek }}</td>
+                                                <td>{{ $data->jam_teori }}</td>
+                                                <td>{{ $data->jam_praktek }}</td>
+                                                <td>{{ $data->semester }}</td>
 
                                             </tr>
                                         @endforeach

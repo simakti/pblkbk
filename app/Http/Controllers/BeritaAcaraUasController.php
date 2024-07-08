@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\VerifUas;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use App\Models\BeritaAcaraUas;
 use Illuminate\Support\Facades\DB;
@@ -90,5 +92,14 @@ class BeritaAcaraUasController extends Controller
         // Delete the BeritaAcaraUas instance
         $berita_acara_uas->delete();
         return redirect()->route('berita_acara_uas.index')->with('success', 'Berita Acara deleted successfully.');
+    }
+
+    public function generatePDF()
+    {
+        $data_verif_uas = VerifUas::with(['repoUas.matakuliah', 'repoUas.thnakd', 'repoUas.dosen'])->get();
+
+        $pdf = PDF::loadView('admin.cetak_uas', compact('data_verif_uas'));
+
+        return $pdf->stream('berita_acara_uas.pdf');
     }
 }

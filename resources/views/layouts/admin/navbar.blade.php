@@ -90,7 +90,7 @@
                     <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
                     <div data-i18n="Authentications">Data RPS</div>
                 </a>
-        @endhasrole
+            @endhasrole
             <ul class="menu-sub">
                 @hasrole('dosenpengampu|admin')
                     <li class="menu-item"><a href="/repo_rps" class="menu-link">
@@ -111,7 +111,7 @@
                     <i class="menu-icon tf-icons bx bx-cube-alt"></i>
                     <div data-i18n="Misc">Data Soal Uas</div>
                 </a>
-        @endhasrole
+            @endhasrole
             <ul class="menu-sub">
                 @hasrole('dosenpengampu|admin')
                     <li class="menu-item"><a href="/repo_uas" class="menu-link">
@@ -138,26 +138,25 @@
                     <div data-i18n="Analytics">Berita Acara UAS</div>
                 </a>
             </li>
-
-            <li class="menu-item">
-                <a href="/grafik_rps" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                    <div data-i18n="Analytics">Grafik Verifikasi RPS</div>
-                </a>
-            </li>
         @endhasrole
 
         @hasrole('superadmin')
             <li class="menu-item">
-                <a href="/tampiluser" class="menu-link">
+                <a href="{{ route('tampiluser.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                    <div data-i18n="Analytics">User</div>
+                    <div data-i18n="Analytics">Data User</div>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="/editrole" class="menu-link">
+                <a href="{{ route('user.create') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                    <div data-i18n="Analytics">Edit Role</div>
+                    <div data-i18n="Analytics">Tambah User</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{ route('tampilrole') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                    <div data-i18n="Analytics">Data Role</div>
                 </a>
             </li>
         @endhasrole
@@ -238,15 +237,15 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li><a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                         Logout
-                     </a>
-                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                         @csrf
-                     </form>
-            </li>
-            <!--/ User -->
-        </ul>
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
+                    <!--/ User -->
+                </ul>
     </div>
 </nav>
 <script>

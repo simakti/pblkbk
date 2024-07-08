@@ -74,11 +74,11 @@ class MatkulkbkController extends Controller
 
     public function edit($id)
     {
-        $data_matakuliah= DB::table('matakuliah')->get();
+        $data_matakuliah = DB::table('matakuliah')->get();
         $data_jenis_kbk = DB::table('jenis_kbk')->get();
         $data_kurikulum = DB::table('kurikulum')->get();
 
-        $matkul_kbk =matkulkbk::where('id_matkul_kbk', $id)->first();
+        $matkul_kbk = matkulkbk::where('id_matkul_kbk', $id)->first();
         return view('admin.form.form_edit_matkul_kbk', compact('data_matakuliah', 'data_jenis_kbk', 'data_kurikulum', 'matkul_kbk'));
     }
 
@@ -102,7 +102,6 @@ class MatkulkbkController extends Controller
         DB::table('matkul_kbk')->where('id_matkul_kbk', $id)->update($data);
 
         return redirect()->route('matkul_kbk.index')->with('success', 'Data berhasil diperbarui.');
-
     }
 
     /**
@@ -114,5 +113,3 @@ class MatkulkbkController extends Controller
         return redirect()->route('matkul_kbk.index')->with('success', 'Data berhasil dihapus.');
     }
 }
-
-?>

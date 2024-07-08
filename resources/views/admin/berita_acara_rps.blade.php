@@ -13,7 +13,8 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <div class="mt-3">
-                                <a href="{{ route('berita_acara_rps.export') }}" class="btn btn-primary">Cetak</a>
+                                <a href="{{ route('berita_acara_rps.generatePDF') }}" class="btn btn-primary btn-sm"
+                                    target="_blank">Cetak Berita Acara Semua Data</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -25,7 +26,7 @@
                                             <th>NO</th>
                                             <th>Mata Kuliah</th>
                                             <th>Semester</th>
-                                            <th>Catatan</th>
+                                            <th>Evaluasi</th>
                                         </tr>
                                     </thead>
                                     <tbody>

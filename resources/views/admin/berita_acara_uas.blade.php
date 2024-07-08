@@ -13,7 +13,8 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <div class="mt-3">
-                                <a href="{{ route('berita_acara_uas.export') }}" class="btn btn-primary">Cetak</a>
+                                <a href="{{ route('berita_acara_uas.generatePDF') }}" class="btn btn-primary btn-sm"
+                                    target="_blank">Cetak Berita Acara Semua Data</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -25,7 +26,7 @@
                                             <th>NO</th>
                                             <th>Mata Kuliah</th>
                                             <th>Semester</th>
-                                            <th>Catatan</th>
+                                            <th>Validasi Isi</th>
                                         </tr>
                                     </thead>
                                     <tbody>

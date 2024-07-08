@@ -1,12 +1,11 @@
 @extends('layouts.admin.template')
+
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="card">
         <div class="card-body">
-            <!-- Page Heading -->
             <h5 class="card-title mb-4">Data Pengguna</h5>
             <div class="container-fluid">
-                <!-- DataPengguna -->
                 <div class="card shadow mb-4">
                     <div class="card-body">
                         <div class="table-responsive">
@@ -16,7 +15,7 @@
                                         <th>NO</th>
                                         <th>Nama Pengguna</th>
                                         <th>Email</th>
-                                        <th>Role</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -26,9 +25,14 @@
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>
-                                            @foreach($user->roles as $role)
-                                                {{ $role->name }}@if(!$loop->last), @endif
-                                            @endforeach
+                                            <form action="{{ route('user.edit', $user->id) }}" method="GET" style="display:inline;">
+                                                <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                                            </form>
+                                            <form action="{{ route('user.destroy', $user->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin untuk menghapus?')">Hapus</button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach

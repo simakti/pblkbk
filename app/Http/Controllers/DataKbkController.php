@@ -112,6 +112,4 @@ class DataKbkController extends Controller
         DB::table('jenis_kbk')->where('id_jenis_kbk', $id)->delete();
         return redirect()->route('datakbk.index')->with('success', 'Data berhasil dihapus.');
     }
-
 }
-?>

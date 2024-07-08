@@ -6,7 +6,7 @@
                 <!-- Page Heading -->
                 <h5 class="card-title mb-4">Data Verifikasi RPS</h5>
                 <div class="container-fluid">
-                    <!-- DataDosen -->
+                    <!-- DataVerifikasi -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <div class="mt-3">
@@ -50,6 +50,7 @@
                                                     @else
                                                         Diverifikasi
                                                     @endif
+
                                                 </td>
                                                 <td>{{ $data->catatan }}</td>
                                                 <td>{{ $data->tanggal_diverifikasi }}</td>
@@ -71,73 +72,76 @@
                                     </tbody>
                                 </table>
                                 <h6 class="card-title mb-4">Grafik Verifikasi RPS</h6>
-                                <div id="chart"></div>
+                                <div id="chartRps"></div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
 
-                <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-                <script type="text/javascript">
-                    async function getDataRps() {
-                        let data_grafik = [];
-                        await fetch('{{ route('grafik.verifikasi_rps') }}')
-                            .then(response => response.json())
-                            .then((data) => {
-                                data_grafik = data.data;
-                            })
-                            .catch(error => {
-                                console.error('Error:', error);
-                            });
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script type="text/javascript">
+        async function getDataRps() {
+            let data_grafik = [];
+            await fetch('{{ route('grafik.verifikasi_rps') }}')
+                .then(response => response.json())
+                .then((data) => {
+                    data_grafik = data.data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
 
-                        let updatedData = data_grafik.map(item => ({
-                            x: item.tahun_akademik,
-                            y: item.jumlah_verifikasi
-                        }));
+            let updatedData = data_grafik.map(item => ({
+                x: item.tahun_akademik,
+                y: item.jumlah_verifikasi
+            }));
 
-                        var options = {
-                            chart: {
-                                type: 'bar',
-                                height: 350
-                            },
-                            yaxis: {
-                                title: {
-                                    text: 'Jumlah Verifikasi'
-                                },
-                                labels: {
-                                    formatter: function(value) {
-                                        return Number.isInteger(value) ? value : '';
-                                    }
-                                }
-                            },
-                            fill: {
-                                opacity: 1
-                            },
-                            plotOptions: {
-                                bar: {
-                                    horizontal: false,
-                                    columnWidth: '15%',
-                                    endingShape: 'rounded'
-                                }
-                            },
-                            dataLabels: {
-                                enabled: false
-                            },
-                            stroke: {
-                                show: true,
-                                width: 2,
-                                colors: ['transparent']
-                            },
-                            series: [{
-                                name: 'Jumlah Verifikasi',
-                                data: updatedData
-                            }]
-                        };
-
-                        var chart = new ApexCharts(document.querySelector("#chartRps"), options);
-                        chart.render();
+            var options = {
+                chart: {
+                    type: 'bar',
+                    height: 350
+                },
+                yaxis: {
+                    title: {
+                        text: 'Jumlah Verifikasi'
+                    },
+                    labels: {
+                        formatter: function(value) {
+                            return Number.isInteger(value) ? value : '';
+                        }
                     }
+                },
+                fill: {
+                    opacity: 1
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '15%',
+                        endingShape: 'rounded'
+                    }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    show: true,
+                    width: 2,
+                    colors: ['transparent']
+                },
+                series: [{
+                    name: 'Jumlah Verifikasi',
+                    data: updatedData
+                }]
+            };
 
-                    getDataRps();
-                </script>
-            @endsection
+            var chart = new ApexCharts(document.querySelector("#chartRps"), options);
+            chart.render();
+        }
+
+        getDataRps();
+    </script>
+@endsection

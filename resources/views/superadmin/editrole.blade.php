@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title mb-4">Edit User Role</h5>
-            <form action="{{ route('role.update', $user) }}" method="POST">
+            <form action="{{ route('role.update', $user->id) }}" method="POST">
                 @csrf
                 @method('PUT')
 

@@ -16,7 +16,7 @@ class RepoRpsController extends Controller
             ->join('thnakd', 'repo_rps.id_thnakd', '=', 'thnakd.id_thnakd')
             ->join('dosen', 'repo_rps.id_dosen', '=', 'dosen.id_dosen')
             ->join('matakuliah', 'repo_rps.id_matakuliah', '=', 'matakuliah.id_matakuliah')
-            ->select('repo_rps.*', 'thnakd.thn_akd','dosen.nama_dosen', 'matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester')
+            ->select('repo_rps.*', 'thnakd.thn_akd', 'dosen.nama_dosen', 'matakuliah.nama_matakuliah', 'matakuliah.kode_matakuliah', 'matakuliah.semester')
             ->orderBy('id_repo_rps')
             ->get();
 
