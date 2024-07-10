@@ -56,17 +56,17 @@
             </div>
     </section>
 
-    <section class="py-5" id="pengurus">
+    <section class="py-5" id="datakbk">
         <div class="container px-5 my-5">
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-8 col-xl-6">
                     <div class="text-center">
-                        <h2 class="fw-bolder">Pengurus KBK</h2>
-                        <p class="lead fw-normal text-muted mb-5">Bertanggung jawab dalam mengurus urusan Kelompok Bidang
-                            Keahlian pada jurusan Teknologi Informasi</p>
+                        <h2 class="fw-bolder">Data KBK</h2>
+                        <p class="lead fw-normal text-muted mb-5">Bertanggung jawab dalam mengurus urusan Kelompok Bidang Keahlian pada jurusan Teknologi Informasi</p>
                     </div>
                 </div>
             </div>
+
 
             <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
@@ -74,44 +74,49 @@
                         <div class="row gx-5">
                             <div class="col-lg-4 mb-5">
                                 <div class="card h-100 shadow border-0">
-                                    <img class="card-img-top" src="{{ asset('images/frontend/yulherniwati.jpg') }}"
-                                        alt="..." />
+                                    <div class="card-img-wrapper">
+                                        <img class="card-img-top img-fluid rounded-circle custom-img" src="{{ asset('images/softam.jpg') }}" alt="YULHERNIWATI" />
+                                    </div>
                                     <div class="card-body p-4">
-                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">SOFTAM</div>
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                            <h5 class="card-title mb-3">YULHERNIWATI, S.Kom, M.T</h5>
+                                            <h5 class="card-title mb-3">SOFTAM</h5>
                                         </a>
-                                        <p class="card-text mb-0">Some quick example text to build on the card title and
-                                            make up the bulk of the card's content.</p>
 
                                     </div>
                                 </div>
                             </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                              </button>
+                              <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                              </button>
                             <div class="col-lg-4 mb-5">
                                 <div class="card h-100 shadow border-0">
-                                    <img class="card-img-top" src="{{ asset('images/frontend/meriazmi.jpg') }}"
-                                        alt="..." />
+                                    <div class="card-img-wrapper">
+                                        <img class="card-img-top img-fluid rounded-circle custom-img" src="{{ asset('images/AI.jpg') }}" alt="Meri Azmi" />
+                                    </div>
                                     <div class="card-body p-4">
-                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">AI</div>
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                            <h5 class="card-title mb-3">Meri Azmi, S.T., M.Cs</h5>
+                                            <h5 class="card-title mb-3">AI</h5>
                                         </a>
-                                        <p class="card-text mb-0">Some more quick example text to build on the card title
-                                            and make up the bulk of the card's content.</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 mb-5">
                                 <div class="card h-100 shadow border-0">
-                                    <img class="card-img-top" src="{{ asset('images/frontend/default.png') }}"
-                                        alt="..." />
+                                    <div class="card-img-wrapper">
+                                        <img class="card-img-top img-fluid rounded-circle custom-img" src="{{ asset('images/programming.jpg') }}" alt="DENI SATRIA" />
+                                    </div>
                                     <div class="card-body p-4">
-                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">PROGRAMMING</div>
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                            <h5 class="card-title mb-3">DENI SATRIA, S.Kom, M.Kom</h5>
+                                            <h5 class="card-title mb-3">PROGRAMMING</h5>
                                         </a>
-                                        <p class="card-text mb-0">Some more quick example text to build on the card title
-                                            and make up the bulk of the card's content.</p>
                                     </div>
                                 </div>
                             </div>
@@ -121,58 +126,81 @@
                         <div class="row gx-5">
                             <div class="col-lg-4 mb-5">
                                 <div class="card h-100 shadow border-0">
-                                    <img class="card-img-top" src="{{ asset('images/frontend/alde.jpg') }}"
-                                        alt="..." />
+                                    <div class="card-img-wrapper">
+                                        <img class="card-img-top img-fluid rounded-circle custom-img" src="{{ asset('images/ncs.jpg') }}" alt="ALDE ALANDA" />
+                                    </div>
                                     <div class="card-body p-4">
-                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">NETWORK AND CYBERSEC
-                                        </div>
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                            <h5 class="card-title mb-3">ALDE ALANDA, S.Kom, M.T</h5>
+                                            <h5 class="card-title mb-3">NETWORK AND CYBERSEC</h5>
                                         </a>
-                                        <p class="card-text mb-0">Some more quick example text to build on the card title
-                                            and make up the bulk of the card's content.</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-4 mb-5">
                                 <div class="card h-100 shadow border-0">
-                                    <img class="card-img-top" src="{{ asset('images/frontend/hendra.jpg') }}"
-                                        alt="..." />
+                                    <div class="card-img-wrapper">
+                                        <img class="card-img-top img-fluid rounded-circle custom-img" src="{{ asset('images/IT.jpg') }}" alt="Hendra Rotama" />
+                                    </div>
                                     <div class="card-body p-4">
-                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">MULTIMEDIA</div>
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2"></div>
                                         <a class="text-decoration-none link-dark stretched-link" href="#!">
-                                            <h5 class="card-title mb-3">Hendra Rotama, S.Pd., M.Sn</h5>
+                                            <h5 class="card-title mb-3">IT Infrastructure</h5>
                                         </a>
-                                        <p class="card-text mb-0">Some more quick example text to build on the card title
-                                            and make up the bulk of the card's content.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"
-                    style="left: -40px;">
+            </div>
+
+            <style>
+                .custom-img {
+                    width: 200px;
+                    height: 200px;
+                    object-fit: cover;
+                    margin: 0 auto;
+                }
+
+                .card-body {
+                    text-align: center;
+                }
+
+                .card {
+                    margin-top: 50px;
+                }
+
+                .card-img-wrapper {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 200px; /* Adjust as needed for better vertical alignment */
+                }
+            </style>
+
+
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev" style="left: -40px;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
-                    data-bs-slide="next" style="right: -40px;">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" style="right: -40px;">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
-            </div>
-
-            <section class="py-5" id="prodi">
-                <div class="container px-5 my-5">
-                    <div class="row gx-5 justify-content-center">
-                        <div class="col-lg-8 col-xl-6">
-                            <div class="text-center">
-                                <h2 class="fw-bolder">Prodi</h2>
+                </div>
+                <section class="py-5" id="prodi">
+                    <div class="container px-5 my-5">
+                        <div class="row gx-5 justify-content-center">
+                            <div class="col-lg-8 col-xl-6">
+                                <div class="text-center">
+                                    <h2 class="fw-bolder">Prodi</h2>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-3 col-md-4 col-sm-6 mb-5">
                         <div class="card shadow border-0 d-flex justify-content-center align-items-center"

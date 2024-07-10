@@ -1,8 +1,7 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
         <a href="/dashboard" class="app-brand-link">
-            <img class="img-fluid rounded-3 my-5" src="{{ asset('images/logo3.png') }}" alt="..."
-                style="width: 200px; height: auto; margin: 20px auto;" />
+            <img class="img-fluid rounded-3 my-5" src="{{ asset('images/logo3.png') }}" alt="..." style="width: 200px; height: auto; margin: 20px auto;" />
         </a>
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
             <i class="bx bx-chevron-left bx-sm align-middle"></i>
@@ -84,7 +83,7 @@
             </li>
         @endhasrole
 
-        @hasrole('admin|dosenpengampu|kaprodi|penguruskbk')
+        @hasrole('admin|dosenpengampu|kaprodi|penguruskbk|kajur')
             <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
@@ -97,7 +96,7 @@
                             <div data-i18n="Basic">Upload RPS</div>
                         </a></li>
                 @endhasrole
-                @hasrole('kaprodi|admin|penguruskbk')
+                @hasrole('kaprodi|admin|penguruskbk|kajur')
                     <li class="menu-item"><a href="/verif_rps" class="menu-link">
                             <div data-i18n="Basic">Verifikasi RPS</div>
                         </a></li>
@@ -105,7 +104,7 @@
             </ul>
         </li>
 
-        @hasrole('admin|dosenpengampu|kaprodi|penguruskbk')
+        @hasrole('admin|dosenpengampu|kaprodi|penguruskbk|kajur')
             <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-cube-alt"></i>
@@ -118,7 +117,7 @@
                             <div data-i18n="Error">Upload Soal Uas</div>
                         </a></li>
                 @endhasrole
-                @hasrole('kaprodi|admin|penguruskbk')
+                @hasrole('kaprodi|admin|penguruskbk|kajur')
                     <li class="menu-item"><a href="/verif_uas" class="menu-link">
                             <div data-i18n="Under Maintenance">Verifikasi Uas</div>
                         </a></li>

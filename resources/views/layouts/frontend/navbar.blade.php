@@ -9,17 +9,12 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item back-to-top"><a class="nav-link" href="#">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#pengurus">Pengurus</a></li>
-                <li class="nav-item"><a class="nav-link" href="#dosen">Dosen</a></li>
+                <li class="nav-item"><a class="nav-link" href="#datakbk">Data KBK</a></li>
                 <li class="nav-item"><a class="nav-link" href="#prodi">Prodi</a></li>
-                <li class="nav-item dropdown" style="margin-left: 15px;">
-                    <a class="nav-link dropdown-toggle nav-link-login" id="navbarDropdownBlog" href="#"
-                        role="button" data-bs-toggle="dropdown" aria-expanded="false">Masuk</a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                        <li><a class="dropdown-item" href="/login">Login</a></li>
-                        <li><a class="dropdown-item" href="/register">Register</a></li>
-                    </ul>
-                </li>
+                <li class="nav-item"><a class="nav-link fw-bold" href="/login">Login</a></li>
+
+
+
             </ul>
         </div>
     </div>

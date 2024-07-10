@@ -30,7 +30,7 @@
                                 </div>
                                 <!-- Submit Button -->
                                 <button type="submit" class="btn btn-primary">Simpan</button>
-                                <a href="{{ route('verif_rps.index') }}" class="btn btn-secondary">Batal</a>
+                                <a href="{{ route('datakbk.index') }}" class="btn btn-secondary">Batal</a>
                             </form>
                         </div>
                     @endsection

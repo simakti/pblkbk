@@ -6,25 +6,21 @@
                 <!-- Page Heading -->
                 <h5 class="card-title  mb-4">Data Mata Kuliah KBK</h5>
                 <div class="container-fluid">
-                    <!-- DataDosen -->
                     <div class="card shadow mb-4">
-                        <div class="card-body">
-                            <div class="card-header py-3">
-                                <div class="d-grid gap-2 d-md-block">
-                                    <a href="{{ route('matkul_kbk.create') }}" class="btn btn-primary me-md-3"><i
-                                            class="bi bi-file-earmark-plus"></i> Tambah</a>
-                                    <a href="{{ route('matkul_kbk.export') }}" class="btn btn-success"></i> <i
-                                            class="fas fa-download"></i> Export</a>
-                                    <button type="button" class="btn btn-info"
-                                        onclick="document.getElementById('fileInput').click()"><i
-                                            class="fas fa-file-import"></i> Import</button>
-                                    <form id="importForm" action="{{ route('matkul_kbk.import') }}" method="POST"
-                                        enctype="multipart/form-data" style="display:none;">
-                                        @csrf
-                                        <input type="file" id="fileInput" name="file" style="display:none;"
-                                            onchange="document.getElementById('importForm').submit()">
-                                    </form>
-                                </div>
+                        <div class="card-header py-3">
+                            <div class="mt-3">
+                                <a href="{{ route('matkul_kbk.create') }}" class="btn btn-primary">Tambah</a>
+                                <a href="{{ route('matkul_kbk.export') }}" class="btn btn-success"></i> <i
+                                        class="fas fa-download"></i> Export</a>
+                                <button type="button" class="btn btn-info"
+                                    onclick="document.getElementById('fileInput').click()"><i
+                                        class="fas fa-file-import"></i> Import</button>
+                                <form id="importForm" action="{{ route('matkul_kbk.import') }}" method="POST"
+                                    enctype="multipart/form-data" style="display:none;">
+                                    @csrf
+                                    <input type="file" id="fileInput" name="file" style="display:none;"
+                                        onchange="document.getElementById('importForm').submit()">
+                                </form>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped" id="example" width="100%"

@@ -48,20 +48,20 @@ class AuthController extends Controller
         return view('auth.forgot_password');
     }
 
-    public function forgotPassword(Request $request)
-    {
-        // Implement forgot password functionality
-    }
-    public function destroy(Request $request)
-    {
-        Auth::guard('web')->logout();
+    // public function forgotPassword(Request $request)
+    // {
+    //     // Implement forgot password functionality
+    // }
+    // public function destroy(Request $request)
+    // {
+    //     Auth::guard('web')->logout();
 
-        $request->session()->invalidate();
+    //     $request->session()->invalidate();
 
-        $request->session()->regenerateToken();
+    //     $request->session()->regenerateToken();
 
-        return redirect()->route('login');
-    }
+    //     return redirect()->route('login');
+    // }
 
     public function logout(Request $request)
     {
@@ -71,7 +71,35 @@ class AuthController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/login');
+    }
+
+    public function forgotPassword(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255'],
+            'password' => ['required'],
+            'password_confirmation' => ['required'],
+        ]);
+
+        if ($request->password != $request->password_confirmation) {
+            echo('<script>alert("Password tidak sesuai!"); history.back()</script>');
+        }
+
+        $user = User::where('email', $request->email)->first();
+        if($user){
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }else{
+            echo('<script>alert("Email tidak ditemukan!")</script>');
+        }
+
+        return view('auth.login');
+
+    }
+    public function redirectToHome()
+    {
+        return redirect()->route('/');
     }
 
 }

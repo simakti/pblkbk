@@ -29,7 +29,9 @@
                                             <th>Status</th>
                                             <th>Catatan</th>
                                             <th>Tanggal Verifikasi</th>
+                                            @hasrole('admin|penguruskbk|kaprodi')
                                             <th>Aksi</th>
+                                            @endhasrole
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -54,6 +56,7 @@
                                                 </td>
                                                 <td>{{ $data->catatan }}</td>
                                                 <td>{{ $data->tanggal_diverifikasi }}</td>
+                                                @hasrole('admin|penguruskbk|kaprodi')
                                                 <td>
                                                     <form action="{{ route('verif_uas.edit', $data->id_verif_uas) }}"
                                                         method="GET" style="display:inline;">
@@ -67,6 +70,7 @@
                                                             onclick="return confirm('Apakah Anda yakin untuk menghapus?')">Hapus</button>
                                                     </form>
                                                 </td>
+                                                @endhasrole
                                             </tr>
                                         @endforeach
                                     </tbody>
