@@ -24,7 +24,7 @@ class PermissionSeeder extends Seeder
         // Menetapkan peran kepada pengguna
         $userSuperAdmin = User::find(1); // Sesuaikan dengan ID pengguna Anda
         $userAdmin = User::find(2); // Sesuaikan dengan ID pengguna Anda
-        $userPengurusKbk = User::find(3); // Sesuaikan dengan ID pengguna Anda
+        $userPengurusKbk = User::find(7); // Sesuaikan dengan ID pengguna Anda
         $usersKaprodiIds = [19, 32, 31, 40, 15, 6];
         $userKaprodi = User::whereIn('id', $usersKaprodiIds)->get(); // Menggunakan whereIn untuk beberapa ID
         $userKajur = User::find(24); // Sesuaikan dengan ID pengguna Anda

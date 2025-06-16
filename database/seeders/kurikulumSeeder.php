@@ -16,7 +16,7 @@ class kurikulumSeeder extends Seeder
                 "kode_kurikulum" => "KUR TRPL 2017",
                 "nama_kurikulum" => "Kurikulum TRPL 2017",
                 "tahun" => "2017",
-                "id_prodi" => "20",
+                "id_prodi" => "1",
                 "status" => "0",
             ],
             [
@@ -24,7 +24,7 @@ class kurikulumSeeder extends Seeder
                 "kode_kurikulum" => "KUR TRPL  2017 REV",
                 "nama_kurikulum" => "Kurikulum TRPL 2017 Revisi",
                 "tahun" => "2020",
-                "id_prodi" => "20",
+                "id_prodi" => "2",
                 "status" => "0",
             ],
             [
@@ -32,7 +32,7 @@ class kurikulumSeeder extends Seeder
                 "kode_kurikulum" => "KUR TRPL 2022",
                 "nama_kurikulum" => "Kurikulum TRPL 2022",
                 "tahun" => "2022",
-                "id_prodi" => "20",
+                "id_prodi" => "2",
                 "status" => "1",
             ],
             [
@@ -40,7 +40,7 @@ class kurikulumSeeder extends Seeder
                 "kode_kurikulum" => "KUR TRPL 2022 V.1",
                 "nama_kurikulum" => "Kurikulum TRPL 2022 Versi 1",
                 "tahun" => "2023",
-                "id_prodi" => "20",
+                "id_prodi" => "3",
                 "status" => "1",
             ],
             [
@@ -48,7 +48,7 @@ class kurikulumSeeder extends Seeder
                 "kode_kurikulum" => "KUR TRPL  2022 V.2",
                 "nama_kurikulum" => "Kurikulum TRPL 2022 Versi 2",
                 "tahun" => "2024",
-                "id_prodi" => "20",
+                "id_prodi" => "4",
                 "status" => "1",
             ],
         ];

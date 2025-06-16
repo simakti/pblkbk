@@ -1,6 +1,4 @@
-
-INSERT INTO `jabatankbk` (`jabatan`, `deskripsi`) VALUES
-('Ketua', 'Ketua Bidang KBK'),
-('Sekretaris', 'Sekretaris Bidang KBK'),
-('Anggota', 'Anggota Bidang KBK');
-
+INSERT INTO `jabatankbk` (`id_jabatan_kbk`, `jabatan`, `deskripsi`) VALUES
+(1, 'Ketua', 'Ketua Bidang KBK'),
+(2, 'Sekretaris', 'Sekretaris Bidang KBK'),
+(3, 'Anggota', 'Anggota Bidang KBK');

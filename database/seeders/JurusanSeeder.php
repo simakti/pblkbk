@@ -40,7 +40,5 @@ class JurusanSeeder extends Seeder
         ];
 
         DB::table('jurusan')->insert($dataJurusan);
-
-        
     }
 }

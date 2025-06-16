@@ -17,7 +17,7 @@ class dosenMatkulSeeder extends Seeder
         $dataDosenMatkul = [
 
             [
-                "nama_dosen" => "RITA AFYENNI, S.Kom, M.Kom",
+                "nama_dosen" => "FAZROL ROZI M.Sc.",
                 "nidn" => "0018077099",
                 "kode_matakuliah" => "RPL3205",
                 "nama_matakuliah" => "Pengantar Rekayasa Perangkat Lunak",
@@ -26,7 +26,7 @@ class dosenMatkulSeeder extends Seeder
                 "thn_akd" => "2023/2024-Genap",
             ],
             [
-                "nama_dosen" => "DWINY MEIDELFI, S.Kom, M.Cs",
+                "nama_dosen" => "MERI AZMI, S.T, M.Cs",
                 "nidn" => "0009058601",
                 "kode_matakuliah" => "RPL3205",
                 "nama_matakuliah" => "Pengantar Rekayasa Perangkat Lunak",
