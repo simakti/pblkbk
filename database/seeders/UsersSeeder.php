@@ -18,6 +18,22 @@ class UsersSeeder extends Seeder
     {
         $users = [
             [
+                'name' => 'Super Admin',
+                'email' => 'superadmin@gmail.com',
+                'password' => Hash::make('password123'),
+                'email_verified_at' => now(),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+                        [
+                'name' => 'Admin',
+                'email' => 'admin@gmail.com',
+                'password' => Hash::make('password123'),
+                'email_verified_at' => now(),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
                 'name' => 'ALDE ALANDA S.Kom M.T',
                 'email' => 'alde@pnp.ac.id',
                 'password' => Hash::make('password123'),

@@ -42,6 +42,7 @@ class DatabaseSeeder extends Seeder
         $this->call([VerifUASSeeder::class,]);
         $this->call([UsersSeeder::class,]);
         $this->call([PermissionSeeder::class,]);
+        $this->call([UserDosenLinkSeeder::class,]);
 
 
 

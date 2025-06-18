@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('dosen', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_dosen')->primary(); // id_dosen as primary key
+            $table->unsignedBigInteger('id_dosen')->primary();
             $table->string('nama_dosen');
             $table->string('nidn')->unique();
             $table->string('nip')->unique();
